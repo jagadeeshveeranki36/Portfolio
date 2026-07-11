@@ -22,8 +22,8 @@ const projects = [
       'Light/dark theme with custom design-token CSS system and glassmorphism interface.',
       'Containerized with a multi-stage Dockerfile and served via Gunicorn for production.'
     ],
-    demoLink: 'https://github.com',
-    githubLink: 'https://github.com',
+    demoLink: 'https://jagadeeshveeranki36.github.io/Expense-Tracker/#/landing',
+    githubLink: 'https://github.com/jagadeeshveeranki36/Expense-Tracker',
     icon: <Server className="h-6 w-6 text-violet-500" />,
     color: 'from-violet-600/10 to-indigo-500/10'
   },
@@ -42,10 +42,29 @@ const projects = [
       '100% offline, single local SQLite file — no accounts, configurations, or remote servers.',
       'Ships a fully independent browser-based clone (HTML/CSS/JS + localStorage + Notification API) of the same UI/UX.'
     ],
-    demoLink: 'https://github.com',
-    githubLink: 'https://github.com',
+    demoLink: 'https://jagadeeshveeranki36.github.io/Task-Manager/',
+    githubLink: 'https://github.com/jagadeeshveeranki36/Task-Manager',
     icon: <Monitor className="h-6 w-6 text-indigo-500" />,
     color: 'from-indigo-600/10 to-sky-500/10'
+  },
+  {
+    id: 3,
+    title: 'Interactive Motion Portfolio',
+    tagline: 'An award-winning caliber interactive portfolio',
+    summary: 'Designed and developed this personal portfolio showcasing advanced motion design principles, a custom WebGL 3D canvas sphere, magnetic cursor trails, and fluid scroll pinning storyboards.',
+    tech: ['React 18', 'Vite', 'Tailwind CSS', 'Framer Motion', 'GSAP', 'Three.js'],
+    architecture: 'Modular React architecture with code-split vendor chunks, custom hooks, and dynamic browser fallbacks.',
+    features: [
+      'Interactive 3D WebGL wireframe sphere with custom orbit dust particles that tracks mouse coords.',
+      'GSAP ScrollTrigger deck-stacking card pinning on desktop.',
+      'Cassie-style string pull theme toggle with spring bounce and localStorage persistence.',
+      'Custom trailing dual-ring cursor with magnetic pull dynamics toward class-marked elements.',
+      'Automatic CI/CD deployment pipeline via GitHub Actions and auto-sync file watchers.'
+    ],
+    demoLink: 'https://jagadeeshveeranki36.github.io/Portfolio/',
+    githubLink: 'https://github.com/jagadeeshveeranki36/Portfolio',
+    icon: <Layers className="h-6 w-6 text-emerald-500" />,
+    color: 'from-emerald-600/10 to-teal-500/10'
   }
 ];
 
@@ -86,7 +105,7 @@ export default function Projects() {
         scrollTrigger: {
           trigger: pinSectionRef.current,
           start: 'top top',
-          end: '+=140%',
+          end: '+=200%',
           pin: true,
           scrub: 1.2,
           anticipatePin: 1,
@@ -96,6 +115,12 @@ export default function Projects() {
       // Card 2 slides over Card 1
       tl.fromTo(cardsRef.current[1],
         { yPercent: 120, scale: 0.94, rotate: 1 },
+        { yPercent: 0, scale: 1, rotate: 0, ease: 'none' }
+      );
+
+      // Card 3 slides over Card 2
+      tl.fromTo(cardsRef.current[2],
+        { yPercent: 120, scale: 0.94, rotate: -1 },
         { yPercent: 0, scale: 1, rotate: 0, ease: 'none' }
       );
     }, containerRef);
