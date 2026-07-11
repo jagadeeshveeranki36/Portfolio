@@ -320,7 +320,7 @@ export default function Hero() {
             {/* Main Glassmorphic Photo/Icon container */}
             <div className="absolute inset-10 rounded-3xl bg-gradient-to-tr from-violet-600/15 to-indigo-500/15 dark:from-violet-600/10 dark:to-indigo-500/10 border border-lightbg-border dark:border-darkbg-border backdrop-blur-md shadow-2xl flex flex-col items-center justify-center overflow-hidden group">
               <div className="text-6xl lg:text-7xl font-display font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-indigo-500 select-none group-hover:scale-110 transition-transform duration-500">
-                VJ
+                JV
               </div>
               <div className="absolute bottom-6 text-center">
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 block">MCA Student</span>

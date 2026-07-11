@@ -77,7 +77,7 @@ export default function Navbar({ theme, toggleTheme }) {
           className="flex items-center gap-2 group focus:outline-none"
         >
           <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-violet-600 to-indigo-500 flex items-center justify-center font-display font-bold text-white text-lg shadow-lg group-hover:scale-105 transition-transform duration-300">
-            VJ
+            JV
           </div>
           <span className="font-display font-bold text-lg tracking-tight hidden sm:block">
             <span className="text-slate-900 dark:text-white group-hover:text-primary-500 transition-colors duration-300">Jagadeesh</span>

@@ -21,7 +21,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center justify-center md:justify-start gap-2 mb-3">
               <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-violet-600 to-indigo-500 flex items-center justify-center font-display font-bold text-white shadow-md">
-                VJ
+                JV
               </div>
               <span className="font-display font-bold text-lg text-slate-900 dark:text-white">
                 Jagadeesh Veeranki
