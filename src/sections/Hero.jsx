@@ -25,7 +25,7 @@ export default function Hero() {
   useEffect(() => {
     // GSAP character stagger text-reveal effect for main title
     if (headingRef.current) {
-      const text = headingRef.current.innerText;
+      const text = "Hi, I'm Jagadeesh Veeranki";
       headingRef.current.innerHTML = '';
       
       const chars = text.split('').map(char => {
@@ -97,7 +97,6 @@ export default function Hero() {
             ref={headingRef}
             className="text-4xl sm:text-5xl md:text-6xl font-display font-extrabold leading-[1.1] mb-4 text-slate-900 dark:text-white select-none"
           >
-            Hi, I'm Jagadeesh Veeranki
           </h1>
 
           {/* Fading text swapper */}
