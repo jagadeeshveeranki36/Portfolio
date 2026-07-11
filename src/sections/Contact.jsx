@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, Github, Linkedin, CheckCircle, AlertCircle } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -28,27 +29,42 @@ export default function Contact() {
       return;
     }
 
+    const serviceId = 'service_q3x5dh7';
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!templateId || !publicKey || templateId === 'your_template_id_here' || publicKey === 'your_public_key_here') {
+      setStatus('error');
+      setErrorMessage('Email service is not fully configured. Please configure VITE_EMAILJS_TEMPLATE_ID and VITE_EMAILJS_PUBLIC_KEY in your env file.');
+      return;
+    }
+
     setStatus('sending');
 
-    // Simulate sending, then trigger mailto
-    setTimeout(() => {
-      // Connect to mailto to launch mail client
-      const subject = encodeURIComponent(`Portfolio Message from ${formData.name}`);
-      const body = encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-      );
-      
-      // TODO: Connect this to Formspree, Web3Forms, or FormBold. 
-      // Example for Formspree: fetch('https://formspree.io/f/YOUR_FORM_ID', { method: 'POST', body: JSON.stringify(formData) })
-      
-      window.location.href = `mailto:jagadeeshveeranki30@gmail.com?subject=${subject}&body=${body}`;
-      
+    // Send the email via EmailJS browser SDK
+    emailjs.send(
+      serviceId,
+      templateId,
+      {
+        name: formData.name,
+        email: formData.email,
+        message: formData.message
+      },
+      publicKey
+    )
+    .then((response) => {
+      console.log('SUCCESS!', response.status, response.text);
       setStatus('success');
       setFormData({ name: '', email: '', message: '' });
-
+      
       // Reset success status after 5s
       setTimeout(() => setStatus('idle'), 5000);
-    }, 800);
+    })
+    .catch((error) => {
+      console.error('FAILED...', error);
+      setStatus('error');
+      setErrorMessage('Failed to send message. Please check your credentials or network and try again.');
+    });
   };
 
   return (
@@ -241,7 +257,7 @@ export default function Contact() {
                       className="p-3 bg-emerald-500/10 dark:bg-emerald-500/5 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 rounded-xl text-xs flex items-center gap-2"
                     >
                       <CheckCircle className="h-4 w-4 flex-shrink-0" />
-                      <span>Success! Launching your mail client...</span>
+                      <span>Success! Your message was sent successfully.</span>
                     </motion.div>
                   )}
                 </AnimatePresence>
