@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans text-slate-800 bg-lightbg-base dark:text-slate-200 dark:bg-darkbg-base antialiased transition-colors duration-300;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight text-slate-900 dark:text-white;
+  }
+}
+
+@layer components {
+  /* Premium Glassmorphic Cards */
+  .glass-card {
+    @apply bg-lightbg-card dark:bg-darkbg-card border border-lightbg-border dark:border-darkbg-border backdrop-blur-lg rounded-2xl shadow-xl transition-all duration-300;
+  }
+  
+  .glass-card-hover {
+    @apply hover:shadow-2xl hover:-translate-y-1 hover:border-primary-500/20 dark:hover:border-primary-500/30;
+  }
+  
+  /* Gradient text utility */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-violet-500 via-primary-500 to-indigo-600 dark:from-violet-400 dark:via-primary-500 dark:to-indigo-400 font-display;
+  }
+  
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-300 dark:bg-slate-800 rounded-full hover:bg-primary-500 dark:hover:bg-primary-400 transition-colors duration-300;
+  }
+}
+
+/* Custom Cursor helper variables if enabled */
+.cursor-hovering {
+  scale: 1.5;
+  background-color: rgba(139, 92, 246, 0.2);
+  border-color: #8b5cf6;
+}
+
+/* Animated Gradient glow in background */
+.glow-blur {
+  position: absolute;
+  width: 40vw;
+  height: 40vw;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.15;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.glow-purple {
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, rgba(0,0,0,0) 70%);
+}
+
+.glow-blue {
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, rgba(0,0,0,0) 70%);
+}
+
+/* Mask for smooth scrolling highlights */
+.active-nav-dot {
+  @apply bg-primary-500 scale-100;
+}
