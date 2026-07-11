@@ -17,20 +17,30 @@ export default function Hero3DAccent() {
     }
     setIsFallback(false);
 
-    // Initialise Three.js Scene
-    const scene = new THREE.Scene();
-    
-    // Camera
-    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
-    camera.position.z = 4.5;
+    // Initialise Three.js Scene and resource placeholders
+    let scene, camera, renderer;
+    let geometry = null, meshMaterial = null, pointsMaterial = null, ringGeometry = null, ringMaterial = null;
+    let frameId = null;
 
-    // WebGL Renderer
-    const renderer = new THREE.WebGLRenderer({
-      canvas: canvasRef.current,
-      alpha: true,
-      antialias: true
-    });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    try {
+      scene = new THREE.Scene();
+      
+      // Camera
+      camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+      camera.position.z = 4.5;
+
+      // WebGL Renderer
+      renderer = new THREE.WebGLRenderer({
+        canvas: canvasRef.current,
+        alpha: true,
+        antialias: true
+      });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    } catch (error) {
+      console.warn("WebGL initialization failed, falling back to CSS glow:", error);
+      setIsFallback(true);
+      return;
+    }
 
     const handleResize = () => {
       if (!containerRef.current) return;
@@ -44,13 +54,13 @@ export default function Hero3DAccent() {
     window.addEventListener('resize', handleResize);
 
     // Construct 3D Sphere Geometry
-    const geometry = new THREE.IcosahedronGeometry(1.4, 3);
+    geometry = new THREE.IcosahedronGeometry(1.4, 3);
     
     // Clone positions buffer for displacement calculation
     const originalPositions = geometry.clone().attributes.position;
 
     // 1. Wireframe core mesh
-    const meshMaterial = new THREE.MeshBasicMaterial({
+    meshMaterial = new THREE.MeshBasicMaterial({
       color: 0x8b5cf6, // primary violet
       wireframe: true,
       transparent: true,
@@ -60,7 +70,7 @@ export default function Hero3DAccent() {
     scene.add(mesh);
 
     // 2. Vertex glowing particle points
-    const pointsMaterial = new THREE.PointsMaterial({
+    pointsMaterial = new THREE.PointsMaterial({
       color: 0x6366f1, // indigo accent
       size: 0.045,
       transparent: true,
@@ -71,7 +81,7 @@ export default function Hero3DAccent() {
     scene.add(particles);
 
     // 3. Floating outer dust rings
-    const ringGeometry = new THREE.BufferGeometry();
+    ringGeometry = new THREE.BufferGeometry();
     const ringParticlesCount = 70;
     const ringPositions = new Float32Array(ringParticlesCount * 3);
     for (let i = 0; i < ringParticlesCount; i++) {
@@ -83,7 +93,7 @@ export default function Hero3DAccent() {
     }
     ringGeometry.setAttribute('position', new THREE.BufferAttribute(ringPositions, 3));
     
-    const ringMaterial = new THREE.PointsMaterial({
+    ringMaterial = new THREE.PointsMaterial({
       color: 0xa78bfa,
       size: 0.028,
       transparent: true,
@@ -109,7 +119,6 @@ export default function Hero3DAccent() {
 
     // Animation variables
     let clock = new THREE.Clock();
-    let frameId;
 
     const animate = () => {
       const elapsedTime = clock.getElapsedTime();
@@ -159,12 +168,12 @@ export default function Hero3DAccent() {
     return () => {
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('mousemove', onMouseMove);
-      cancelAnimationFrame(frameId);
-      geometry.dispose();
-      meshMaterial.dispose();
-      pointsMaterial.dispose();
-      ringGeometry.dispose();
-      ringMaterial.dispose();
+      if (frameId) cancelAnimationFrame(frameId);
+      if (geometry) geometry.dispose();
+      if (meshMaterial) meshMaterial.dispose();
+      if (pointsMaterial) pointsMaterial.dispose();
+      if (ringGeometry) ringGeometry.dispose();
+      if (ringMaterial) ringMaterial.dispose();
     };
   }, []);
 
