@@ -85,7 +85,7 @@
   .btn-primary:hover {
     opacity: 0.92;
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
+    box-shadow: 0 4px 12px rgba(197, 168, 128, 0.2);
   }
 
   .btn-secondary {
@@ -139,7 +139,7 @@
 }
 
 .glow-blue {
-  background: radial-gradient(circle, #0ea5e9 0%, rgba(0,0,0,0) 70%);
+  background: radial-gradient(circle, #c5a880 0%, rgba(0,0,0,0) 70%);
 }
 
 /* Base structure for layout borders */
