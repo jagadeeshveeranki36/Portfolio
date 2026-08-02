@@ -69,12 +69,12 @@ export default function Skills() {
 
       <div className="max-w-6xl mx-auto relative z-10">
         
-        {/* Section Heading - Swiss Minimal */}
-        <div className="w-full flex items-baseline justify-between mb-20 border-b border-zinc-200/60 dark:border-zinc-800/50 pb-4">
-          <span className="font-mono text-xs uppercase tracking-widest text-zinc-400 dark:text-zinc-500 font-bold">
-            02 / EXPERTISE
+        {/* Section Heading - Swiss Minimal Brandbook */}
+        <div className="w-full flex items-baseline justify-between mb-20 border-b border-zinc-200/40 dark:border-zinc-850 pb-4">
+          <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-400 dark:text-zinc-500 font-bold">
+            02 // EXPERTISE
           </span>
-          <h2 className="font-display italic text-3xl text-zinc-900 dark:text-white">
+          <h2 className="font-display font-bold uppercase tracking-tight text-3xl text-zinc-900 dark:text-white">
             Skills Bento Grid
           </h2>
         </div>
