@@ -1,55 +1,100 @@
-import React, { useState } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 
 export default function ThemeToggle({ theme, toggleTheme }) {
-  const controls = useAnimation();
-  const [isPulling, setIsPulling] = useState(false);
+  const isDark = theme === 'dark';
 
-  const handlePull = async () => {
-    if (isPulling) return;
-    setIsPulling(true);
-    
-    // Simulate physics-based pull-down
-    await controls.start({
-      y: 16,
-      transition: { type: 'spring', stiffness: 350, damping: 9 }
-    });
-    
-    // Trigger theme swap at maximum displacement
-    toggleTheme();
-
-    // Release string and bounce back up
-    await controls.start({
-      y: 0,
-      transition: { type: 'spring', stiffness: 450, damping: 14 }
-    });
-    setIsPulling(false);
-  };
+  // Ray configurations for the Sun icon state
+  const rays = [0, 45, 90, 135, 180, 225, 270, 315];
 
   return (
-    <div className="relative flex flex-col items-center justify-start h-20 w-10 z-50 group pt-2.5 pointer-events-auto">
-      {/* Hanging string container */}
+    <button
+      onClick={toggleTheme}
+      className="relative w-14 h-8 rounded-full border border-zinc-200/40 dark:border-zinc-800/40 bg-zinc-100/80 dark:bg-zinc-900/80 backdrop-blur-md cursor-pointer select-none flex items-center justify-start p-1 shadow-inner focus:outline-none transition-colors duration-300 group pointer-events-auto"
+      title={isDark ? "Switch to light theme" : "Switch to dark theme"}
+      aria-label="Toggle theme mode"
+    >
+      {/* Sliding and morphing thumb knob */}
       <motion.div
-        animate={controls}
-        onClick={handlePull}
-        className="cursor-pointer flex flex-col items-center origin-top relative select-none magnetic"
-        style={{ y: 0 }}
-        title="Pull to toggle theme"
+        className="w-6 h-6 rounded-full relative flex items-center justify-center overflow-visible"
+        animate={{
+          x: isDark ? 22 : 0,
+        }}
+        transition={{ type: 'spring', stiffness: 350, damping: 20 }}
       >
-        {/* Cord line */}
-        <div className="w-[1.5px] h-10 bg-slate-400 dark:bg-slate-600 group-hover:bg-primary-500 transition-colors" />
-        
-        {/* Pull handle bead/ring */}
-        <div className="w-3.5 h-3.5 rounded-full border-2 border-slate-400 dark:border-slate-600 bg-white dark:bg-slate-900 group-hover:border-primary-500 group-hover:bg-primary-500/20 shadow-md transition-all duration-300 -mt-[1px] flex items-center justify-center">
-          {/* Inner core */}
-          <div className="w-1.5 h-1.5 rounded-full bg-slate-400 dark:bg-slate-600 group-hover:bg-primary-500 transition-colors" />
-        </div>
+        <svg 
+          width="24" 
+          height="24" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          className="overflow-visible"
+        >
+          <defs>
+            {/* Mask to cut a circular shape out of the center sun, forming a moon crescent */}
+            <mask id="theme-mask">
+              <rect x="0" y="0" width="24" height="24" fill="white" />
+              <motion.circle
+                cx="12"
+                cy="12"
+                r="7"
+                fill="black"
+                animate={{
+                  cx: isDark ? 18 : 28,
+                  cy: isDark ? 6 : -4,
+                }}
+                transition={{ type: 'spring', stiffness: 300, damping: 22 }}
+              />
+            </mask>
+          </defs>
 
-        {/* Ambient halo glow under the cord string knob in dark mode */}
-        {theme === 'dark' && (
-          <div className="absolute top-10 w-4 h-4 bg-amber-400/25 rounded-full filter blur-[3px] pointer-events-none group-hover:scale-150 transition-transform duration-300" />
-        )}
+          {/* Central Sun/Moon Body */}
+          <motion.circle
+            cx="12"
+            cy="12"
+            r="6"
+            mask="url(#theme-mask)"
+            animate={{
+              fill: isDark ? '#E4E4E7' : '#F59E0B',
+              scale: isDark ? 0.95 : 1,
+            }}
+            transition={{ duration: 0.3 }}
+          />
+
+          {/* Sun Rays: rotate out and scale down in dark mode */}
+          {rays.map((angle, i) => (
+            <motion.line
+              key={i}
+              x1="12"
+              y1="4"
+              x2="12"
+              y2="2"
+              stroke="#F59E0B"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              style={{ transformOrigin: '12px 12px' }}
+              animate={{
+                rotate: angle,
+                scale: isDark ? 0 : 1,
+                opacity: isDark ? 0 : 1,
+              }}
+              transition={{ 
+                type: 'spring', 
+                stiffness: 300, 
+                damping: 18,
+                delay: isDark ? 0 : i * 0.02 
+              }}
+            />
+          ))}
+        </svg>
+
+        {/* Halo Glow Ring */}
+        <motion.div 
+          className="absolute inset-0 rounded-full border border-blue-500/20 dark:border-blue-400/25 pointer-events-none scale-125 opacity-0 group-hover:opacity-100 group-hover:scale-150 transition-all duration-300"
+          animate={{
+            borderColor: isDark ? 'rgba(96, 165, 250, 0.2)' : 'rgba(245, 158, 11, 0.2)',
+          }}
+        />
       </motion.div>
-    </div>
+    </button>
   );
 }
