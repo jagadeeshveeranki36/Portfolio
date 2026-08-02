@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
 import { Mail, Phone, ArrowRight, Download, Github, Linkedin } from 'lucide-react';
 import Hero3DAccent from '../components/Hero3DAccent';
+import HangingIDCard from '../components/HangingIDCard';
 
 const taglines = [
   'Python Developer',
@@ -86,9 +87,9 @@ export default function Hero() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary-500/20 bg-primary-500/5 text-primary-600 dark:text-primary-400 text-xs font-semibold mb-6 uppercase tracking-widest select-none"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 text-zinc-600 dark:text-zinc-400 text-xs font-semibold mb-6 uppercase tracking-widest select-none"
           >
-            <span className="w-2 h-2 rounded-full bg-primary-500 animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
             Open for Developer Roles
           </motion.div>
 
@@ -131,7 +132,7 @@ export default function Hero() {
           >
             <button
               onClick={() => handleScrollTo('projects')}
-              className="magnetic px-8 py-3.5 rounded-full bg-gradient-to-r from-violet-600 to-indigo-500 hover:from-violet-500 hover:to-indigo-400 text-white font-medium shadow-lg shadow-violet-500/25 hover:shadow-violet-500/35 transition-all duration-300 w-full sm:w-auto flex items-center justify-center gap-2 group cursor-pointer"
+              className="btn-primary w-full sm:w-auto"
             >
               View Projects
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -140,7 +141,7 @@ export default function Hero() {
             <a
               href="./resume.pdf"
               download
-              className="magnetic px-8 py-3.5 rounded-full border border-lightbg-border dark:border-darkbg-border bg-white/40 dark:bg-slate-900/40 backdrop-blur-md hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 font-medium transition-all duration-300 w-full sm:w-auto flex items-center justify-center gap-2"
+              className="btn-secondary w-full sm:w-auto"
             >
               <Download className="h-4 w-4" />
               Download Resume
@@ -148,7 +149,7 @@ export default function Hero() {
 
             <button
               onClick={() => handleScrollTo('contact')}
-              className="magnetic px-8 py-3.5 rounded-full border border-dashed border-primary-500/40 hover:border-primary-500 bg-transparent text-primary-500 font-medium transition-all duration-300 w-full sm:w-auto flex items-center justify-center gap-2 cursor-pointer"
+              className="px-6 py-3 rounded-lg font-semibold border border-dashed border-zinc-200 dark:border-zinc-800 hover:border-blue-500 dark:hover:border-blue-400 hover:text-blue-500 dark:hover:text-blue-400 bg-transparent text-zinc-500 transition-all duration-300 w-full sm:w-auto flex items-center justify-center gap-2 cursor-pointer"
             >
               Contact Me
             </button>
@@ -177,8 +178,10 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Right Column: WebGL Interactive viewport spacing */}
-        <div className="lg:col-span-5 h-[320px] md:h-[400px] lg:h-[480px] w-full relative pointer-events-none" />
+        {/* Right Column: Interactive Hanging ID Card */}
+        <div className="lg:col-span-5 w-full relative pointer-events-auto flex justify-center items-center">
+          <HangingIDCard />
+        </div>
 
       </div>
     </section>

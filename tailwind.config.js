@@ -16,11 +16,32 @@ export default {
           300: '#c4b5fd',
           400: '#a78bfa',
           500: '#8b5cf6', // electric violet/indigo accent
-          600: '#7c3aed',
+          605: '#7c3aed',
+          650: '#6d28d9',
           700: '#6d28d9',
           800: '#5b21b6',
           900: '#4c1d95',
           950: '#2e1065',
+        },
+        zinc: {
+          250: '#e2e2e5',
+          305: '#e4e4e7',
+          350: '#d4d4d8',
+          355: '#cccccc',
+          450: '#8e8e93',
+          650: '#4b5563',
+          805: '#202024',
+          850: '#1c1c1f',
+          905: '#0f0f11',
+        },
+        slate: {
+          350: '#cbd5e1',
+          650: '#475569',
+        },
+        blue: {
+          450: '#60a5fa',
+          605: '#2563eb',
+          650: '#1d4ed8',
         },
         darkbg: {
           base: '#090d16',      // Premium dark background (sleek deep blue-black)
@@ -38,8 +59,9 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        display: ['Space Grotesk', 'sans-serif'],
+        sans: ['Source Serif 4', 'serif'],
+        display: ['Playfair Display', 'serif'],
+        mono: ['JetBrains Mono', 'monospace'],
       },
       backgroundImage: {
         'noise': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.015'/%3E%3C/svg%3E\")",

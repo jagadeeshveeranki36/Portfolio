@@ -1,72 +1,61 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, BookOpen, Sparkles, Heart } from 'lucide-react';
+import { Heart } from 'lucide-react';
 
 export default function About() {
-  const cards = [
+  const facts = [
     {
-      icon: <BookOpen className="h-5 w-5 text-violet-500" />,
-      title: 'Education Focus',
-      description: 'Currently pursuing MCA. Solid background in Computer Applications & relational databases.',
+      num: '01',
+      title: 'Academic Foundation',
+      description: 'Currently pursuing MCA at VRIT (JNTUK, 2024-2026). Graduated B.Sc. with a 9.2 CGPA from Sir C.R. Reddy College, establishing strong database and logic fundamentals.',
     },
     {
-      icon: <MapPin className="h-5 w-5 text-indigo-500" />,
-      title: 'Location',
-      description: 'Based in Naguladevunipadu, India. Ready to work remotely or relocate.',
+      num: '02',
+      title: 'Relocatable / Remote',
+      description: 'Based in Naguladevunipadu, India. Prepared for remote team workflows, structured collaboration, or relocating to development hubs.',
     },
     {
-      icon: <Sparkles className="h-5 w-5 text-amber-500" />,
-      title: 'Core Philosophy',
-      description: 'Creating secure, accessible, and high-performance digital tools with clean code.',
+      num: '03',
+      title: 'Design-Code Union',
+      description: 'Certified in graphic design. I bridge backend system logic (Python/Flask) with visually cohesive layouts and fluid interactive transitions.',
     },
   ];
 
   return (
-    <section id="about" className="py-24 relative overflow-hidden px-6 md:px-12 bg-slate-500/5">
-      {/* Decorative Blob */}
-      <div className="absolute top-1/2 left-0 w-72 h-72 bg-indigo-500/5 blur-[100px] rounded-full pointer-events-none" />
+    <section id="about" className="py-32 relative overflow-hidden px-6 md:px-12 border-t border-zinc-200/50 dark:border-zinc-800/40">
+      {/* Subtle material texture overlay */}
+      <div className="absolute inset-0 bg-noise pointer-events-none opacity-[0.015] dark:opacity-[0.02]" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-6xl mx-auto relative z-10">
         
-        {/* Section Heading */}
-        <div className="flex flex-col items-center mb-16 text-center">
-          <motion.span
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            className="text-xs font-bold uppercase tracking-widest text-primary-500 mb-2"
-          >
-            Get To Know Me
-          </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ delay: 0.1 }}
-            className="text-3xl md:text-4xl font-display font-bold text-slate-900 dark:text-white"
-          >
-            About Me
-          </motion.h2>
-          <div className="w-12 h-1 bg-gradient-to-r from-violet-600 to-indigo-500 rounded-full mt-4" />
+        {/* Section Heading - Swiss Minimal */}
+        <div className="w-full flex items-baseline justify-between mb-20 border-b border-zinc-200/60 dark:border-zinc-800/50 pb-4">
+          <span className="font-mono text-xs uppercase tracking-widest text-zinc-400 dark:text-zinc-500 font-bold">
+            01 / ABOUT ME
+          </span>
+          <h2 className="font-display italic text-3xl text-zinc-900 dark:text-white">
+            Philosophy & Background
+          </h2>
         </div>
 
         {/* Layout Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           
-          {/* Left Column: Narrative */}
+          {/* Left Column: Narrative (Spans 7) */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-7 flex flex-col justify-center text-slate-600 dark:text-slate-300 space-y-6 text-base md:text-lg leading-relaxed"
+            transition={{ duration: 0.7 }}
+            className="lg:col-span-7 space-y-8 text-zinc-650 dark:text-zinc-300 text-base md:text-lg leading-relaxed"
           >
-            <h3 className="text-2xl font-display font-semibold text-slate-800 dark:text-white mb-2 text-center lg:text-left">
-              Crafting solutions at the intersection of <span className="text-primary-500 font-bold">Python</span> and <span className="text-primary-500 font-bold">Full-Stack Dev</span>.
-            </h3>
+            {/* Bold Lead Statement */}
+            <p className="font-display italic text-2xl md:text-3xl text-zinc-900 dark:text-white leading-tight font-normal">
+              “I believe in writing code that is as secure and reliable as it is visually precise.”
+            </p>
             
             <p>
-              I am Jagadeesh Veeranki, an adaptable and detail-oriented Computer Applications student and developer based in Naguladevunipadu, India. Currently pursuing my Master of Computer Applications (MCA) at VRIT (JNTUK) with a strong academic foundation (9.2 CGPA from my B.Sc. studies), I specialize in building secure full-stack web applications and robust Python utilities.
+              I am Jagadeesh Veeranki, a Master of Computer Applications (MCA) student at Varaprasad Reddy Institute of Technology (VRIT), Guntur. I specialize in building backend web structures with Python and Flask, planning structured relational databases, and designing intuitive frontends.
             </p>
 
             <p>
@@ -74,35 +63,40 @@ export default function About() {
             </p>
 
             <p>
-              As a certified Graphic Designer, I also bring a keen eye for layouts, animations, and visual harmony. I thrive in collaborative environments where communication, problem-solving, and attention to detail are key to shipping successful projects.
+              Complementing my technical capabilities is a certified background in Graphic Design. This allows me to approach development from a visual standpoint—designing clean grids, respecting whitespace, and incorporating micro-interactions that elevate user experiences from ordinary to crafted.
             </p>
             
-            <div className="pt-4 flex items-center gap-3 text-sm font-semibold text-slate-500 dark:text-slate-400 justify-center lg:justify-start">
-              <Heart className="h-4 w-4 text-rose-500 fill-rose-500 animate-pulse" />
+            <div className="pt-6 flex items-center gap-3 text-xs font-mono tracking-widest text-zinc-400 dark:text-zinc-500 uppercase">
+              <Heart className="h-3.5 w-3.5 text-blue-600 dark:text-blue-500 animate-pulse fill-blue-600/20" />
               <span>Adaptable · Detail-Oriented · Creative</span>
             </div>
           </motion.div>
 
-          {/* Right Column: Grid Cards */}
-          <div className="lg:col-span-5 grid grid-cols-1 gap-6">
-            {cards.map((card, i) => (
+          {/* Right Column: Typographic Fact Cards (Spans 5) */}
+          <div className="lg:col-span-5 space-y-6">
+            {facts.map((fact, i) => (
               <motion.div
-                key={card.title}
-                initial={{ opacity: 0, x: 30, y: 10 }}
-                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                key={fact.num}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-100px' }}
-                transition={{ duration: 0.5, delay: i * 0.15 }}
-                className="glass-card p-6 flex gap-4 hover:border-primary-500/25 dark:hover:border-primary-500/20 hover:shadow-lg transition-all duration-300"
+                transition={{ duration: 0.6, delay: i * 0.15 }}
+                className="glass-card p-6 flex flex-col gap-4 border border-zinc-200/40 dark:border-zinc-800/40 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300 shadow-sm"
               >
-                <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary-500/10 dark:bg-primary-500/5 flex items-center justify-center">
-                  {card.icon}
+                <div className="flex items-baseline justify-between border-b border-zinc-200/40 dark:border-zinc-800/40 pb-2">
+                  <span className="font-mono text-lg font-bold text-blue-600 dark:text-blue-400">
+                    {fact.num}
+                  </span>
+                  <span className="font-mono text-[9px] uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
+                    FACT SHEET
+                  </span>
                 </div>
                 <div>
-                  <h4 className="font-display font-semibold text-base text-slate-900 dark:text-white mb-1">
-                    {card.title}
+                  <h4 className="font-display font-bold text-base text-zinc-900 dark:text-white mb-2">
+                    {fact.title}
                   </h4>
-                  <p className="text-sm text-slate-500 dark:text-slate-400 leading-normal">
-                    {card.description}
+                  <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                    {fact.description}
                   </p>
                 </div>
               </motion.div>
