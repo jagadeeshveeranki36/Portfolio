@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Heart } from 'lucide-react';
+import MorphingBackground from '../components/MorphingBackground';
 
 export default function About() {
   const facts = [
@@ -22,9 +23,9 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-32 relative overflow-hidden px-6 md:px-12 border-t border-zinc-200/50 dark:border-zinc-800/40">
-      {/* Subtle material texture overlay */}
-      <div className="absolute inset-0 bg-noise pointer-events-none opacity-[0.015] dark:opacity-[0.02]" />
+    <section id="about" className="py-32 relative overflow-hidden px-6 md:px-12 border-t border-zinc-200/50 dark:border-zinc-800/40 bg-transparent">
+      {/* Morphing Liquid Blobs Background */}
+      <MorphingBackground colorTheme="amber" />
 
       <div className="max-w-6xl mx-auto relative z-10">
         
@@ -33,7 +34,7 @@ export default function About() {
           <span className="font-mono text-xs uppercase tracking-widest text-zinc-400 dark:text-zinc-500 font-bold">
             01 / ABOUT ME
           </span>
-          <h2 className="font-display italic text-3xl text-zinc-900 dark:text-white">
+          <h2 className="font-display italic text-3xl text-zinc-909 dark:text-white">
             Philosophy & Background
           </h2>
         </div>
@@ -47,7 +48,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-7 space-y-8 text-zinc-650 dark:text-zinc-300 text-base md:text-lg leading-relaxed"
+            className="lg:col-span-7 space-y-8 text-zinc-600 dark:text-zinc-300 text-base md:text-lg leading-relaxed"
           >
             {/* Bold Lead Statement */}
             <p className="font-display italic text-2xl md:text-3xl text-zinc-900 dark:text-white leading-tight font-normal">
@@ -81,10 +82,16 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-100px' }}
                 transition={{ duration: 0.6, delay: i * 0.15 }}
-                className="glass-card p-6 flex flex-col gap-4 border border-zinc-200/40 dark:border-zinc-800/40 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300 shadow-sm"
+                whileHover={{ 
+                  borderRadius: "20px 8px 20px 8px", 
+                  scale: 1.025,
+                  y: -4,
+                  transition: { type: 'spring', stiffness: 400, damping: 12 }
+                }}
+                className="glass-card p-6 flex flex-col gap-4 border border-zinc-200/40 dark:border-zinc-800/40 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300 shadow-sm cursor-pointer select-none origin-center"
               >
                 <div className="flex items-baseline justify-between border-b border-zinc-200/40 dark:border-zinc-800/40 pb-2">
-                  <span className="font-mono text-lg font-bold text-blue-600 dark:text-blue-400">
+                  <span className="font-mono text-lg font-bold text-blue-605 dark:text-blue-400">
                     {fact.num}
                   </span>
                   <span className="font-mono text-[9px] uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
