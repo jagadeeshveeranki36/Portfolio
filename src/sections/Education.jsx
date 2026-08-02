@@ -77,7 +77,7 @@ export default function Education() {
             04 // ACADEMICS
           </span>
           <h2 className="font-display font-bold uppercase tracking-tight text-3xl text-zinc-900 dark:text-white">
-            Education Timeline
+            Education
           </h2>
         </div>
 

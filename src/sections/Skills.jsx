@@ -76,7 +76,7 @@ export default function Skills() {
             02 // EXPERTISE
           </span>
           <h2 className="font-display font-bold uppercase tracking-tight text-3xl text-zinc-900 dark:text-white">
-            Skills Bento Grid
+            Skills
           </h2>
         </div>
 

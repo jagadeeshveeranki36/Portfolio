@@ -1,12 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ExternalLink, Github, X, Check, Server, Monitor, Layers } from 'lucide-react';
 import MorphingBackground from '../components/MorphingBackground';
 import LiquidButton from '../components/LiquidButton';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
@@ -27,7 +23,7 @@ const projects = [
     demoLink: 'https://jagadeeshveeranki36.github.io/Expense-Tracker/#/landing',
     githubLink: 'https://github.com/jagadeeshveeranki36/Expense-Tracker',
     icon: <Server className="h-5 w-5 text-primary-505 dark:text-primary-300" />,
-    color: 'from-primary-500/10 to-transparent'
+    color: 'from-sky-500/10 to-transparent'
   },
   {
     id: 2,
@@ -47,225 +43,149 @@ const projects = [
     demoLink: 'https://jagadeeshveeranki36.github.io/Task-Manager/',
     githubLink: 'https://github.com/jagadeeshveeranki36/Task-Manager',
     icon: <Monitor className="h-5 w-5 text-primary-505 dark:text-primary-300" />,
-    color: 'from-primary-500/10 to-transparent'
+    color: 'from-emerald-500/10 to-transparent'
   },
   {
     id: 3,
     title: 'Interactive Motion Portfolio',
     tagline: 'An award-winning caliber interactive portfolio',
-    summary: 'Designed and developed this personal portfolio showcasing advanced motion design principles, a custom WebGL 3D canvas sphere, magnetic cursor trails, and fluid scroll pinning storyboards.',
+    summary: 'Designed and developed this personal portfolio showcasing advanced motion design principles, a custom WebGL 3D canvas sphere, magnetic elements, and fluid layout storyboards.',
     tech: ['React 18', 'Vite', 'Tailwind CSS', 'Framer Motion', 'GSAP', 'Three.js'],
     architecture: 'Modular React architecture with code-split vendor chunks, custom hooks, and dynamic browser fallbacks.',
     features: [
       'Interactive 3D WebGL wireframe sphere with custom orbit dust particles that tracks mouse coords.',
-      'GSAP ScrollTrigger deck-stacking card pinning on desktop.',
+      'GSAP animations and Framer Motion micro-interactions.',
       'Cassie-style string pull theme toggle with spring bounce and localStorage persistence.',
-      'Custom trailing dual-ring cursor with magnetic pull dynamics toward class-marked elements.',
+      'Smooth scroll reveals and kinetic typography reveals.',
       'Automatic CI/CD deployment pipeline via GitHub Actions and auto-sync file watchers.'
     ],
     demoLink: 'https://jagadeeshveeranki36.github.io/Portfolio/',
     githubLink: 'https://github.com/jagadeeshveeranki36/Portfolio',
     icon: <Layers className="h-5 w-5 text-primary-505 dark:text-primary-300" />,
-    color: 'from-primary-500/10 to-transparent'
+    color: 'from-purple-500/10 to-transparent'
   }
 ];
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
-  const [isMobileMode, setIsMobileMode] = useState(true);
-  
-  const pinSectionRef = useRef(null);
-  const containerRef = useRef(null);
-  const cardsRef = useRef([]);
 
-  cardsRef.current = [];
-  const addToRefs = (el) => {
-    if (el && !cardsRef.current.includes(el)) {
-      cardsRef.current.push(el);
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 }
     }
   };
 
-  useEffect(() => {
-    const checkMotionNeeds = () => {
-      const isTouch = window.matchMedia('(max-width: 1024px)').matches || ('ontouchstart' in window);
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      setIsMobileMode(isTouch || prefersReducedMotion);
-    };
-
-    checkMotionNeeds();
-    window.addEventListener('resize', checkMotionNeeds);
-    return () => window.removeEventListener('resize', checkMotionNeeds);
-  }, []);
-
-  useEffect(() => {
-    if (isMobileMode) return;
-    
-    // Safety guard: ensure card elements are fully mounted before initializing ScrollTrigger
-    if (cardsRef.current.length < 3 || !cardsRef.current[0] || !cardsRef.current[1] || !cardsRef.current[2]) {
-      return;
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: 'easeOut' }
     }
-
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: pinSectionRef.current,
-          start: 'top top',
-          end: '+=200%',
-          pin: true,
-          scrub: 1.2,
-          anticipatePin: 1,
-        }
-      });
-
-      tl.fromTo(cardsRef.current[1],
-        { yPercent: 120, scale: 0.94, rotate: 1 },
-        { yPercent: 0, scale: 1, rotate: 0, ease: 'none' }
-      );
-
-      tl.fromTo(cardsRef.current[2],
-        { yPercent: 120, scale: 0.94, rotate: -1 },
-        { yPercent: 0, scale: 1, rotate: 0, ease: 'none' }
-      );
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, [isMobileMode]);
-
-  const handleMouseMove = (e, index) => {
-    if (isMobileMode) return;
-    const card = cardsRef.current[index];
-    if (!card) return;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    
-    const xc = rect.width / 2;
-    const yc = rect.height / 2;
-    const angleX = (yc - y) / 25;
-    const angleY = (x - xc) / 25;
-
-    card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg)`;
-  };
-
-  const handleMouseLeave = (index) => {
-    const card = cardsRef.current[index];
-    if (!card) return;
-    card.style.transform = '';
   };
 
   return (
-    <div ref={containerRef}>
-      <section
-        ref={pinSectionRef}
-        id="projects"
-        className={`relative overflow-hidden px-6 md:px-12 border-t border-zinc-200/40 dark:border-zinc-850 bg-transparent ${
-          isMobileMode ? 'py-32' : 'h-screen flex items-center justify-center'
-        }`}
-      >
-        {/* Morphing Liquid Blobs Background (Ice Blue theme) */}
-        <MorphingBackground colorTheme="blue" />
+    <section
+      id="projects"
+      className="py-32 relative overflow-hidden px-6 md:px-12 border-t border-zinc-200/40 dark:border-zinc-850 bg-transparent"
+    >
+      {/* Morphing Liquid Blobs Background */}
+      <MorphingBackground colorTheme="blue" />
 
-        <div className="max-w-6xl mx-auto w-full relative z-10 flex flex-col justify-center h-full">
-          
-          {/* Section Heading - Swiss Minimal Brandbook */}
-          <div className="w-full flex items-baseline justify-between mb-20 border-b border-zinc-200/40 dark:border-zinc-850 pb-4">
-            <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-400 dark:text-zinc-500 font-bold">
-              03 // PROJECTS
-            </span>
-            <h2 className="font-display font-bold uppercase tracking-tight text-3xl text-zinc-900 dark:text-white">
-              Selected Projects
-            </h2>
-          </div>
-
-          {/* Projects Deck Stack Container */}
-          <div className={`relative ${isMobileMode ? 'space-y-8' : 'w-full max-w-4xl mx-auto h-[480px]'}`}>
-            
-            {projects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                ref={addToRefs}
-                onMouseMove={(e) => handleMouseMove(e, index)}
-                onMouseLeave={() => handleMouseLeave(index)}
-                onClick={() => setSelectedProject(project)}
-                whileHover={{ 
-                  borderRadius: "20px 8px 20px 8px", 
-                  scale: 1.01,
-                  borderColor: 'rgba(56, 189, 248, 0.4)',
-                  transition: { type: 'spring', stiffness: 350, damping: 15 } 
-                }}
-                className={`project-card-container glass-card glass-card-hover group cursor-pointer overflow-hidden transition-all duration-300 font-sans ${
-                  isMobileMode
-                    ? 'w-full flex flex-col justify-between border border-zinc-200/40 dark:border-zinc-850'
-                    : 'absolute inset-0 w-full h-full flex flex-col justify-between bg-zinc-50/95 dark:bg-zinc-900/95 border border-zinc-200/50 dark:border-zinc-850'
-                }`}
-                style={{
-                  zIndex: index + 1,
-                  transformStyle: 'preserve-3d',
-                  boxShadow: !isMobileMode ? `0 ${15 + index * 8}px 45px -15px rgba(0,0,0,0.15)` : undefined
-                }}
-              >
-                {/* Header card panel */}
-                <div className={`h-24 md:h-26 bg-gradient-to-tr ${project.color} flex items-center justify-between px-6 md:px-8 border-b border-zinc-205/30 dark:border-zinc-800/35 relative overflow-hidden select-none`}>
-                  <div className="flex items-center gap-4 relative z-10">
-                    <div className="w-10 h-10 rounded-lg bg-white dark:bg-zinc-950 border border-zinc-200/40 dark:border-zinc-800/40 flex items-center justify-center shadow-sm">
-                      {project.icon}
-                    </div>
-                    <div>
-                      <h3 className="font-display font-bold text-lg md:text-xl text-zinc-900 dark:text-white leading-tight">
-                        {project.title.split(' (')[0]}
-                      </h3>
-                      <span className="font-mono text-[9px] uppercase tracking-wider text-zinc-450 dark:text-zinc-500 font-bold">
-                        {project.title.includes('(') ? '(' + project.title.split(' (')[1] : ''}
-                      </span>
-                    </div>
-                  </div>
-                  <span className="font-mono text-[8px] tracking-widest text-zinc-400 dark:text-zinc-500 uppercase border border-zinc-200/40 dark:border-zinc-800/45 px-2 py-0.5 rounded hidden sm:block font-bold">
-                    CASE STUDY // 0{project.id}
-                  </span>
-                </div>
-
-                {/* Card Body */}
-                <div className="p-6 md:p-8 flex-grow flex flex-col justify-between select-none">
-                  <div>
-                    <h4 className="font-display italic text-base text-primary-505 dark:text-primary-300 mb-2 font-light">
-                      "{project.tagline}"
-                    </h4>
-                    <p className="text-zinc-600 dark:text-zinc-350 text-sm leading-relaxed mb-6">
-                      {project.summary}
-                    </p>
-                  </div>
-
-                  <div>
-                    {/* Tech Badges */}
-                    <div className="flex flex-wrap gap-1.5 mb-6">
-                      {project.tech.slice(0, 5).map((t) => (
-                        <span
-                          key={t}
-                          className="font-mono text-[9px] uppercase tracking-wider bg-zinc-100 dark:bg-zinc-850 text-zinc-650 dark:text-zinc-350 px-2 py-0.5 rounded border border-zinc-200/20 dark:border-zinc-800/20"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                      {project.tech.length > 5 && (
-                        <span className="font-mono text-[9px] uppercase tracking-wider bg-primary-505/10 text-primary-505 dark:text-primary-300 px-2 py-0.5 rounded">
-                          +{project.tech.length - 5} More
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Trigger study link */}
-                    <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-zinc-900 dark:text-white border-t border-zinc-200/30 dark:border-zinc-800/30 pt-4 group-hover:text-primary-505 dark:group-hover:text-primary-300 transition-colors font-bold">
-                      <span>Explore Case Study</span>
-                      <span className="group-hover:translate-x-1.5 transition-transform duration-300">→</span>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
+      <div className="max-w-6xl mx-auto w-full relative z-10">
+        
+        {/* Section Heading - Swiss Minimal Brandbook */}
+        <div className="w-full flex items-baseline justify-between mb-20 border-b border-zinc-200/40 dark:border-zinc-850 pb-4">
+          <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-400 dark:text-zinc-500 font-bold">
+            03 // PROJECTS
+          </span>
+          <h2 className="font-display font-bold uppercase tracking-tight text-3xl text-zinc-900 dark:text-white">
+            Projects
+          </h2>
         </div>
-      </section>
+
+        {/* Responsive 3-Column Projects Grid */}
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-100px' }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto font-sans"
+        >
+          {projects.map((project) => (
+            <motion.div
+              key={project.id}
+              variants={cardVariants}
+              onClick={() => setSelectedProject(project)}
+              whileHover={{ 
+                borderRadius: "20px 8px 20px 8px", 
+                scale: 1.025,
+                y: -6,
+                borderColor: 'rgba(56, 189, 248, 0.4)',
+                transition: { type: 'spring', stiffness: 350, damping: 14 } 
+              }}
+              className="glass-card glass-card-hover group cursor-pointer overflow-hidden transition-all duration-300 flex flex-col justify-between border border-zinc-200/40 dark:border-zinc-850 relative"
+            >
+              {/* Card Header Panel */}
+              <div className={`h-24 bg-gradient-to-tr ${project.color} flex items-center justify-between px-6 border-b border-zinc-200/20 dark:border-zinc-800/35 relative overflow-hidden select-none`}>
+                <div className="flex items-center gap-3 relative z-10">
+                  <div className="w-10 h-10 rounded-lg bg-white dark:bg-zinc-950 border border-zinc-200/40 dark:border-zinc-800/40 flex items-center justify-center shadow-sm">
+                    {project.icon}
+                  </div>
+                  <div>
+                    <h3 className="font-display font-bold text-base text-zinc-900 dark:text-white leading-tight">
+                      {project.title.split(' (')[0]}
+                    </h3>
+                    <span className="font-mono text-[8.5px] uppercase tracking-wider text-zinc-450 dark:text-zinc-500 font-bold">
+                      {project.title.includes('(') ? '(' + project.title.split(' (')[1] : ''}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card Body */}
+              <div className="p-6 flex-grow flex flex-col justify-between select-none">
+                <div>
+                  <h4 className="font-display italic text-sm text-primary-505 dark:text-primary-300 mb-2 font-light">
+                    "{project.tagline}"
+                  </h4>
+                  <p className="text-zinc-500 dark:text-zinc-400 text-xs leading-relaxed mb-6">
+                    {project.summary}
+                  </p>
+                </div>
+
+                <div>
+                  {/* Tech Badges */}
+                  <div className="flex flex-wrap gap-1.5 mb-6">
+                    {project.tech.slice(0, 4).map((t) => (
+                      <span
+                        key={t}
+                        className="font-mono text-[8px] uppercase tracking-wider bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 px-2 py-0.5 rounded border border-zinc-200/20 dark:border-zinc-800/20 font-bold"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                    {project.tech.length > 4 && (
+                      <span className="font-mono text-[8px] uppercase tracking-wider bg-primary-505/10 text-primary-505 dark:text-primary-300 px-2 py-0.5 rounded font-bold">
+                        +{project.tech.length - 4} More
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Trigger study link */}
+                  <div className="flex items-center justify-between font-mono text-[9px] uppercase tracking-widest text-zinc-900 dark:text-white border-t border-zinc-200/30 dark:border-zinc-800/30 pt-4 group-hover:text-primary-505 dark:group-hover:text-primary-300 transition-colors font-bold">
+                    <span>Explore Case Study</span>
+                    <span className="group-hover:translate-x-1.5 transition-transform duration-300">→</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+      </div>
 
       {/* Case Study Modal Details Overlay */}
       <AnimatePresence>
@@ -278,7 +198,7 @@ export default function Projects() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedProject(null)}
-              className="fixed inset-0 bg-zinc-950/40 backdrop-blur-md"
+              className="fixed inset-0 bg-zinc-955/40 backdrop-blur-md"
             />
 
             {/* Modal Body */}
@@ -332,7 +252,7 @@ export default function Projects() {
                     {selectedProject.tech.map((t) => (
                       <span
                         key={t}
-                        className="font-mono text-[9px] uppercase tracking-wider bg-zinc-100 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-350 px-2.5 py-1 rounded border border-zinc-200/30 dark:border-zinc-800/30 font-bold"
+                        className="font-mono text-[9px] uppercase tracking-wider bg-zinc-100 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-355 px-2.5 py-1 rounded border border-zinc-200/30 dark:border-zinc-800/30 font-bold"
                       >
                         {t}
                       </span>
@@ -345,7 +265,7 @@ export default function Projects() {
                     Architecture & Patterns
                   </h4>
                   <div className="p-4 rounded-xl bg-zinc-100/40 dark:bg-zinc-900/40 border border-zinc-200/40 dark:border-zinc-800/40 text-zinc-705 dark:text-zinc-300 text-sm leading-relaxed flex items-start gap-2.5">
-                    <Layers className="h-4 w-4 text-primary-505 dark:text-primary-300 flex-shrink-0 mt-0.5" />
+                    <Check className="h-4 w-4 text-primary-505 dark:text-primary-300 flex-shrink-0 mt-0.5" />
                     <span>{selectedProject.architecture}</span>
                   </div>
                 </div>
@@ -371,7 +291,7 @@ export default function Projects() {
               <div className="p-6 border-t border-zinc-200 dark:border-zinc-800/60 bg-zinc-50/80 dark:bg-zinc-950/80 flex gap-4 sticky bottom-0 backdrop-blur-md">
                 <LiquidButton
                   href={selectedProject.githubLink}
-                  className="btn-secondary flex-1"
+                  className="flex-1 btn-secondary"
                 >
                   <Github className="h-4 w-4 mr-2" />
                   GitHub Repo
@@ -389,6 +309,6 @@ export default function Projects() {
           </div>
         )}
       </AnimatePresence>
-    </div>
+    </section>
   );
 }

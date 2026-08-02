@@ -74,22 +74,6 @@ export default function DeveloperTerminal() {
         ))}
       </div>
 
-      {/* Interactive Server Log Output mockup */}
-      <div className="px-4 py-3 bg-zinc-900 border-t border-zinc-800 text-[10px] text-emerald-450 dark:text-emerald-400">
-        <div className="flex items-center justify-between text-zinc-500 mb-1.5 border-b border-zinc-800 pb-1">
-          <span>CONSOLE OUTPUT</span>
-          <span>bash // host-5000</span>
-        </div>
-        <div className="space-y-0.5">
-          <p className="text-zinc-400">$ flask run --port=5000</p>
-          <p> * Serving Flask app 'portfolio.py' (lazy loading)</p>
-          <p className="text-zinc-300"> * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)</p>
-          <div className="flex items-center gap-1.5 text-emerald-400 font-bold">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span>Server Active // Session protection loaded successfully.</span>
-          </div>
-        </div>
-      </div>
     </motion.div>
   );
 }

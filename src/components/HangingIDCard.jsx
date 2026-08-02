@@ -18,16 +18,20 @@ export default function HangingIDCard() {
       // 1. Initial off-screen setting
       controls.set({ y: -450, rotate: 0, opacity: 1 });
 
-      // 2. Drop down using spring physics
+      // 2. Drop down using spring physics and tilt to the right on landing (jumps right!)
       await controls.start({
         y: 0,
-        transition: { type: 'spring', stiffness: 130, damping: 15, mass: 1 }
+        rotate: 16,
+        transition: {
+          y: { type: 'spring', stiffness: 140, damping: 14, mass: 1 },
+          rotate: { type: 'spring', stiffness: 90, damping: 9 }
+        }
       });
 
       // 3. Immediately trigger pendulum sway swings on landing
       await controls.start({
-        rotate: [0, 8, -6, 4, -2.5, 1.2, -0.6, 0],
-        transition: { duration: 2.8, ease: 'easeOut' }
+        rotate: [16, -12, 8, -5, 3, -1.5, 0.8, 0],
+        transition: { duration: 3.2, ease: 'easeOut' }
       });
 
       // 4. Begin the continuous slow idle sway
@@ -65,10 +69,10 @@ export default function HangingIDCard() {
   };
 
   return (
-    <div className="relative w-full h-[500px] flex justify-center items-start pointer-events-auto select-none">
+    <div className="relative w-full h-[520px] flex justify-center items-start pointer-events-auto select-none">
       {/* 3D Wrapper */}
       <div 
-        className="relative flex flex-col items-center cursor-pointer"
+        className="relative flex flex-col items-center"
         style={{ perspective: 1000 }}
         onMouseEnter={handleMouseEnter}
       >
@@ -83,15 +87,15 @@ export default function HangingIDCard() {
         {/* Metal ring connector */}
         <div className="absolute top-[106px] w-2.5 h-3 bg-zinc-400 dark:bg-zinc-600 rounded-sm z-15 shadow-sm" />
 
-        {/* Hanging Badge Card body */}
+        {/* Hanging Badge Card body (resized taller) */}
         <motion.div
           animate={controls}
           initial={{ y: -450, rotate: 0, opacity: 0 }}
           style={{ transformOrigin: 'top center' }}
-          className="relative top-[114px] w-[250px] h-[350px] glass-card shadow-2xl p-5 flex flex-col justify-between items-center text-center overflow-hidden border border-zinc-200/40 dark:border-zinc-800/40 backdrop-blur-md"
+          className="relative top-[114px] w-[260px] h-[420px] glass-card shadow-2xl p-5 flex flex-col justify-between items-center text-center overflow-hidden border border-zinc-200/40 dark:border-zinc-800/40 backdrop-blur-md"
         >
           {/* Badge slot hole */}
-          <div className="absolute top-2.5 w-7 h-1.5 rounded-full bg-zinc-200 dark:bg-zinc-950 border border-zinc-300/30 dark:border-zinc-850/30" />
+          <div className="absolute top-2.5 w-7 h-1.5 rounded-full bg-zinc-200 dark:bg-zinc-955 border border-zinc-300/30 dark:border-zinc-850/30" />
 
           {/* Org tag stamp */}
           <div className="w-full flex justify-between items-center mt-2.5 text-[8.5px] font-mono tracking-widest text-zinc-400 dark:text-zinc-500 font-bold uppercase">
@@ -102,28 +106,28 @@ export default function HangingIDCard() {
             </div>
           </div>
 
-          {/* Profile Photo */}
-          <div className="relative w-32 h-32 mt-3.5 border border-zinc-200 dark:border-zinc-800 p-1 rounded-lg bg-zinc-50 dark:bg-zinc-950/60 shadow-inner overflow-hidden">
+          {/* Profile Photo (resized to long format, grayscale filter and shade overlays removed) */}
+          <div className="relative w-40 h-[208px] mt-3 border border-zinc-200 dark:border-zinc-800 p-1 rounded-lg bg-zinc-50 dark:bg-zinc-950/60 shadow-inner overflow-hidden">
             <img 
               src="./profile.jpg" 
               alt="Veeranki Jagadeesh, Python Developer" 
-              className="w-full h-full object-cover rounded-md filter contrast-[1.02] grayscale hover:grayscale-0 transition-all duration-500"
+              className="w-full h-full object-cover rounded-md"
               draggable="false"
             />
           </div>
 
           {/* Name & Title */}
-          <div className="mt-3.5 w-full">
+          <div className="mt-3 w-full">
             <h3 className="font-display font-extrabold text-base text-zinc-900 dark:text-white leading-tight uppercase tracking-tight">
               Veeranki Jagadeesh
             </h3>
-            <p className="font-mono text-[8.5px] font-bold text-emerald-500 dark:text-emerald-450 uppercase tracking-widest mt-1">
+            <p className="font-mono text-[8.5px] font-bold text-emerald-500 dark:text-emerald-450 uppercase tracking-widest mt-0.5">
               Python Developer
             </p>
           </div>
 
           {/* Barcode representation */}
-          <div className="w-full mt-2 flex flex-col items-center">
+          <div className="w-full mt-1.5 flex flex-col items-center">
             <div className="h-6 w-full flex items-center justify-between px-2.5 bg-zinc-900/5 dark:bg-white/5 rounded py-0.5 opacity-80">
               <div className="w-[1.5px] h-full bg-zinc-800 dark:bg-zinc-300" />
               <div className="w-[3px] h-full bg-zinc-800 dark:bg-zinc-300" />
