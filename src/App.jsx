@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import useTheme from './hooks/useTheme';
 import ScrollProgress from './components/ScrollProgress';
-import CustomCursor from './components/CustomCursor';
 import Preloader from './components/Preloader';
 import Navbar from './components/Navbar';
 import SocialSidebar from './components/SocialSidebar';
@@ -18,55 +15,9 @@ import Contact from './sections/Contact';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
 
-gsap.registerPlugin(ScrollTrigger);
-
 function App() {
   const [theme, toggleTheme] = useTheme();
   const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    if (loading) return;
-
-    // Apply GSAP cinematic page transition blends only on desktop/non-reduced motion devices
-    const isTouch = window.matchMedia('(max-width: 1024px)').matches || ('ontouchstart' in window);
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (isTouch || prefersReducedMotion) return;
-
-    const sections = gsap.utils.toArray('main > section');
-    
-    const ctx = gsap.context(() => {
-      sections.forEach((section) => {
-        // Simple, clean vertical slide-in fade scroll trigger
-        gsap.fromTo(section,
-          { opacity: 0.8, y: 25 },
-          {
-            opacity: 1,
-            y: 0,
-            scrollTrigger: {
-              trigger: section,
-              start: 'top bottom',
-              end: 'top center',
-              scrub: true,
-            }
-          }
-        );
-
-        // Simple, clean vertical slide-out fade scroll trigger
-        gsap.to(section, {
-          opacity: 0.8,
-          y: -25,
-          scrollTrigger: {
-            trigger: section,
-            start: 'bottom center',
-            end: 'bottom top',
-            scrub: true,
-          }
-        });
-      });
-    });
-
-    return () => ctx.revert();
-  }, [loading]);
 
   return (
     <div className="min-h-screen text-slate-800 dark:text-slate-100 bg-lightbg-base dark:bg-darkbg-base transition-colors duration-500 relative">
@@ -84,13 +35,12 @@ function App() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          {/* Core Interactive elements */}
-          <CustomCursor />
+          {/* Core Snappy visual guides */}
           <ScrollProgress />
           <SocialSidebar />
           <Navbar theme={theme} toggleTheme={toggleTheme} />
           
-          {/* Sections */}
+          {/* Main sections */}
           <main className="relative z-10">
             <Hero />
             <About />
