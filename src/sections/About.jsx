@@ -23,8 +23,8 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-32 relative overflow-hidden px-6 md:px-12 border-t border-zinc-200/50 dark:border-zinc-800/40 bg-transparent">
-      {/* Morphing Liquid Blobs Background */}
+    <section id="about" className="py-32 relative overflow-hidden px-6 md:px-12 border-t border-zinc-200/40 dark:border-zinc-850 bg-transparent">
+      {/* Morphing Liquid Blobs Background (Champagne Theme) */}
       <MorphingBackground colorTheme="amber" />
 
       <div className="max-w-6xl mx-auto relative z-10">
@@ -48,10 +48,10 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-7 space-y-8 text-zinc-600 dark:text-zinc-300 text-base md:text-lg leading-relaxed"
+            className="lg:col-span-7 space-y-8 text-zinc-650 dark:text-zinc-300 text-base md:text-lg leading-relaxed font-sans"
           >
             {/* Bold Lead Statement */}
-            <p className="font-display italic text-2xl md:text-3xl text-zinc-900 dark:text-white leading-tight font-normal">
+            <p className="font-display italic text-3xl text-zinc-900 dark:text-white leading-tight font-light">
               “I believe in writing code that is as secure and reliable as it is visually precise.”
             </p>
             
@@ -68,7 +68,7 @@ export default function About() {
             </p>
             
             <div className="pt-6 flex items-center gap-3 text-xs font-mono tracking-widest text-zinc-400 dark:text-zinc-500 uppercase">
-              <Heart className="h-3.5 w-3.5 text-blue-600 dark:text-blue-500 animate-pulse fill-blue-600/20" />
+              <Heart className="h-3.5 w-3.5 text-primary-505 dark:text-primary-300 animate-pulse fill-primary-505/20" />
               <span>Adaptable · Detail-Oriented · Creative</span>
             </div>
           </motion.div>
@@ -86,23 +86,24 @@ export default function About() {
                   borderRadius: "20px 8px 20px 8px", 
                   scale: 1.025,
                   y: -4,
+                  borderColor: 'rgba(197, 168, 128, 0.4)',
                   transition: { type: 'spring', stiffness: 400, damping: 12 }
                 }}
-                className="glass-card p-6 flex flex-col gap-4 border border-zinc-200/40 dark:border-zinc-800/40 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300 shadow-sm cursor-pointer select-none origin-center"
+                className="glass-card p-6 flex flex-col gap-4 border border-zinc-200/40 dark:border-zinc-850 hover:border-zinc-300 dark:hover:border-zinc-800 transition-all duration-300 shadow-sm cursor-pointer select-none origin-center"
               >
-                <div className="flex items-baseline justify-between border-b border-zinc-200/40 dark:border-zinc-800/40 pb-2">
-                  <span className="font-mono text-lg font-bold text-blue-605 dark:text-blue-400">
+                <div className="flex items-baseline justify-between border-b border-zinc-250/20 dark:border-zinc-800/40 pb-2">
+                  <span className="font-display text-2xl font-semibold text-primary-505 dark:text-primary-300">
                     {fact.num}
                   </span>
-                  <span className="font-mono text-[9px] uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
+                  <span className="font-mono text-[9px] uppercase tracking-widest text-zinc-400 dark:text-zinc-500 font-bold">
                     FACT SHEET
                   </span>
                 </div>
                 <div>
-                  <h4 className="font-display font-bold text-base text-zinc-900 dark:text-white mb-2">
+                  <h4 className="font-display font-bold text-lg text-zinc-909 dark:text-white mb-2 leading-tight">
                     {fact.title}
                   </h4>
-                  <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                  <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed font-sans">
                     {fact.description}
                   </p>
                 </div>
