@@ -58,7 +58,7 @@ export default function Skills() {
     borderRadius: "20px 8px 20px 8px",
     scale: 1.015,
     y: -4,
-    borderColor: 'rgba(197, 168, 128, 0.4)',
+    borderColor: 'rgba(16, 185, 129, 0.4)',
     transition: { type: 'spring', stiffness: 350, damping: 14 }
   };
 

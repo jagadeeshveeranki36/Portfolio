@@ -82,7 +82,7 @@ export default function About() {
                   borderRadius: "20px 8px 20px 8px", 
                   scale: 1.025,
                   y: -4,
-                  borderColor: 'rgba(197, 168, 128, 0.4)',
+                  borderColor: 'rgba(16, 185, 129, 0.4)',
                   transition: { type: 'spring', stiffness: 400, damping: 12 }
                 }}
                 className="glass-card p-6 flex flex-col gap-4 border border-zinc-200/40 dark:border-zinc-850 hover:border-zinc-300 dark:hover:border-zinc-800 transition-all duration-300 shadow-sm cursor-pointer select-none origin-center"
