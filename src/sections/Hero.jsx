@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
 import { Mail, Phone, ArrowRight, Download, Camera } from 'lucide-react';
 import Hero3DAccent from '../components/Hero3DAccent';
-import MorphingBackground from '../components/MorphingBackground';
 import LiquidButton from '../components/LiquidButton';
 
 const taglines = [
@@ -71,9 +70,6 @@ export default function Hero() {
       id="home"
       className="relative min-h-[95svh] md:min-h-screen flex items-center justify-center pt-24 md:pt-16 pb-16 overflow-hidden px-6 md:px-12 bg-transparent"
     >
-      {/* Morphing Liquid Blobs Background (Champagne Gold / Violet) */}
-      <MorphingBackground colorTheme="violet" />
-
       {/* Three.js Glowing Gold Dust Starfield */}
       <Hero3DAccent />
 
