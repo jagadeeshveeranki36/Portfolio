@@ -109,9 +109,6 @@ export default function HangingIDCard() {
               alt="Veeranki Jagadeesh, Python Developer" 
               className="w-full h-full object-cover rounded-md filter contrast-[1.02] grayscale hover:grayscale-0 transition-all duration-500"
               draggable="false"
-              onError={(e) => {
-                e.target.src = "profile.jpg";
-              }}
             />
           </div>
 

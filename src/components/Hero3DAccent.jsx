@@ -14,12 +14,33 @@ export default function Hero3DAccent() {
       setIsFallback(true);
       return;
     }
-    setIsFallback(false);
 
     let scene, camera, renderer;
     let mainGeometry = null, mainMaterial = null, torusMesh = null;
     let particleGeometry = null, pointsMaterial = null, glowParticles = null;
     let frameId = null;
+
+    const handleResize = () => {
+      if (!containerRef.current || !camera || !renderer) return;
+      const width = containerRef.current.clientWidth;
+      const height = containerRef.current.clientHeight;
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      renderer.setSize(width, height);
+    };
+
+    // Mouse coordinates tracking
+    let mouseX = 0;
+    let mouseY = 0;
+    let targetX = 0;
+    let targetY = 0;
+
+    const onMouseMove = (event) => {
+      const windowHalfX = window.innerWidth / 2;
+      const windowHalfY = window.innerHeight / 2;
+      targetX = (event.clientX - windowHalfX) * 0.0008;
+      targetY = (event.clientY - windowHalfY) * 0.0008;
+    };
 
     try {
       scene = new THREE.Scene();
@@ -35,22 +56,18 @@ export default function Hero3DAccent() {
         antialias: true
       });
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      
+      setIsFallback(false);
     } catch (e) {
       console.warn("WebGL initialization failed, loading fallback:", e);
       setIsFallback(true);
       return;
     }
 
-    const handleResize = () => {
-      if (!containerRef.current) return;
-      const width = containerRef.current.clientWidth;
-      const height = containerRef.current.clientHeight;
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
-      renderer.setSize(width, height);
-    };
+    // Now safely register event listeners and run the scene setup
     handleResize();
     window.addEventListener('resize', handleResize);
+    window.addEventListener('mousemove', onMouseMove);
 
     // Chrome metallic abstract geometric centerpiece (Torus Knot)
     mainGeometry = new THREE.TorusKnotGeometry(0.7, 0.22, 120, 16);
@@ -93,20 +110,6 @@ export default function Hero3DAccent() {
     const rimLight = new THREE.DirectionalLight(0xffffff, 0.8);
     rimLight.position.set(-5, -3, -5);
     scene.add(rimLight);
-
-    // Mouse coordinates tracking
-    let mouseX = 0;
-    let mouseY = 0;
-    let targetX = 0;
-    let targetY = 0;
-
-    const onMouseMove = (event) => {
-      const windowHalfX = window.innerWidth / 2;
-      const windowHalfY = window.innerHeight / 2;
-      targetX = (event.clientX - windowHalfX) * 0.0008;
-      targetY = (event.clientY - windowHalfY) * 0.0008;
-    };
-    window.addEventListener('mousemove', onMouseMove);
 
     // Animation Loop
     const clock = new THREE.Clock();

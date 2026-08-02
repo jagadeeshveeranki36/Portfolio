@@ -99,6 +99,11 @@ export default function Projects() {
 
   useEffect(() => {
     if (isMobileMode) return;
+    
+    // Safety guard: ensure card elements are fully mounted before initializing ScrollTrigger
+    if (cardsRef.current.length < 3 || !cardsRef.current[0] || !cardsRef.current[1] || !cardsRef.current[2]) {
+      return;
+    }
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
