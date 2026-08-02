@@ -5,6 +5,7 @@ import MorphingBackground from '../components/MorphingBackground';
 
 export default function Skills() {
   const coreLanguages = [
+    { name: 'Java', level: 'Expert', percentage: 90, icon: <Code className="h-4 w-4 text-zinc-700 dark:text-zinc-300" /> },
     { name: 'Python', level: 'Expert', percentage: 95, icon: <Terminal className="h-4 w-4 text-zinc-700 dark:text-zinc-300" /> },
     { name: 'SQL', level: 'Advanced', percentage: 85, icon: <Database className="h-4 w-4 text-zinc-700 dark:text-zinc-300" /> },
     { name: 'HTML5', level: 'Expert', percentage: 90, icon: <Code className="h-4 w-4 text-zinc-700 dark:text-zinc-300" /> },
@@ -72,7 +73,7 @@ export default function Skills() {
         
         {/* Section Heading - Swiss Minimal Brandbook */}
         <div className="w-full flex items-baseline justify-between mb-20 border-b border-zinc-200/40 dark:border-zinc-850 pb-4">
-          <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-400 dark:text-zinc-500 font-bold">
+          <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-550 dark:text-zinc-400 font-bold">
             02 // EXPERTISE
           </span>
           <h2 className="font-display font-bold uppercase tracking-tight text-3xl text-zinc-900 dark:text-white">
@@ -101,7 +102,7 @@ export default function Skills() {
                 </div>
                 <div>
                   <h3 className="font-display font-bold text-xl text-zinc-900 dark:text-white leading-none">Core Languages</h3>
-                  <span className="font-mono text-[9px] uppercase font-bold tracking-widest text-zinc-400 dark:text-zinc-500">Foundation Stack</span>
+                  <span className="font-mono text-[9px] uppercase font-bold tracking-widest text-zinc-550 dark:text-zinc-400">Foundation Stack</span>
                 </div>
               </div>
               
@@ -143,7 +144,7 @@ export default function Skills() {
                 </div>
                 <div>
                   <h3 className="font-display font-bold text-xl text-zinc-900 dark:text-white leading-none">Backend Stack</h3>
-                  <span className="font-mono text-[9px] uppercase font-bold tracking-widest text-zinc-400 dark:text-zinc-500">Frameworks & SQLite</span>
+                  <span className="font-mono text-[9px] uppercase font-bold tracking-widest text-zinc-550 dark:text-zinc-400">Frameworks & SQLite</span>
                 </div>
               </div>
 
@@ -201,11 +202,11 @@ export default function Skills() {
             <div className="flex items-end justify-between">
               <div>
                 <span className="text-3xl font-display font-bold text-zinc-900 dark:text-white leading-none">9.2</span>
-                <p className="font-mono text-[8px] font-bold text-zinc-400 dark:text-zinc-500 mt-1.5 uppercase tracking-widest">B.Sc. CGPA Honours</p>
+                <p className="font-mono text-[8px] font-bold text-zinc-550 dark:text-zinc-400 mt-1.5 uppercase tracking-widest">B.Sc. CGPA Honours</p>
               </div>
               <div className="text-right">
                 <span className="text-3xl font-display font-bold text-zinc-900 dark:text-white leading-none">5+</span>
-                <p className="font-mono text-[8px] font-bold text-zinc-400 dark:text-zinc-500 mt-1.5 uppercase tracking-widest">Certificates</p>
+                <p className="font-mono text-[8px] font-bold text-zinc-550 dark:text-zinc-400 mt-1.5 uppercase tracking-widest">Certificates</p>
               </div>
             </div>
           </motion.div>

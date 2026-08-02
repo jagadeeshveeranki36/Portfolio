@@ -4,7 +4,6 @@ import gsap from 'gsap';
 import { Mail, Phone, ArrowRight, Download, Terminal as TerminalIcon } from 'lucide-react';
 import Hero3DAccent from '../components/Hero3DAccent';
 import HangingIDCard from '../components/HangingIDCard';
-import DeveloperTerminal from '../components/DeveloperTerminal';
 import MorphingBackground from '../components/MorphingBackground';
 import LiquidButton from '../components/LiquidButton';
 
@@ -84,7 +83,7 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center relative z-10">
         
         {/* Left Column: Heading, intro bio and CTAs */}
-        <div className="lg:col-span-5 flex flex-col items-center lg:items-start text-center lg:text-left z-10">
+        <div className="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left z-10">
           
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -174,13 +173,10 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Right Column: Lanyard hanging photo + DeveloperTerminal code visual */}
-        <div className="lg:col-span-7 w-full flex flex-col xl:flex-row gap-6 items-center justify-center relative z-10">
+        {/* Right Column: Lanyard hanging photo card centered */}
+        <div className="lg:col-span-6 w-full flex items-center justify-center relative z-10">
           {/* Lanyard Signature Component */}
           <HangingIDCard />
-
-          {/* Terminal Widget */}
-          <DeveloperTerminal />
         </div>
 
       </div>

@@ -27,23 +27,23 @@ export default function MorphingBackground({ colorTheme = 'blue' }) {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  // Theme-specific colors and alignments
+  // Theme-specific pastel colors for soft background orbs
   const themes = {
     violet: {
-      blob1: 'fill-violet-500/8 dark:fill-violet-500/4',
-      blob2: 'fill-indigo-500/7 dark:fill-indigo-500/4',
+      blob1: 'fill-violet-400/10 dark:fill-violet-500/5',
+      blob2: 'fill-indigo-400/8 dark:fill-indigo-500/4',
     },
     amber: {
-      blob1: 'fill-amber-500/6 dark:fill-amber-500/3',
-      blob2: 'fill-orange-500/5 dark:fill-orange-500/3',
+      blob1: 'fill-amber-400/8 dark:fill-amber-500/4',
+      blob2: 'fill-orange-400/8 dark:fill-orange-500/4',
     },
     graphite: {
-      blob1: 'fill-zinc-400/8 dark:fill-zinc-700/5',
-      blob2: 'fill-slate-400/7 dark:fill-slate-800/4',
+      blob1: 'fill-zinc-300/10 dark:fill-zinc-700/5',
+      blob2: 'fill-slate-300/8 dark:fill-slate-800/4',
     },
     blue: {
-      blob1: 'fill-blue-500/7 dark:fill-blue-500/4',
-      blob2: 'fill-cyan-500/6 dark:fill-cyan-500/3',
+      blob1: 'fill-sky-300/12 dark:fill-sky-500/4',
+      blob2: 'fill-cyan-200/10 dark:fill-cyan-500/3',
     },
   };
 
@@ -66,24 +66,16 @@ export default function MorphingBackground({ colorTheme = 'blue' }) {
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-      {/* SVG gooey liquid rendering wrapper */}
-      <svg className="w-full h-full min-h-screen opacity-70 filter blur-3xl select-none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <filter id="gooey-blend">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="30" result="blur" />
-            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 25 -10" result="goo" />
-            <feBlend in="SourceGraphic" in2="goo" />
-          </filter>
-        </defs>
-
-        <g filter="url(#gooey-blend)">
+      {/* SVG rendering soft pastel orbs with high-performance blur */}
+      <svg className="w-full h-full min-h-screen opacity-90 filter blur-3xl select-none" xmlns="http://www.w3.org/2000/svg">
+        <g>
           {/* Blob 1 */}
           <motion.path
             style={{ x: springX1, y: springY1 }}
             className={activeTheme.blob1}
             animate={{ d: path1 }}
             transition={{
-              duration: 16,
+              duration: 18,
               repeat: Infinity,
               ease: 'easeInOut',
             }}
@@ -95,7 +87,7 @@ export default function MorphingBackground({ colorTheme = 'blue' }) {
             className={activeTheme.blob2}
             animate={{ d: path2 }}
             transition={{
-              duration: 20,
+              duration: 22,
               repeat: Infinity,
               ease: 'easeInOut',
             }}

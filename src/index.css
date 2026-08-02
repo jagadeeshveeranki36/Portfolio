@@ -1,14 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth !important;
+  }
+
   :root {
     --color-primary: #0A0A0B;
     --color-on-primary: #FFFFFF;
-    --color-secondary: #64748B;
+    --color-secondary: #475569; /* Slate 600 - High Contrast */
     --color-accent: #0EA5E9; /* Ice Blue */
     --color-background: #FAFAFA; /* Off-White */
     --color-foreground: #0A0A0B;
@@ -27,7 +31,7 @@
   .dark {
     --color-primary: #FAFAFA;
     --color-on-primary: #0A0A0B;
-    --color-secondary: #94A3B8;
+    --color-secondary: #A1A1AA; /* Zinc 400 - Clear Contrast */
     --color-accent: #38BDF8; /* Glowing Ice Blue */
     --color-background: #0A0A0B; /* Pitch OLED Black */
     --color-foreground: #F1F5F9;

@@ -98,7 +98,7 @@ export default function Footer() {
 
         {/* Large Wordmark Watermark branding banner (like Antigravity style) */}
         <div className="w-full text-center mt-12 select-none border-t border-lightbg-border/20 dark:border-darkbg-border/20 pt-8">
-          <h2 className="font-display font-extrabold text-[8vw] leading-none text-zinc-950/[0.04] dark:text-white/[0.02] uppercase tracking-tighter w-full block">
+          <h2 className="font-display font-black text-[8vw] leading-none text-zinc-950/15 dark:text-white/10 uppercase tracking-tighter w-full block">
             Veeranki Jagadeesh
           </h2>
         </div>

@@ -69,6 +69,17 @@ const projects = [
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
 
+  React.useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [selectedProject]);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
