@@ -18,29 +18,16 @@ export default function Navbar({ theme, toggleTheme }) {
   const [activeSection, setActiveSection] = useState('home');
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [visible, setVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // Hides navbar on scroll-down (> 120px), reveals on scroll-up
-      if (currentScrollY > lastScrollY && currentScrollY > 120) {
-        setVisible(false);
-      } else {
-        setVisible(true);
-      }
-      setLastScrollY(currentScrollY);
-
       // Scrolled state backdrop blur activation
       setIsScrolled(currentScrollY > 20);
 
-      // Scroll Spy active sections
-      const scrollPosition = currentScrollY + 120;
-      
       // Auto active contact at bottom
-      if (window.innerHeight + currentScrollY >= document.documentElement.scrollHeight - 12) {
+      if (window.innerHeight + currentScrollY >= document.documentElement.scrollHeight - 25) {
         setActiveSection('contact');
         return;
       }
@@ -49,18 +36,21 @@ export default function Navbar({ theme, toggleTheme }) {
         const id = link.href.substring(1);
         const el = document.getElementById(id);
         if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
+          const rect = el.getBoundingClientRect();
+          // Set section active if it spans across the viewport trigger line (150px from top)
+          if (rect.top <= 150 && rect.bottom > 150) {
             setActiveSection(id);
+            break;
           }
         }
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    // Trigger scroll spy on mount
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   const handleClickLink = (href) => {
     setIsOpen(false);
@@ -74,12 +64,8 @@ export default function Navbar({ theme, toggleTheme }) {
   return (
     <>
       <motion.header
-        variants={{
-          visible: { y: 0 },
-          hidden: { y: -100 }
-        }}
-        animate={visible ? 'visible' : 'hidden'}
-        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+        initial={{ y: 0 }}
+        animate={{ y: 0 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
             ? 'bg-lightbg-base/80 dark:bg-darkbg-base/80 border-b border-lightbg-border dark:border-darkbg-border backdrop-blur-md py-3 shadow-md'
