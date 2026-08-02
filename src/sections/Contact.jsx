@@ -67,9 +67,6 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-32 relative overflow-hidden px-6 md:px-12 border-t border-zinc-200/40 dark:border-zinc-850 bg-transparent">
-      {/* Morphing Liquid Blobs Background (Champagne theme) */}
-      <MorphingBackground colorTheme="blue" />
-
       <div className="max-w-6xl mx-auto relative z-10 font-sans">
         
         {/* Section Heading - Swiss Minimal Brandbook */}
