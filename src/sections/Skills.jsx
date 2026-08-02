@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Terminal, Database, Code, Server, Laptop, Cpu, Heart, Award, GraduationCap, CheckCircle } from 'lucide-react';
+import MorphingBackground from '../components/MorphingBackground';
 
 export default function Skills() {
   const coreLanguages = [
@@ -21,12 +22,12 @@ export default function Skills() {
   ];
 
   const toolsSkills = [
-    { name: 'CustomTkinter', icon: <Laptop className="h-3.5 w-3.5 text-zinc-650 dark:text-zinc-350" /> },
-    { name: 'APScheduler', icon: <Cpu className="h-3.5 w-3.5 text-zinc-650 dark:text-zinc-350" /> },
-    { name: 'Docker', icon: <Cpu className="h-3.5 w-3.5 text-zinc-650 dark:text-zinc-350" /> },
+    { name: 'CustomTkinter', icon: <Laptop className="h-3.5 w-3.5 text-zinc-600 dark:text-zinc-400" /> },
+    { name: 'APScheduler', icon: <Cpu className="h-3.5 w-3.5 text-zinc-600 dark:text-zinc-400" /> },
+    { name: 'Docker', icon: <Cpu className="h-3.5 w-3.5 text-zinc-600 dark:text-zinc-400" /> },
     { name: 'Git & GitHub', icon: <Cpu className="h-3.5 w-3.5 text-zinc-650 dark:text-zinc-350" /> },
-    { name: 'OpenPyXL (Excel)', icon: <Cpu className="h-3.5 w-3.5 text-zinc-650 dark:text-zinc-350" /> },
-    { name: 'FPDF2 (PDF)', icon: <Cpu className="h-3.5 w-3.5 text-zinc-650 dark:text-zinc-350" /> }
+    { name: 'OpenPyXL (Excel)', icon: <Cpu className="h-3.5 w-3.5 text-zinc-600 dark:text-zinc-400" /> },
+    { name: 'FPDF2 (PDF)', icon: <Cpu className="h-3.5 w-3.5 text-zinc-600 dark:text-zinc-400" /> }
   ];
 
   const softSkills = [
@@ -54,10 +55,17 @@ export default function Skills() {
     }
   };
 
+  const hoverSpring = {
+    borderRadius: "20px 8px 20px 8px",
+    scale: 1.015,
+    y: -4,
+    transition: { type: 'spring', stiffness: 350, damping: 14 }
+  };
+
   return (
-    <section id="skills" className="py-32 relative overflow-hidden px-6 md:px-12 border-t border-zinc-200/50 dark:border-zinc-800/40">
-      {/* Background grain noise overlay */}
-      <div className="absolute inset-0 bg-noise pointer-events-none opacity-[0.015] dark:opacity-[0.02]" />
+    <section id="skills" className="py-32 relative overflow-hidden px-6 md:px-12 border-t border-zinc-200/50 dark:border-zinc-800/40 bg-transparent">
+      {/* Morphing Liquid Blobs Background */}
+      <MorphingBackground colorTheme="graphite" />
 
       <div className="max-w-6xl mx-auto relative z-10">
         
@@ -82,12 +90,13 @@ export default function Skills() {
           {/* TILE 1: Core Languages (Large - col-span-2, row-span-2) */}
           <motion.div
             variants={itemVariants}
-            className="glass-card md:col-span-2 md:row-span-2 p-6 md:p-8 flex flex-col justify-between border border-zinc-200/40 dark:border-zinc-800/40 hover:border-zinc-350 dark:hover:border-zinc-700 transition-all duration-300"
+            whileHover={hoverSpring}
+            className="glass-card md:col-span-2 md:row-span-2 p-6 md:p-8 flex flex-col justify-between border border-zinc-200/40 dark:border-zinc-800/40 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300 cursor-pointer select-none origin-center"
           >
             <div>
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center border border-zinc-200/40 dark:border-zinc-700/40">
-                  <Terminal className="h-5 w-5 text-blue-650 dark:text-blue-400" />
+                  <Terminal className="h-5 w-5 text-blue-605 dark:text-blue-400" />
                 </div>
                 <div>
                   <h3 className="font-display font-bold text-lg text-zinc-900 dark:text-white leading-none">Core Languages</h3>
@@ -99,11 +108,11 @@ export default function Skills() {
                 {coreLanguages.map((lang) => (
                   <div key={lang.name}>
                     <div className="flex justify-between items-center text-sm mb-1.5">
-                      <span className="font-semibold text-zinc-805 dark:text-zinc-200 flex items-center gap-2">
+                      <span className="font-semibold text-zinc-800 dark:text-zinc-200 flex items-center gap-2">
                         {lang.icon}
                         {lang.name}
                       </span>
-                      <span className="font-mono text-xs font-bold text-blue-600 dark:text-blue-400">{lang.level} ({lang.percentage}%)</span>
+                      <span className="font-mono text-xs font-bold text-blue-606 dark:text-blue-400">{lang.level} ({lang.percentage}%)</span>
                     </div>
                     <div className="h-1.5 w-full bg-zinc-100 dark:bg-zinc-850 rounded-full overflow-hidden">
                       <motion.div
@@ -123,7 +132,8 @@ export default function Skills() {
           {/* TILE 2: Backend Stack (Medium - col-span-1, row-span-2) */}
           <motion.div
             variants={itemVariants}
-            className="glass-card md:col-span-1 md:row-span-2 p-6 md:p-8 flex flex-col justify-between border border-zinc-200/40 dark:border-zinc-800/40 hover:border-zinc-350 dark:hover:border-zinc-700 transition-all duration-300"
+            whileHover={hoverSpring}
+            className="glass-card md:col-span-1 md:row-span-2 p-6 md:p-8 flex flex-col justify-between border border-zinc-200/40 dark:border-zinc-800/40 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300 cursor-pointer select-none origin-center"
           >
             <div>
               <div className="flex items-center gap-3 mb-6">
@@ -152,7 +162,8 @@ export default function Skills() {
           {/* TILE 3: Desktop & Tools (Medium - col-span-2, row-span-1) */}
           <motion.div
             variants={itemVariants}
-            className="glass-card md:col-span-2 md:row-span-1 p-6 flex flex-col justify-between border border-zinc-200/40 dark:border-zinc-800/40 hover:border-zinc-350 dark:hover:border-zinc-700 transition-all duration-300"
+            whileHover={hoverSpring}
+            className="glass-card md:col-span-2 md:row-span-1 p-6 flex flex-col justify-between border border-zinc-200/40 dark:border-zinc-800/40 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300 cursor-pointer select-none origin-center"
           >
             <div>
               <div className="flex items-center gap-3 mb-4">
@@ -168,7 +179,7 @@ export default function Skills() {
                     <div className="w-6 h-6 rounded bg-white dark:bg-zinc-850 flex items-center justify-center border border-zinc-200/30 dark:border-zinc-800/30 shadow-sm">
                       {t.icon}
                     </div>
-                    <span className="font-mono text-xs font-semibold text-zinc-650 dark:text-zinc-300 truncate">{t.name.split(' ')[0]}</span>
+                    <span className="font-mono text-xs font-semibold text-zinc-600 dark:text-zinc-300 truncate">{t.name.split(' ')[0]}</span>
                   </div>
                 ))}
               </div>
@@ -178,21 +189,22 @@ export default function Skills() {
           {/* TILE 4: Stats & Achievements (Small - col-span-1, row-span-1) */}
           <motion.div
             variants={itemVariants}
-            className="glass-card md:col-span-1 md:row-span-1 p-6 flex flex-col justify-between relative overflow-hidden border border-zinc-200/40 dark:border-zinc-800/40 hover:border-zinc-350 dark:hover:border-zinc-700 transition-all duration-300 shadow-sm"
+            whileHover={hoverSpring}
+            className="glass-card md:col-span-1 md:row-span-1 p-6 flex flex-col justify-between relative overflow-hidden border border-zinc-200/40 dark:border-zinc-800/40 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300 shadow-sm cursor-pointer select-none origin-center"
           >
-            <div className="flex items-center gap-2 text-zinc-650 dark:text-zinc-350 mb-3">
-              <Award className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+            <div className="flex items-center gap-2 text-zinc-600 dark:text-zinc-400 mb-3">
+              <Award className="h-5 w-5 text-blue-605 dark:text-blue-400" />
               <span className="font-mono text-[9px] uppercase tracking-widest font-bold">Achievements</span>
             </div>
             
             <div className="flex items-end justify-between">
               <div>
                 <span className="text-3xl font-display font-bold text-zinc-900 dark:text-white leading-none">9.2</span>
-                <p className="font-mono text-[8px] font-bold text-zinc-400 dark:text-zinc-550 mt-1.5 uppercase tracking-widest">B.Sc. CGPA Honours</p>
+                <p className="font-mono text-[8px] font-bold text-zinc-400 dark:text-zinc-500 mt-1.5 uppercase tracking-widest">B.Sc. CGPA Honours</p>
               </div>
               <div className="text-right">
                 <span className="text-3xl font-display font-bold text-zinc-900 dark:text-white leading-none">5+</span>
-                <p className="font-mono text-[8px] font-bold text-zinc-400 dark:text-zinc-550 mt-1.5 uppercase tracking-widest">Certificates</p>
+                <p className="font-mono text-[8px] font-bold text-zinc-400 dark:text-zinc-500 mt-1.5 uppercase tracking-widest">Certificates</p>
               </div>
             </div>
           </motion.div>
@@ -200,10 +212,11 @@ export default function Skills() {
           {/* TILE 5: Academic Focus (Small - col-span-1, row-span-1) */}
           <motion.div
             variants={itemVariants}
-            className="glass-card md:col-span-1 md:row-span-1 p-6 flex flex-col justify-between border border-zinc-200/40 dark:border-zinc-800/40 hover:border-zinc-350 dark:hover:border-zinc-700 transition-all duration-300"
+            whileHover={hoverSpring}
+            className="glass-card md:col-span-1 md:row-span-1 p-6 flex flex-col justify-between border border-zinc-200/40 dark:border-zinc-800/40 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300 cursor-pointer select-none origin-center"
           >
-            <div className="flex items-center gap-2 text-zinc-650 dark:text-zinc-350 mb-3">
-              <GraduationCap className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+            <div className="flex items-center gap-2 text-zinc-600 dark:text-zinc-400 mb-3">
+              <GraduationCap className="h-5 w-5 text-blue-605 dark:text-blue-400" />
               <span className="font-mono text-[9px] uppercase tracking-widest font-bold">Academic Focus</span>
             </div>
 
@@ -216,12 +229,13 @@ export default function Skills() {
           {/* TILE 6: Soft Skills (Medium - col-span-2, row-span-1) */}
           <motion.div
             variants={itemVariants}
-            className="glass-card md:col-span-2 md:row-span-1 p-6 flex flex-col justify-between border border-zinc-200/40 dark:border-zinc-800/40 hover:border-zinc-350 dark:hover:border-zinc-700 transition-all duration-300"
+            whileHover={hoverSpring}
+            className="glass-card md:col-span-2 md:row-span-1 p-6 flex flex-col justify-between border border-zinc-200/40 dark:border-zinc-800/40 hover:border-zinc-350 dark:hover:border-zinc-700 transition-all duration-300 cursor-pointer select-none origin-center"
           >
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-8 h-8 rounded-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center border border-zinc-200/40 dark:border-zinc-700/40">
-                  <Heart className="h-4 w-4 text-blue-650 dark:text-blue-400" />
+                  <Heart className="h-4 w-4 text-blue-605 dark:text-blue-400" />
                 </div>
                 <h3 className="font-display font-bold text-base text-zinc-900 dark:text-white">Professional Strengths</h3>
               </div>
@@ -230,7 +244,7 @@ export default function Skills() {
                 {softSkills.map((s) => (
                   <span
                     key={s}
-                    className="font-mono text-[10px] font-semibold px-3 py-1 rounded-full border border-zinc-200/40 dark:border-zinc-800/40 bg-zinc-50/50 dark:bg-zinc-900/50 text-zinc-600 dark:text-zinc-350 hover:border-blue-500/20 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300"
+                    className="font-mono text-[10px] font-semibold px-3 py-1 rounded-full border border-zinc-200/40 dark:border-zinc-800/40 bg-zinc-50/50 dark:bg-zinc-900/50 text-zinc-650 dark:text-zinc-350 hover:border-blue-500/20 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300"
                   >
                     {s}
                   </span>
@@ -243,7 +257,7 @@ export default function Skills() {
 
         {/* Highlight Banner */}
         <div className="mt-16 text-center">
-          <p className="font-mono text-[10px] text-zinc-400 dark:text-zinc-500 flex items-center justify-center gap-1.5 uppercase tracking-wider">
+          <p className="font-mono text-[10px] text-zinc-405 dark:text-zinc-500 flex items-center justify-center gap-1.5 uppercase tracking-wider">
             <CheckCircle className="h-4 w-4 text-emerald-500" />
             Certified in Python, Graphic Designing, AI, and Data Science.
           </p>
