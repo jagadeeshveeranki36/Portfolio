@@ -8,60 +8,60 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Ice-blue primary accent
+        // Champagne gold primary accent
         primary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          505: '#0ea5e9', // main accent
-          550: '#0ea5e9',
-          605: '#0284c7',
-          650: '#0369a1',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
-          950: '#082f49',
+          50: '#fbfaf7',
+          100: '#f4f0e8',
+          200: '#e7decb',
+          300: '#d4c5a8',
+          400: '#bfa780',
+          505: '#c5a880', // base accent
+          550: '#b39369',
+          605: '#9b7a54',
+          650: '#836340',
+          700: '#6b4d2e',
+          800: '#53371e',
+          900: '#3b2311',
+          950: '#231206',
         },
         zinc: {
-          250: '#e2e2e5',
-          305: '#e4e4e7',
-          350: '#d4d4d8',
-          355: '#cccccc',
-          450: '#8e8e93',
-          650: '#4b5563',
-          805: '#202024',
-          850: '#1a1a1c',
-          905: '#080809',
+          250: '#e7e5e4',
+          305: '#e7e5e4',
+          350: '#d6d3d1',
+          355: '#ccccca',
+          450: '#78716c',
+          650: '#57534e',
+          805: '#292524',
+          850: '#1c1917',
+          905: '#0f0e0d',
         },
         slate: {
-          350: '#cbd5e1',
-          650: '#475569',
+          350: '#d6d3d1',
+          650: '#57534e',
         },
         blue: {
-          450: '#60a5fa',
-          605: '#2563eb',
-          650: '#1d4ed8',
+          450: '#bfa780',
+          605: '#9b7a54',
+          650: '#836340',
         },
         darkbg: {
-          base: '#080809',      // Pitch-black premium OLED canvas
-          card: 'rgba(14, 14, 16, 0.45)', // Glassmorphic brand dark card base
-          border: 'rgba(255, 255, 255, 0.05)',
-          accent: '#0d0d0f',
-          glow: 'rgba(14, 165, 233, 0.06)',
+          base: '#0f0e0d',      // Obsidian charcoal
+          card: 'rgba(22, 21, 20, 0.45)', // Warm dark card base
+          border: 'rgba(255, 255, 255, 0.04)',
+          accent: '#171514',
+          glow: 'rgba(197, 168, 128, 0.05)',
         },
         lightbg: {
-          base: '#fafafc',      // Warm-white premium brandbook base
-          card: 'rgba(255, 255, 255, 0.55)', // Light glass card base
-          border: 'rgba(0, 0, 0, 0.04)',
-          accent: '#f4f4f6',
-          glow: 'rgba(14, 165, 233, 0.03)',
+          base: '#fcfbf9',      // Warm linen/cream
+          card: 'rgba(252, 251, 249, 0.55)', // Light glass card base
+          border: 'rgba(0, 0, 0, 0.03)',
+          accent: '#f5f4f0',
+          glow: 'rgba(197, 168, 128, 0.02)',
         }
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
-        display: ['Space Grotesk', 'sans-serif'],
+        display: ['Cormorant Garamond', 'serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
       backgroundImage: {
