@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ExternalLink, Github, X, Check, Server, Monitor, Layers } from 'lucide-react';
+import MorphingBackground from '../components/MorphingBackground';
+import LiquidButton from '../components/LiquidButton';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -157,7 +159,8 @@ export default function Projects() {
           isMobileMode ? 'py-32 bg-transparent' : 'h-screen flex items-center justify-center bg-transparent'
         }`}
       >
-        <div className="absolute inset-0 bg-noise pointer-events-none opacity-[0.015] dark:opacity-[0.02]" />
+        {/* Morphing Liquid Blobs Background */}
+        <MorphingBackground colorTheme="blue" />
 
         <div className="max-w-6xl mx-auto w-full relative z-10 flex flex-col justify-center h-full">
           
@@ -175,12 +178,17 @@ export default function Projects() {
           <div className={`relative ${isMobileMode ? 'space-y-8' : 'w-full max-w-4xl mx-auto h-[480px]'}`}>
             
             {projects.map((project, index) => (
-              <div
+              <motion.div
                 key={project.id}
                 ref={addToRefs}
                 onMouseMove={(e) => handleMouseMove(e, index)}
                 onMouseLeave={() => handleMouseLeave(index)}
                 onClick={() => setSelectedProject(project)}
+                whileHover={{ 
+                  borderRadius: "20px 8px 20px 8px", 
+                  scale: 1.01,
+                  transition: { type: 'spring', stiffness: 350, damping: 15 } 
+                }}
                 className={`project-card-container glass-card glass-card-hover group cursor-pointer overflow-hidden transition-all duration-300 ${
                   isMobileMode
                     ? 'w-full flex flex-col justify-between border border-zinc-200/40 dark:border-zinc-800/40'
@@ -199,7 +207,7 @@ export default function Projects() {
                       {project.icon}
                     </div>
                     <div>
-                      <h3 className="font-display font-bold text-base md:text-lg text-zinc-905 dark:text-white leading-tight">
+                      <h3 className="font-display font-bold text-base md:text-lg text-zinc-900 dark:text-white leading-tight">
                         {project.title.split(' (')[0]}
                       </h3>
                       <span className="font-mono text-[9px] uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
@@ -218,7 +226,7 @@ export default function Projects() {
                     <h4 className="font-display italic text-sm text-blue-600 dark:text-blue-450 mb-2">
                       "{project.tagline}"
                     </h4>
-                    <p className="text-zinc-650 dark:text-zinc-350 text-sm leading-relaxed mb-6">
+                    <p className="text-zinc-600 dark:text-zinc-300 text-sm leading-relaxed mb-6">
                       {project.summary}
                     </p>
                   </div>
@@ -248,7 +256,7 @@ export default function Projects() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
@@ -275,7 +283,7 @@ export default function Projects() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.98, y: 20 }}
               transition={{ type: 'spring', damping: 28, stiffness: 240 }}
-              className="bg-zinc-50 dark:bg-zinc-950 border border-zinc-250 dark:border-zinc-800 rounded-2xl w-full max-w-3xl max-h-[85vh] overflow-y-auto shadow-2xl z-10 flex flex-col"
+              className="bg-zinc-50 dark:bg-zinc-955 border border-zinc-250 dark:border-zinc-800 rounded-2xl w-full max-w-3xl max-h-[85vh] overflow-y-auto shadow-2xl z-10 flex flex-col"
             >
               {/* Header */}
               <div className="p-6 md:p-8 border-b border-zinc-200 dark:border-zinc-800/60 flex items-start justify-between bg-zinc-50/80 dark:bg-zinc-950/80 sticky top-0 backdrop-blur-md z-20">
@@ -284,7 +292,7 @@ export default function Projects() {
                     {selectedProject.icon}
                   </div>
                   <div>
-                    <h3 className="font-display font-bold text-xl text-zinc-905 dark:text-white leading-tight">
+                    <h3 className="font-display font-bold text-xl text-zinc-900 dark:text-white leading-tight">
                       {selectedProject.title}
                     </h3>
                     <p className="font-display italic text-xs text-blue-600 dark:text-blue-400 mt-1">
@@ -294,7 +302,7 @@ export default function Projects() {
                 </div>
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="p-1.5 rounded bg-zinc-100 dark:bg-zinc-900 text-zinc-450 hover:text-zinc-700 dark:hover:text-zinc-200 transition-colors border border-zinc-200/40 dark:border-zinc-850 cursor-pointer"
+                  className="p-1.5 rounded bg-zinc-100 dark:bg-zinc-900 text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 transition-colors border border-zinc-200/40 dark:border-zinc-800 cursor-pointer"
                   aria-label="Close modal"
                 >
                   <X className="h-4 w-4" />
@@ -307,7 +315,7 @@ export default function Projects() {
                   <h4 className="font-mono text-[9px] uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-2 font-bold">
                     Overview
                   </h4>
-                  <p className="text-zinc-650 dark:text-zinc-350 text-base leading-relaxed">
+                  <p className="text-zinc-600 dark:text-zinc-300 text-base leading-relaxed">
                     {selectedProject.summary}
                   </p>
                 </div>
@@ -320,7 +328,7 @@ export default function Projects() {
                     {selectedProject.tech.map((t) => (
                       <span
                         key={t}
-                        className="font-mono text-[9px] uppercase tracking-wider bg-zinc-100 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-305 px-2.5 py-1 rounded border border-zinc-200/30 dark:border-zinc-800/30"
+                        className="font-mono text-[9px] uppercase tracking-wider bg-zinc-100 dark:bg-zinc-900 text-zinc-705 dark:text-zinc-300 px-2.5 py-1 rounded border border-zinc-200/30 dark:border-zinc-800/30"
                       >
                         {t}
                       </span>
@@ -332,7 +340,7 @@ export default function Projects() {
                   <h4 className="font-mono text-[9px] uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-2 font-bold">
                     Architecture & Patterns
                   </h4>
-                  <div className="p-4 rounded-xl bg-zinc-100/40 dark:bg-zinc-900/40 border border-zinc-200/40 dark:border-zinc-800/40 text-zinc-700 dark:text-zinc-350 text-sm leading-relaxed flex items-start gap-2.5">
+                  <div className="p-4 rounded-xl bg-zinc-100/40 dark:bg-zinc-900/40 border border-zinc-200/40 dark:border-zinc-800/40 text-zinc-700 dark:text-zinc-300 text-sm leading-relaxed flex items-start gap-2.5">
                     <Layers className="h-4 w-4 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
                     <span>{selectedProject.architecture}</span>
                   </div>
@@ -344,9 +352,9 @@ export default function Projects() {
                   </h4>
                   <ul className="space-y-3">
                     {selectedProject.features.map((feature, i) => (
-                      <li key={i} className="flex items-start gap-3 text-zinc-650 dark:text-zinc-355 text-sm leading-relaxed">
+                      <li key={i} className="flex items-start gap-3 text-zinc-600 dark:text-zinc-300 text-sm leading-relaxed">
                         <div className="w-5 h-5 rounded-full bg-blue-500/10 dark:bg-blue-500/5 flex items-center justify-center flex-shrink-0 mt-0.5 border border-blue-500/20">
-                          <Check className="h-2.5 w-2.5 text-blue-600 dark:text-blue-450" strokeWidth={3} />
+                          <Check className="h-2.5 w-2.5 text-blue-605 dark:text-blue-400" strokeWidth={3} />
                         </div>
                         <span>{feature}</span>
                       </li>
@@ -355,26 +363,22 @@ export default function Projects() {
                 </div>
               </div>
 
-              {/* Actions */}
+              {/* Liquid elastic Action Buttons */}
               <div className="p-6 border-t border-zinc-200 dark:border-zinc-800/60 bg-zinc-50/80 dark:bg-zinc-950/80 flex gap-4 sticky bottom-0 backdrop-blur-md">
-                <a
+                <LiquidButton
                   href={selectedProject.githubLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="btn-secondary flex-1"
                 >
-                  <Github className="h-4 w-4" />
+                  <Github className="h-4 w-4 mr-2" />
                   GitHub Repo
-                </a>
-                <a
+                </LiquidButton>
+                <LiquidButton
                   href={selectedProject.demoLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="btn-primary flex-1"
                 >
-                  <ExternalLink className="h-4 w-4" />
+                  <ExternalLink className="h-4 w-4 mr-2" />
                   Live Demo
-                </a>
+                </LiquidButton>
               </div>
 
             </motion.div>
