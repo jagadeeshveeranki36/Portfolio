@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Terminal, Database, Code, Server, Laptop, Cpu, Heart, Award, GraduationCap, CheckCircle } from 'lucide-react';
-import MorphingBackground from '../components/MorphingBackground';
 
 export default function Skills() {
   const coreLanguages = [
@@ -65,9 +64,6 @@ export default function Skills() {
 
   return (
     <section id="skills" className="py-32 relative overflow-hidden px-6 md:px-12 border-t border-zinc-200/40 dark:border-zinc-850 bg-transparent">
-      {/* Morphing Liquid Blobs Background (Graphite theme) */}
-      <MorphingBackground colorTheme="graphite" />
-
       <div className="max-w-6xl mx-auto relative z-10">
         
         {/* Section Heading - Swiss Minimal Brandbook */}
