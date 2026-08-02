@@ -26,23 +26,24 @@ export default function Navbar({ theme, toggleTheme }) {
       // Scrolled state backdrop blur activation
       setIsScrolled(currentScrollY > 20);
 
-      // Auto active contact at bottom
-      if (window.innerHeight + currentScrollY >= document.documentElement.scrollHeight - 25) {
-        setActiveSection('contact');
-        return;
-      }
-
+      let currentActive = 'home';
       for (const link of navLinks) {
         const id = link.href.substring(1);
         const el = document.getElementById(id);
         if (el) {
           const rect = el.getBoundingClientRect();
-          // Set section active if it spans across the viewport trigger line (150px from top)
-          if (rect.top <= 150 && rect.bottom > 150) {
-            setActiveSection(id);
-            break;
+          // If the top of the section has scrolled past the trigger point (220px from top of screen)
+          if (rect.top <= 220) {
+            currentActive = id;
           }
         }
+      }
+      
+      // Auto active contact at bottom
+      if (window.innerHeight + currentScrollY >= document.documentElement.scrollHeight - 30) {
+        setActiveSection('contact');
+      } else {
+        setActiveSection(currentActive);
       }
     };
 
