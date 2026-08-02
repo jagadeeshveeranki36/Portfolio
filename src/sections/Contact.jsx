@@ -23,7 +23,6 @@ export default function Contact() {
       return;
     }
 
-    // Basic email check
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
       setStatus('error');
@@ -58,8 +57,6 @@ export default function Contact() {
       console.log('SUCCESS!', response.status, response.text);
       setStatus('success');
       setFormData({ name: '', email: '', message: '' });
-      
-      // Reset success status after 5s
       setTimeout(() => setStatus('idle'), 5000);
     })
     .catch((error) => {
@@ -70,11 +67,11 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-32 relative overflow-hidden px-6 md:px-12 border-t border-zinc-200/50 dark:border-zinc-800/40 bg-transparent">
-      {/* Morphing Liquid Blobs Background */}
+    <section id="contact" className="py-32 relative overflow-hidden px-6 md:px-12 border-t border-zinc-200/40 dark:border-zinc-850 bg-transparent">
+      {/* Morphing Liquid Blobs Background (Champagne theme) */}
       <MorphingBackground colorTheme="blue" />
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-6xl mx-auto relative z-10 font-sans">
         
         {/* Section Heading - Swiss Minimal Brandbook */}
         <div className="w-full flex items-baseline justify-between mb-20 border-b border-zinc-200/40 dark:border-zinc-850 pb-4">
@@ -106,14 +103,14 @@ export default function Contact() {
               {/* Email */}
               <motion.div 
                 whileHover={{ scale: 1.015, x: 4, transition: { type: 'spring', stiffness: 400, damping: 15 } }}
-                className="glass-card p-4 flex items-center gap-4 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300 cursor-pointer select-none"
+                className="glass-card p-4 flex items-center gap-4 hover:border-primary-505/30 transition-all duration-300 cursor-pointer select-none"
               >
-                <div className="w-9 h-9 rounded bg-zinc-100 dark:bg-zinc-900 border border-zinc-200/40 dark:border-zinc-800/40 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                <div className="w-9 h-9 rounded bg-zinc-100 dark:bg-zinc-900 border border-zinc-200/40 dark:border-zinc-800/40 flex items-center justify-center text-primary-550 dark:text-primary-300 flex-shrink-0">
                   <Mail className="h-4.5 w-4.5" />
                 </div>
                 <div>
                   <span className="font-mono text-[8px] font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500">Email Address</span>
-                  <a href="mailto:jagadeeshveeranki30@gmail.com" className="block text-sm font-semibold text-zinc-900 dark:text-zinc-200 hover:text-blue-600 dark:hover:text-blue-450 transition-colors mt-0.5">
+                  <a href="mailto:jagadeeshveeranki30@gmail.com" className="block text-sm font-semibold text-zinc-900 dark:text-zinc-200 hover:text-primary-605 dark:hover:text-primary-300 transition-colors mt-0.5">
                     jagadeeshveeranki30@gmail.com
                   </a>
                 </div>
@@ -122,14 +119,14 @@ export default function Contact() {
               {/* Phone */}
               <motion.div 
                 whileHover={{ scale: 1.015, x: 4, transition: { type: 'spring', stiffness: 400, damping: 15 } }}
-                className="glass-card p-4 flex items-center gap-4 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300 cursor-pointer select-none"
+                className="glass-card p-4 flex items-center gap-4 hover:border-primary-505/30 transition-all duration-300 cursor-pointer select-none"
               >
-                <div className="w-9 h-9 rounded bg-zinc-100 dark:bg-zinc-900 border border-zinc-200/40 dark:border-zinc-800/40 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                <div className="w-9 h-9 rounded bg-zinc-100 dark:bg-zinc-900 border border-zinc-200/40 dark:border-zinc-800/40 flex items-center justify-center text-primary-550 dark:text-primary-300 flex-shrink-0">
                   <Phone className="h-4.5 w-4.5" />
                 </div>
                 <div>
                   <span className="font-mono text-[8px] font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500">Contact Number</span>
-                  <a href="tel:+916302471838" className="block text-sm font-semibold text-zinc-900 dark:text-zinc-200 hover:text-blue-600 dark:hover:text-blue-450 transition-colors mt-0.5">
+                  <a href="tel:+916302471838" className="block text-sm font-semibold text-zinc-900 dark:text-zinc-200 hover:text-primary-605 dark:hover:text-primary-300 transition-colors mt-0.5">
                     +91 6302471838
                   </a>
                 </div>
@@ -138,9 +135,9 @@ export default function Contact() {
               {/* Location */}
               <motion.div 
                 whileHover={{ scale: 1.015, x: 4, transition: { type: 'spring', stiffness: 400, damping: 15 } }}
-                className="glass-card p-4 flex items-center gap-4 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300 cursor-pointer select-none"
+                className="glass-card p-4 flex items-center gap-4 hover:border-primary-505/30 transition-all duration-300 cursor-pointer select-none"
               >
-                <div className="w-9 h-9 rounded bg-zinc-100 dark:bg-zinc-900 border border-zinc-200/40 dark:border-zinc-800/40 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0">
+                <div className="w-9 h-9 rounded bg-zinc-100 dark:bg-zinc-900 border border-zinc-200/40 dark:border-zinc-800/40 flex items-center justify-center text-primary-550 dark:text-primary-300 flex-shrink-0">
                   <MapPin className="h-4.5 w-4.5" />
                 </div>
                 <div>
@@ -179,13 +176,13 @@ export default function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.6 }}
-              className="glass-card p-6 md:p-8 h-full flex flex-col justify-between border border-zinc-200/40 dark:border-zinc-800/40"
+              className="glass-card p-6 md:p-8 h-full flex flex-col justify-between border border-zinc-200/40 dark:border-zinc-850"
             >
               <form onSubmit={handleSubmit} className="space-y-6">
                 
                 {/* Name */}
                 <div>
-                  <label htmlFor="name" className="block text-[8.5px] font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-2">
+                  <label htmlFor="name" className="block text-[8.5px] font-mono font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-2">
                     Your Name
                   </label>
                   <input
@@ -195,13 +192,13 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Enter your name"
-                    className="w-full px-4 py-3 rounded-lg border border-zinc-250 dark:border-zinc-800 bg-white/40 dark:bg-zinc-950/40 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-500/10 focus:border-blue-500 hover:border-zinc-300 dark:hover:border-zinc-700 text-zinc-900 dark:text-white placeholder-zinc-450 dark:placeholder-zinc-600 transition-all duration-350 text-sm"
+                    className="w-full px-4 py-3 rounded-lg border border-zinc-250 dark:border-zinc-800 bg-white/40 dark:bg-zinc-950/40 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-primary-505/10 focus:border-primary-505 hover:border-zinc-300 dark:hover:border-zinc-700 text-zinc-900 dark:text-white placeholder-zinc-450 dark:placeholder-zinc-650 transition-all duration-350 text-sm"
                   />
                 </div>
 
                 {/* Email */}
                 <div>
-                  <label htmlFor="email" className="block text-[8.5px] font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-2">
+                  <label htmlFor="email" className="block text-[8.5px] font-mono font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-2">
                     Email Address
                   </label>
                   <input
@@ -211,13 +208,13 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="Enter your email"
-                    className="w-full px-4 py-3 rounded-lg border border-zinc-250 dark:border-zinc-800 bg-white/40 dark:bg-zinc-950/40 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-500/10 focus:border-blue-500 hover:border-zinc-300 dark:hover:border-zinc-700 text-zinc-900 dark:text-white placeholder-zinc-450 dark:placeholder-zinc-600 transition-all duration-350 text-sm"
+                    className="w-full px-4 py-3 rounded-lg border border-zinc-250 dark:border-zinc-800 bg-white/40 dark:bg-zinc-950/40 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-primary-505/10 focus:border-primary-505 hover:border-zinc-300 dark:hover:border-zinc-700 text-zinc-900 dark:text-white placeholder-zinc-450 dark:placeholder-zinc-655 transition-all duration-350 text-sm"
                   />
                 </div>
 
                 {/* Message */}
                 <div>
-                  <label htmlFor="message" className="block text-[8.5px] font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-2">
+                  <label htmlFor="message" className="block text-[8.5px] font-mono font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-2">
                     Message
                   </label>
                   <textarea
@@ -227,7 +224,7 @@ export default function Contact() {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Type your message here..."
-                    className="w-full px-4 py-3 rounded-lg border border-zinc-250 dark:border-zinc-800 bg-white/40 dark:bg-zinc-950/40 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-500/10 focus:border-blue-500 hover:border-zinc-300 dark:hover:border-zinc-700 text-zinc-900 dark:text-white placeholder-zinc-450 dark:placeholder-zinc-600 transition-all duration-350 text-sm resize-none"
+                    className="w-full px-4 py-3 rounded-lg border border-zinc-250 dark:border-zinc-800 bg-white/40 dark:bg-zinc-950/40 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-primary-505/10 focus:border-primary-505 hover:border-zinc-300 dark:hover:border-zinc-700 text-zinc-900 dark:text-white placeholder-zinc-450 dark:placeholder-zinc-655 transition-all duration-350 text-sm resize-none"
                   />
                 </div>
 
