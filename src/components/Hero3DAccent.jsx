@@ -17,9 +17,11 @@ export default function Hero3DAccent() {
     }
     setIsFallback(false);
 
-    // Initialise Three.js Scene and resource placeholders
+    // Three.js Scene setup
     let scene, camera, renderer;
-    let geometry = null, meshMaterial = null, pointsMaterial = null, ringGeometry = null, ringMaterial = null;
+    let geometry = null, meshMaterial = null, wireframeMaterial = null, pointsMaterial = null;
+    let mainMesh = null, wireMesh = null, glowParticles = null;
+    let ambientLight, dirLight1, dirLight2, pointLight;
     let frameId = null;
 
     try {
@@ -27,7 +29,7 @@ export default function Hero3DAccent() {
       
       // Camera
       camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
-      camera.position.z = 4.5;
+      camera.position.z = 4.2;
 
       // WebGL Renderer
       renderer = new THREE.WebGLRenderer({
@@ -53,57 +55,76 @@ export default function Hero3DAccent() {
     handleResize();
     window.addEventListener('resize', handleResize);
 
-    // Construct 3D Sphere Geometry
-    geometry = new THREE.IcosahedronGeometry(1.4, 3);
-    
-    // Clone positions buffer for displacement calculation
-    const originalPositions = geometry.clone().attributes.position;
+    // 1. Lights Configuration (Crucial for MeshStandardMaterial chrome render)
+    ambientLight = new THREE.AmbientLight(0xffffff, 0.55);
+    scene.add(ambientLight);
 
-    // 1. Wireframe core mesh
-    meshMaterial = new THREE.MeshBasicMaterial({
-      color: 0x8b5cf6, // primary violet
+    // White key light
+    dirLight1 = new THREE.DirectionalLight(0xffffff, 1.6);
+    dirLight1.position.set(5, 5, 5);
+    scene.add(dirLight1);
+
+    // Cool ice-blue fill light
+    dirLight2 = new THREE.DirectionalLight(0x0ea5e9, 1.2);
+    dirLight2.position.set(-5, -3, 2);
+    scene.add(dirLight2);
+
+    // Orbiting point light for animated chrome highlights
+    pointLight = new THREE.PointLight(0x38bdf8, 2.5, 8);
+    scene.add(pointLight);
+
+    // 2. Geometry: Sleek abstract Torus Knot (premium aerospace/tech feel)
+    geometry = new THREE.TorusKnotGeometry(0.68, 0.22, 140, 16);
+
+    // 3. Materials
+    // Glossy metallic chrome material
+    meshMaterial = new THREE.MeshStandardMaterial({
+      color: 0xefeff3,
+      metalness: 0.95,
+      roughness: 0.12,
+      flatShading: false,
+    });
+    
+    mainMesh = new THREE.Mesh(geometry, meshMaterial);
+    scene.add(mainMesh);
+
+    // Ice-blue geometric wireframe outline overlay
+    wireframeMaterial = new THREE.MeshBasicMaterial({
+      color: 0x38bdf8,
       wireframe: true,
       transparent: true,
-      opacity: 0.14
+      opacity: 0.22
     });
-    const mesh = new THREE.Mesh(geometry, meshMaterial);
-    scene.add(mesh);
-
-    // 2. Vertex glowing particle points
-    pointsMaterial = new THREE.PointsMaterial({
-      color: 0x6366f1, // indigo accent
-      size: 0.045,
-      transparent: true,
-      opacity: 0.75,
-      sizeAttenuation: true
-    });
-    const particles = new THREE.Points(geometry, pointsMaterial);
-    scene.add(particles);
-
-    // 3. Floating outer dust rings
-    ringGeometry = new THREE.BufferGeometry();
-    const ringParticlesCount = 70;
-    const ringPositions = new Float32Array(ringParticlesCount * 3);
-    for (let i = 0; i < ringParticlesCount; i++) {
-      const angle = (i / ringParticlesCount) * Math.PI * 2;
-      const radius = 2.0 + Math.random() * 0.4;
-      ringPositions[i * 3] = Math.cos(angle) * radius;
-      ringPositions[i * 3 + 1] = (Math.random() - 0.5) * 0.3;
-      ringPositions[i * 3 + 2] = Math.sin(angle) * radius;
-    }
-    ringGeometry.setAttribute('position', new THREE.BufferAttribute(ringPositions, 3));
     
-    ringMaterial = new THREE.PointsMaterial({
-      color: 0xa78bfa,
-      size: 0.028,
+    wireMesh = new THREE.Mesh(geometry, wireframeMaterial);
+    wireMesh.scale.set(1.005, 1.005, 1.005);
+    scene.add(wireMesh);
+
+    // Glowing coordinate dust particles
+    const particleGeometry = new THREE.BufferGeometry();
+    const particleCount = 60;
+    const positions = new Float32Array(particleCount * 3);
+    for (let i = 0; i < particleCount; i++) {
+      const theta = THREE.MathUtils.randFloat(0, Math.PI * 2);
+      const phi = THREE.MathUtils.randFloat(0, Math.PI);
+      const r = THREE.MathUtils.randFloat(1.3, 2.0);
+      positions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+      positions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+      positions[i * 3 + 2] = r * Math.cos(phi);
+    }
+    particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+    pointsMaterial = new THREE.PointsMaterial({
+      color: 0x0ea5e9,
+      size: 0.03,
       transparent: true,
-      opacity: 0.45,
+      opacity: 0.65,
       sizeAttenuation: true
     });
-    const ring = new THREE.Points(ringGeometry, ringMaterial);
-    scene.add(ring);
+    glowParticles = new THREE.Points(particleGeometry, pointsMaterial);
+    scene.add(glowParticles);
 
-    // Mouse coordinates tracking
+    // Mouse coordinates tracking for subtle rotation offset
     let mouseX = 0;
     let mouseY = 0;
     let targetX = 0;
@@ -112,51 +133,37 @@ export default function Hero3DAccent() {
     const onMouseMove = (event) => {
       const windowHalfX = window.innerWidth / 2;
       const windowHalfY = window.innerHeight / 2;
-      targetX = (event.clientX - windowHalfX) * 0.0012;
-      targetY = (event.clientY - windowHalfY) * 0.0012;
+      targetX = (event.clientX - windowHalfX) * 0.0006;
+      targetY = (event.clientY - windowHalfY) * 0.0006;
     };
     window.addEventListener('mousemove', onMouseMove);
 
-    // Animation variables
+    // Animation Loop
     let clock = new THREE.Clock();
 
     const animate = () => {
       const elapsedTime = clock.getElapsedTime();
 
-      // Lerp mouse coordinates for fluid tracking
-      mouseX += (targetX - mouseX) * 0.05;
-      mouseY += (targetY - mouseY) * 0.05;
+      // Smooth mouse coordination interpolation
+      mouseX += (targetX - mouseX) * 0.04;
+      mouseY += (targetY - mouseY) * 0.04;
 
       // Base auto rotation
-      mesh.rotation.y = elapsedTime * 0.12;
-      mesh.rotation.x = elapsedTime * 0.06;
+      const autoY = elapsedTime * 0.16;
+      const autoX = elapsedTime * 0.08;
+
+      mainMesh.rotation.y = autoY + mouseX;
+      mainMesh.rotation.x = autoX + mouseY;
       
-      particles.rotation.y = elapsedTime * 0.12;
-      particles.rotation.x = elapsedTime * 0.06;
+      wireMesh.rotation.y = autoY + mouseX;
+      wireMesh.rotation.x = autoX + mouseY;
 
-      ring.rotation.y = -elapsedTime * 0.08;
-      
-      // Apply mouse coordinate displacement to rotation
-      mesh.rotation.y += mouseX;
-      mesh.rotation.x += mouseY;
-      particles.rotation.y += mouseX;
-      particles.rotation.x += mouseY;
+      glowParticles.rotation.y = -elapsedTime * 0.05;
 
-      // Displace points dynamically using wave mechanics (vertex morphing)
-      const positionAttribute = geometry.attributes.position;
-      const vertex = new THREE.Vector3();
-      const originalVertex = new THREE.Vector3();
-
-      for (let i = 0; i < positionAttribute.count; i++) {
-        vertex.fromBufferAttribute(positionAttribute, i);
-        originalVertex.fromBufferAttribute(originalPositions, i);
-        
-        // Calculate displacement based on wave sine model
-        const wave = Math.sin(elapsedTime * 1.6 + originalVertex.x * 2.0 + originalVertex.y * 2.0) * 0.075;
-        vertex.copy(originalVertex).addScaledVector(originalVertex.clone().normalize(), wave);
-        positionAttribute.setXYZ(i, vertex.x, vertex.y, vertex.z);
-      }
-      positionAttribute.needsUpdate = true;
+      // Orbiting light to reflect continuously on the metallic curves
+      pointLight.position.x = Math.sin(elapsedTime * 1.2) * 2.2;
+      pointLight.position.y = Math.cos(elapsedTime * 1.2) * 1.5;
+      pointLight.position.z = Math.sin(elapsedTime * 0.6) * 1.8;
 
       renderer.render(scene, camera);
       frameId = requestAnimationFrame(animate);
@@ -164,23 +171,23 @@ export default function Hero3DAccent() {
 
     animate();
 
-    // Clean up Three GL context
+    // Clean up Three.js GL context
     return () => {
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('mousemove', onMouseMove);
       if (frameId) cancelAnimationFrame(frameId);
       if (geometry) geometry.dispose();
+      if (particleGeometry) particleGeometry.dispose();
       if (meshMaterial) meshMaterial.dispose();
+      if (wireframeMaterial) wireframeMaterial.dispose();
       if (pointsMaterial) pointsMaterial.dispose();
-      if (ringGeometry) ringGeometry.dispose();
-      if (ringMaterial) ringMaterial.dispose();
     };
   }, []);
 
   if (isFallback) {
     return (
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-        <div className="w-80 h-80 rounded-full bg-gradient-to-tr from-violet-500/20 to-indigo-500/20 blur-[80px] animate-pulse-slow" />
+        <div className="w-80 h-80 rounded-full bg-gradient-to-tr from-sky-500/10 to-blue-500/10 blur-[80px] animate-pulse-slow" />
       </div>
     );
   }
