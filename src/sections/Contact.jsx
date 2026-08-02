@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, Github, Linkedin, CheckCircle, AlertCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
-import MorphingBackground from '../components/MorphingBackground';
 import LiquidButton from '../components/LiquidButton';
 
 export default function Contact() {
