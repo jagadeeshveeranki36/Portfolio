@@ -21,13 +21,13 @@ const projects = [
       'Multi-format data export/import: styled Excel (OpenPyXL), branded PDF reports (FPDF2), and CSV.',
       'Google-style multi-account session switcher supporting up to 5 concurrent accounts.',
       'Full JSON REST API (CRUD endpoints) alongside server-rendered views.',
-      'Light/dark theme with custom design-token CSS system and glassmorphic interface.',
+      'Light/dark theme with custom design-token CSS system and glassmorphism UI.',
       'Containerized with a multi-stage Dockerfile and served via Gunicorn for production.'
     ],
     demoLink: 'https://jagadeeshveeranki36.github.io/Expense-Tracker/#/landing',
     githubLink: 'https://github.com/jagadeeshveeranki36/Expense-Tracker',
-    icon: <Server className="h-5 w-5 text-blue-600 dark:text-blue-400" />,
-    color: 'from-zinc-100 to-zinc-50 dark:from-zinc-900/50 dark:to-zinc-850/50'
+    icon: <Server className="h-5 w-5 text-primary-505 dark:text-primary-300" />,
+    color: 'from-primary-50/50 to-primary-100/10 dark:from-zinc-900/40 dark:to-zinc-950/40'
   },
   {
     id: 2,
@@ -46,8 +46,8 @@ const projects = [
     ],
     demoLink: 'https://jagadeeshveeranki36.github.io/Task-Manager/',
     githubLink: 'https://github.com/jagadeeshveeranki36/Task-Manager',
-    icon: <Monitor className="h-5 w-5 text-blue-600 dark:text-blue-400" />,
-    color: 'from-zinc-100 to-zinc-50 dark:from-zinc-900/50 dark:to-zinc-850/50'
+    icon: <Monitor className="h-5 w-5 text-primary-505 dark:text-primary-300" />,
+    color: 'from-primary-50/50 to-primary-100/10 dark:from-zinc-900/40 dark:to-zinc-950/40'
   },
   {
     id: 3,
@@ -65,8 +65,8 @@ const projects = [
     ],
     demoLink: 'https://jagadeeshveeranki36.github.io/Portfolio/',
     githubLink: 'https://github.com/jagadeeshveeranki36/Portfolio',
-    icon: <Layers className="h-5 w-5 text-blue-600 dark:text-blue-400" />,
-    color: 'from-zinc-100 to-zinc-50 dark:from-zinc-900/50 dark:to-zinc-850/50'
+    icon: <Layers className="h-5 w-5 text-primary-505 dark:text-primary-300" />,
+    color: 'from-primary-50/50 to-primary-100/10 dark:from-zinc-900/40 dark:to-zinc-950/40'
   }
 ];
 
@@ -112,13 +112,11 @@ export default function Projects() {
         }
       });
 
-      // Card 2 slides over Card 1
       tl.fromTo(cardsRef.current[1],
         { yPercent: 120, scale: 0.94, rotate: 1 },
         { yPercent: 0, scale: 1, rotate: 0, ease: 'none' }
       );
 
-      // Card 3 slides over Card 2
       tl.fromTo(cardsRef.current[2],
         { yPercent: 120, scale: 0.94, rotate: -1 },
         { yPercent: 0, scale: 1, rotate: 0, ease: 'none' }
@@ -155,11 +153,11 @@ export default function Projects() {
       <section
         ref={pinSectionRef}
         id="projects"
-        className={`relative overflow-hidden px-6 md:px-12 border-t border-zinc-200/50 dark:border-zinc-800/40 ${
+        className={`relative overflow-hidden px-6 md:px-12 border-t border-zinc-200/40 dark:border-zinc-850 ${
           isMobileMode ? 'py-32 bg-transparent' : 'h-screen flex items-center justify-center bg-transparent'
         }`}
       >
-        {/* Morphing Liquid Blobs Background */}
+        {/* Morphing Liquid Blobs Background (Champagne theme) */}
         <MorphingBackground colorTheme="blue" />
 
         <div className="max-w-6xl mx-auto w-full relative z-10 flex flex-col justify-center h-full">
@@ -187,12 +185,13 @@ export default function Projects() {
                 whileHover={{ 
                   borderRadius: "20px 8px 20px 8px", 
                   scale: 1.01,
+                  borderColor: 'rgba(197, 168, 128, 0.4)',
                   transition: { type: 'spring', stiffness: 350, damping: 15 } 
                 }}
-                className={`project-card-container glass-card glass-card-hover group cursor-pointer overflow-hidden transition-all duration-300 ${
+                className={`project-card-container glass-card glass-card-hover group cursor-pointer overflow-hidden transition-all duration-300 font-sans ${
                   isMobileMode
-                    ? 'w-full flex flex-col justify-between border border-zinc-200/40 dark:border-zinc-800/40'
-                    : 'absolute inset-0 w-full h-full flex flex-col justify-between bg-zinc-50/95 dark:bg-zinc-900/95 border border-zinc-200/50 dark:border-zinc-800/50'
+                    ? 'w-full flex flex-col justify-between border border-zinc-200/40 dark:border-zinc-850'
+                    : 'absolute inset-0 w-full h-full flex flex-col justify-between bg-zinc-50/95 dark:bg-zinc-900/95 border border-zinc-200/50 dark:border-zinc-850'
                 }`}
                 style={{
                   zIndex: index + 1,
@@ -201,21 +200,21 @@ export default function Projects() {
                 }}
               >
                 {/* Header card panel */}
-                <div className={`h-24 md:h-26 bg-gradient-to-tr ${project.color} flex items-center justify-between px-6 md:px-8 border-b border-zinc-250/30 dark:border-zinc-800/30 relative overflow-hidden select-none`}>
+                <div className={`h-24 md:h-26 bg-gradient-to-tr ${project.color} flex items-center justify-between px-6 md:px-8 border-b border-zinc-205/30 dark:border-zinc-800/35 relative overflow-hidden select-none`}>
                   <div className="flex items-center gap-4 relative z-10">
                     <div className="w-10 h-10 rounded-lg bg-white dark:bg-zinc-950 border border-zinc-200/40 dark:border-zinc-800/40 flex items-center justify-center shadow-sm">
                       {project.icon}
                     </div>
                     <div>
-                      <h3 className="font-display font-bold text-base md:text-lg text-zinc-900 dark:text-white leading-tight">
+                      <h3 className="font-display font-bold text-lg md:text-xl text-zinc-900 dark:text-white leading-tight">
                         {project.title.split(' (')[0]}
                       </h3>
-                      <span className="font-mono text-[9px] uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
+                      <span className="font-mono text-[9px] uppercase tracking-wider text-zinc-400 dark:text-zinc-500 font-bold">
                         {project.title.includes('(') ? '(' + project.title.split(' (')[1] : ''}
                       </span>
                     </div>
                   </div>
-                  <span className="font-mono text-[8px] tracking-widest text-zinc-400 dark:text-zinc-500 uppercase border border-zinc-200/40 dark:border-zinc-800/40 px-2 py-0.5 rounded hidden sm:block">
+                  <span className="font-mono text-[8px] tracking-widest text-zinc-400 dark:text-zinc-500 uppercase border border-zinc-200/40 dark:border-zinc-800/45 px-2 py-0.5 rounded hidden sm:block font-bold">
                     CASE STUDY // 0{project.id}
                   </span>
                 </div>
@@ -223,10 +222,10 @@ export default function Projects() {
                 {/* Card Body */}
                 <div className="p-6 md:p-8 flex-grow flex flex-col justify-between select-none">
                   <div>
-                    <h4 className="font-display italic text-sm text-blue-600 dark:text-blue-450 mb-2">
+                    <h4 className="font-display italic text-base text-primary-505 dark:text-primary-300 mb-2 font-light">
                       "{project.tagline}"
                     </h4>
-                    <p className="text-zinc-600 dark:text-zinc-300 text-sm leading-relaxed mb-6">
+                    <p className="text-zinc-600 dark:text-zinc-350 text-sm leading-relaxed mb-6">
                       {project.summary}
                     </p>
                   </div>
@@ -237,20 +236,20 @@ export default function Projects() {
                       {project.tech.slice(0, 5).map((t) => (
                         <span
                           key={t}
-                          className="font-mono text-[9px] uppercase tracking-wider bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-350 px-2 py-0.5 rounded"
+                          className="font-mono text-[9px] uppercase tracking-wider bg-zinc-100 dark:bg-zinc-850 text-zinc-600 dark:text-zinc-350 px-2 py-0.5 rounded border border-zinc-200/20 dark:border-zinc-800/20"
                         >
                           {t}
                         </span>
                       ))}
                       {project.tech.length > 5 && (
-                        <span className="font-mono text-[9px] uppercase tracking-wider bg-blue-500/10 text-blue-600 dark:text-blue-400 px-2 py-0.5 rounded">
+                        <span className="font-mono text-[9px] uppercase tracking-wider bg-primary-505/10 text-primary-605 dark:text-primary-300 px-2 py-0.5 rounded">
                           +{project.tech.length - 5} More
                         </span>
                       )}
                     </div>
 
                     {/* Trigger study link */}
-                    <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-zinc-900 dark:text-white border-t border-zinc-200/30 dark:border-zinc-800/30 pt-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-zinc-900 dark:text-white border-t border-zinc-200/30 dark:border-zinc-800/30 pt-4 group-hover:text-primary-605 dark:group-hover:text-primary-300 transition-colors font-bold">
                       <span>Explore Case Study</span>
                       <span className="group-hover:translate-x-1.5 transition-transform duration-300">→</span>
                     </div>
@@ -283,7 +282,7 @@ export default function Projects() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.98, y: 20 }}
               transition={{ type: 'spring', damping: 28, stiffness: 240 }}
-              className="bg-zinc-50 dark:bg-zinc-955 border border-zinc-250 dark:border-zinc-800 rounded-2xl w-full max-w-3xl max-h-[85vh] overflow-y-auto shadow-2xl z-10 flex flex-col"
+              className="bg-zinc-50 dark:bg-zinc-955 border border-zinc-250 dark:border-zinc-800 rounded-2xl w-full max-w-3xl max-h-[85vh] overflow-y-auto shadow-2xl z-10 flex flex-col font-sans"
             >
               {/* Header */}
               <div className="p-6 md:p-8 border-b border-zinc-200 dark:border-zinc-800/60 flex items-start justify-between bg-zinc-50/80 dark:bg-zinc-950/80 sticky top-0 backdrop-blur-md z-20">
@@ -292,10 +291,10 @@ export default function Projects() {
                     {selectedProject.icon}
                   </div>
                   <div>
-                    <h3 className="font-display font-bold text-xl text-zinc-900 dark:text-white leading-tight">
+                    <h3 className="font-display font-bold text-2xl text-zinc-900 dark:text-white leading-tight">
                       {selectedProject.title}
                     </h3>
-                    <p className="font-display italic text-xs text-blue-600 dark:text-blue-400 mt-1">
+                    <p className="font-display italic text-sm text-primary-505 dark:text-primary-300 mt-1">
                       "{selectedProject.tagline}"
                     </p>
                   </div>
@@ -315,7 +314,7 @@ export default function Projects() {
                   <h4 className="font-mono text-[9px] uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-2 font-bold">
                     Overview
                   </h4>
-                  <p className="text-zinc-600 dark:text-zinc-300 text-base leading-relaxed">
+                  <p className="text-zinc-650 dark:text-zinc-300 text-base leading-relaxed">
                     {selectedProject.summary}
                   </p>
                 </div>
@@ -328,7 +327,7 @@ export default function Projects() {
                     {selectedProject.tech.map((t) => (
                       <span
                         key={t}
-                        className="font-mono text-[9px] uppercase tracking-wider bg-zinc-100 dark:bg-zinc-900 text-zinc-705 dark:text-zinc-300 px-2.5 py-1 rounded border border-zinc-200/30 dark:border-zinc-800/30"
+                        className="font-mono text-[9px] uppercase tracking-wider bg-zinc-100 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 px-2.5 py-1 rounded border border-zinc-200/30 dark:border-zinc-800/30 font-bold"
                       >
                         {t}
                       </span>
@@ -340,8 +339,8 @@ export default function Projects() {
                   <h4 className="font-mono text-[9px] uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-2 font-bold">
                     Architecture & Patterns
                   </h4>
-                  <div className="p-4 rounded-xl bg-zinc-100/40 dark:bg-zinc-900/40 border border-zinc-200/40 dark:border-zinc-800/40 text-zinc-700 dark:text-zinc-300 text-sm leading-relaxed flex items-start gap-2.5">
-                    <Layers className="h-4 w-4 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
+                  <div className="p-4 rounded-xl bg-zinc-100/40 dark:bg-zinc-900/40 border border-zinc-200/40 dark:border-zinc-800/40 text-zinc-705 dark:text-zinc-300 text-sm leading-relaxed flex items-start gap-2.5">
+                    <Layers className="h-4 w-4 text-primary-505 dark:text-primary-300 flex-shrink-0 mt-0.5" />
                     <span>{selectedProject.architecture}</span>
                   </div>
                 </div>
@@ -353,8 +352,8 @@ export default function Projects() {
                   <ul className="space-y-3">
                     {selectedProject.features.map((feature, i) => (
                       <li key={i} className="flex items-start gap-3 text-zinc-600 dark:text-zinc-300 text-sm leading-relaxed">
-                        <div className="w-5 h-5 rounded-full bg-blue-500/10 dark:bg-blue-500/5 flex items-center justify-center flex-shrink-0 mt-0.5 border border-blue-500/20">
-                          <Check className="h-2.5 w-2.5 text-blue-605 dark:text-blue-400" strokeWidth={3} />
+                        <div className="w-5 h-5 rounded-full bg-primary-505/10 dark:bg-primary-505/5 flex items-center justify-center flex-shrink-0 mt-0.5 border border-primary-505/20">
+                          <Check className="h-2.5 w-2.5 text-primary-605 dark:text-primary-300" strokeWidth={3} />
                         </div>
                         <span>{feature}</span>
                       </li>
@@ -363,7 +362,7 @@ export default function Projects() {
                 </div>
               </div>
 
-              {/* Liquid elastic Action Buttons */}
+              {/* Action Buttons */}
               <div className="p-6 border-t border-zinc-200 dark:border-zinc-800/60 bg-zinc-50/80 dark:bg-zinc-950/80 flex gap-4 sticky bottom-0 backdrop-blur-md">
                 <LiquidButton
                   href={selectedProject.githubLink}
@@ -374,7 +373,7 @@ export default function Projects() {
                 </LiquidButton>
                 <LiquidButton
                   href={selectedProject.demoLink}
-                  className="btn-primary flex-1"
+                  className="btn-primary flex-1 animate-shimmer"
                 >
                   <ExternalLink className="h-4 w-4 mr-2" />
                   Live Demo
