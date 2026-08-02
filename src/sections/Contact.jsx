@@ -89,11 +89,8 @@ export default function Contact() {
         
         {/* Section Heading - Swiss Minimal Brandbook */}
         <div className="w-full flex items-baseline justify-between mb-20 border-b border-zinc-200/40 dark:border-zinc-850 pb-4">
-          <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-400 dark:text-zinc-500 font-bold">
-            06 // CONTACT
-          </span>
           <h2 className="font-display font-bold uppercase tracking-tight text-3xl text-zinc-900 dark:text-white">
-            Get In Touch
+            Contact
           </h2>
         </div>
 

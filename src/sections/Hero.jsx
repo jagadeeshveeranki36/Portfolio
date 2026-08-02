@@ -95,10 +95,9 @@ export default function Hero() {
             Backend & Systems Portfolio
           </motion.div>
 
-          {/* Kinetic Header */}
           <h1
             ref={headingRef}
-            className="text-5xl sm:text-6xl md:text-7xl font-display font-extrabold leading-[1.05] mb-6 text-zinc-900 dark:text-white select-none tracking-tight uppercase"
+            className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-display font-extrabold leading-[1.05] mb-6 text-zinc-900 dark:text-white select-none tracking-tight uppercase whitespace-nowrap"
           >
           </h1>
 

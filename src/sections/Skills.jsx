@@ -73,9 +73,6 @@ export default function Skills() {
         
         {/* Section Heading - Swiss Minimal Brandbook */}
         <div className="w-full flex items-baseline justify-between mb-20 border-b border-zinc-200/40 dark:border-zinc-850 pb-4">
-          <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-550 dark:text-zinc-400 font-bold">
-            02 // EXPERTISE
-          </span>
           <h2 className="font-display font-bold uppercase tracking-tight text-3xl text-zinc-900 dark:text-white">
             Skills
           </h2>

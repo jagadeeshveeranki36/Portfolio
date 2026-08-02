@@ -1,5 +1,6 @@
 import React from 'react';
 import { Github, Linkedin, Mail, Phone, ArrowUp } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -96,11 +97,26 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Large Wordmark Watermark branding banner (like Antigravity style) */}
-        <div className="w-full text-center mt-12 select-none border-t border-lightbg-border/20 dark:border-darkbg-border/20 pt-8">
-          <h2 className="font-display font-black text-[8vw] leading-none text-zinc-950/15 dark:text-white/10 uppercase tracking-tighter w-full block">
+        {/* Large Wordmark Watermark branding banner (3D Animated logotype) */}
+        <div className="w-full text-center mt-12 select-none border-t border-lightbg-border/20 dark:border-darkbg-border/20 pt-8 overflow-hidden">
+          <motion.h2 
+            animate={{ 
+              y: [0, -8, 0],
+              skewX: [0, 1, -1, 0]
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: 'easeInOut'
+            }}
+            whileHover={{ scale: 1.02 }}
+            className="font-display font-black text-[6.5vw] leading-none text-zinc-900 dark:text-zinc-100 uppercase tracking-tighter w-full block whitespace-nowrap"
+            style={{ 
+              textShadow: '3px 3px 0px rgba(14, 165, 233, 0.45), 6px 6px 0px rgba(14, 165, 233, 0.15)'
+            }}
+          >
             Veeranki Jagadeesh
-          </h2>
+          </motion.h2>
         </div>
 
       </div>

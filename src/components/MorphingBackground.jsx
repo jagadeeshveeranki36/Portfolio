@@ -30,70 +30,56 @@ export default function MorphingBackground({ colorTheme = 'blue' }) {
   // Theme-specific pastel colors for soft background orbs
   const themes = {
     violet: {
-      blob1: 'fill-violet-400/10 dark:fill-violet-500/5',
-      blob2: 'fill-indigo-400/8 dark:fill-indigo-500/4',
+      orb1: 'bg-violet-400/10 dark:bg-violet-500/5',
+      orb2: 'bg-indigo-400/8 dark:bg-indigo-500/4',
     },
     amber: {
-      blob1: 'fill-amber-400/8 dark:fill-amber-500/4',
-      blob2: 'fill-orange-400/8 dark:fill-orange-500/4',
+      orb1: 'bg-amber-400/8 dark:bg-amber-500/4',
+      orb2: 'bg-orange-400/8 dark:bg-orange-500/4',
     },
     graphite: {
-      blob1: 'fill-zinc-300/10 dark:fill-zinc-700/5',
-      blob2: 'fill-slate-300/8 dark:fill-slate-800/4',
+      orb1: 'bg-zinc-300/10 dark:bg-zinc-700/5',
+      orb2: 'bg-slate-300/8 dark:bg-slate-800/4',
     },
     blue: {
-      blob1: 'fill-sky-300/12 dark:fill-sky-500/4',
-      blob2: 'fill-cyan-200/10 dark:fill-cyan-500/3',
+      orb1: 'bg-sky-300/12 dark:bg-sky-500/5',
+      orb2: 'bg-cyan-200/10 dark:bg-cyan-500/4',
     },
   };
 
   const activeTheme = themes[colorTheme] || themes.blue;
 
-  // Path morphing coordinate loops
-  const path1 = [
-    'M 200,150 C 130,150 90,200 90,270 C 90,340 150,380 230,380 C 310,380 350,330 350,270 C 350,210 270,150 200,150 Z',
-    'M 200,150 C 150,110 80,180 80,250 C 80,320 170,390 250,390 C 330,390 350,290 340,220 C 330,150 250,190 200,150 Z',
-    'M 200,150 C 120,130 100,220 100,290 C 100,360 140,360 220,360 C 300,360 330,350 330,290 C 330,230 280,170 200,150 Z',
-    'M 200,150 C 130,150 90,200 90,270 C 90,340 150,380 230,380 C 310,380 350,330 350,270 C 350,210 270,150 200,150 Z',
-  ];
-
-  const path2 = [
-    'M 250,180 C 190,180 140,230 140,290 C 140,350 200,390 270,390 C 340,390 380,340 380,290 C 380,240 310,180 250,180 Z',
-    'M 250,180 C 160,150 110,250 110,310 C 110,370 220,360 290,360 C 360,360 390,320 370,250 C 350,180 340,210 250,180 Z',
-    'M 250,180 C 200,200 160,210 160,270 C 160,330 180,410 250,410 C 320,410 390,360 390,300 C 390,240 300,160 250,180 Z',
-    'M 250,180 C 190,180 140,230 140,290 C 140,350 200,390 270,390 C 340,390 380,340 380,290 C 380,240 310,180 250,180 Z',
-  ];
-
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-      {/* SVG rendering soft pastel orbs with high-performance blur */}
-      <svg className="w-full h-full min-h-screen opacity-90 filter blur-3xl select-none" xmlns="http://www.w3.org/2000/svg">
-        <g>
-          {/* Blob 1 */}
-          <motion.path
-            style={{ x: springX1, y: springY1 }}
-            className={activeTheme.blob1}
-            animate={{ d: path1 }}
-            transition={{
-              duration: 18,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-          />
+      {/* Orb 1: Top Left */}
+      <motion.div
+        style={{ x: springX1, y: springY1 }}
+        animate={{
+          scale: [1, 1.15, 0.9, 1],
+          borderRadius: ["40% 60% 60% 40% / 40% 40% 60% 60%", "60% 40% 40% 60% / 60% 60% 40% 40%", "40% 60% 60% 40% / 40% 40% 60% 60%"]
+        }}
+        transition={{
+          duration: 18,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+        className={`absolute -top-20 -left-20 w-[40vw] h-[40vw] max-w-[450px] max-h-[450px] blur-[90px] ${activeTheme.orb1}`}
+      />
 
-          {/* Blob 2 */}
-          <motion.path
-            style={{ x: springX2Inverted, y: springY2Inverted }}
-            className={activeTheme.blob2}
-            animate={{ d: path2 }}
-            transition={{
-              duration: 22,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-          />
-        </g>
-      </svg>
+      {/* Orb 2: Bottom Right */}
+      <motion.div
+        style={{ x: springX2Inverted, y: springY2Inverted }}
+        animate={{
+          scale: [1, 0.9, 1.15, 1],
+          borderRadius: ["60% 40% 40% 60% / 60% 60% 40% 40%", "40% 60% 60% 40% / 40% 40% 60% 60%", "60% 40% 40% 60% / 60% 60% 40% 40%"]
+        }}
+        transition={{
+          duration: 22,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+        className={`absolute -bottom-20 -right-20 w-[45vw] h-[45vw] max-w-[500px] max-h-[500px] blur-[110px] ${activeTheme.orb2}`}
+      />
     </div>
   );
 }
