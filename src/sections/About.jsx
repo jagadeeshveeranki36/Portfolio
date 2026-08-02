@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Heart } from 'lucide-react';
-import MorphingBackground from '../components/MorphingBackground';
 
 export default function About() {
   const facts = [
@@ -24,9 +23,6 @@ export default function About() {
 
   return (
     <section id="about" className="py-32 relative overflow-hidden px-6 md:px-12 border-t border-zinc-200/40 dark:border-zinc-850 bg-transparent">
-      {/* Morphing Liquid Blobs Background (Champagne Theme) */}
-      <MorphingBackground colorTheme="amber" />
-
       <div className="max-w-6xl mx-auto relative z-10">
         
         {/* Section Heading - Swiss Minimal Brandbook */}
