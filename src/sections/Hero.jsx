@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { Mail, Phone, ArrowRight, Download, Terminal as TerminalIcon } from 'lucide-react';
 import Hero3DAccent from '../components/Hero3DAccent';
 import HangingIDCard from '../components/HangingIDCard';
+import DeveloperTerminal from '../components/DeveloperTerminal';
 import MorphingBackground from '../components/MorphingBackground';
 import LiquidButton from '../components/LiquidButton';
 
@@ -174,7 +175,7 @@ export default function Hero() {
         </div>
 
         {/* Right Column: Lanyard hanging photo + DeveloperTerminal code visual */}
-        <div className="lg:col-span-7 w-full flex flex-col sm:flex-row gap-6 items-center justify-center relative z-10">
+        <div className="lg:col-span-7 w-full flex flex-col xl:flex-row gap-6 items-center justify-center relative z-10">
           {/* Lanyard Signature Component */}
           <HangingIDCard />
 
