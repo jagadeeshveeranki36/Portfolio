@@ -4,8 +4,8 @@ import { Github, Linkedin, Mail, Phone } from 'lucide-react';
 
 export default function SocialSidebar() {
   const socials = [
-    { icon: <Github className="h-4 w-4" />, href: 'https://github.com', label: 'GitHub Profile' },
-    { icon: <Linkedin className="h-4 w-4" />, href: 'https://linkedin.com', label: 'LinkedIn Profile' },
+    { icon: <Github className="h-4 w-4" />, href: 'https://github.com/jagadeeshveeranki36', label: 'GitHub Profile' },
+    { icon: <Linkedin className="h-4 w-4" />, href: 'https://www.linkedin.com/in/jagadeesh-veeranki-94a5b2300/', label: 'LinkedIn Profile' },
     { icon: <Mail className="h-4 w-4" />, href: 'mailto:jagadeeshveeranki30@gmail.com', label: 'Email Address' },
     { icon: <Phone className="h-4 w-4" />, href: 'tel:+916302471838', label: 'Phone Number' }
   ];

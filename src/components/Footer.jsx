@@ -46,7 +46,7 @@ export default function Footer() {
                 <Github className="h-4 w-4" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/jagadeesh-veeranki-94a5b2300/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full border border-lightbg-border dark:border-darkbg-border bg-white/40 dark:bg-slate-900/40 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-primary-505 hover:text-white dark:hover:bg-primary-505 transition-all duration-300 shadow-sm"

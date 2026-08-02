@@ -85,15 +85,7 @@ export default function Hero() {
         {/* Left Column: Heading, intro bio and CTAs */}
         <div className="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left z-10">
           
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.1 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary-505/20 bg-primary-505/5 text-primary-505 dark:text-primary-300 text-xs font-semibold mb-6 uppercase tracking-widest select-none backdrop-blur-sm"
-          >
-            <TerminalIcon className="h-3.5 w-3.5 animate-pulse" />
-            Backend & Systems Portfolio
-          </motion.div>
+
 
           <h1
             ref={headingRef}

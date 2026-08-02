@@ -171,7 +171,7 @@ export default function Contact() {
                 GitHub
               </LiquidButton>
               <LiquidButton
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/jagadeesh-veeranki-94a5b2300/"
                 className="flex-1 btn-secondary py-2.5 text-xs font-bold"
               >
                 <Linkedin className="h-4 w-4 mr-2" />
