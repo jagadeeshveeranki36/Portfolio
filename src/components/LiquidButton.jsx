@@ -2,21 +2,17 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 export default function LiquidButton({ children, onClick, className = '', type = 'button', href, download }) {
-  const springConfig = { type: 'spring', stiffness: 500, damping: 12, mass: 0.6 };
-
   const buttonProps = {
     className: `relative overflow-hidden inline-flex items-center justify-center cursor-pointer select-none ${className}`,
     whileHover: {
-      scaleX: 1.05,
-      scaleY: 0.95,
+      scale: 1.015,
       y: -2,
     },
     whileTap: {
-      scaleX: 0.92,
-      scaleY: 1.1,
-      y: 1,
+      scale: 0.98,
+      y: 0,
     },
-    transition: springConfig,
+    transition: { type: 'spring', stiffness: 450, damping: 15 },
   };
 
   if (href) {

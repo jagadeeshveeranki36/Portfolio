@@ -36,13 +36,12 @@ function App() {
     
     const ctx = gsap.context(() => {
       sections.forEach((section) => {
-        // As the section scrolls in, it scales up, unblurs and fades in
+        // Simple, clean vertical slide-in fade scroll trigger
         gsap.fromTo(section,
-          { opacity: 0.8, scale: 0.97, filter: 'blur(3px)' },
+          { opacity: 0.8, y: 25 },
           {
             opacity: 1,
-            scale: 1,
-            filter: 'blur(0px)',
+            y: 0,
             scrollTrigger: {
               trigger: section,
               start: 'top bottom',
@@ -52,11 +51,10 @@ function App() {
           }
         );
 
-        // As the section scrolls out, it scales down, blurs and fades out
+        // Simple, clean vertical slide-out fade scroll trigger
         gsap.to(section, {
           opacity: 0.8,
-          scale: 0.97,
-          filter: 'blur(3px)',
+          y: -25,
           scrollTrigger: {
             trigger: section,
             start: 'bottom center',
