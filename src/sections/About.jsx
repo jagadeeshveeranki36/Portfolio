@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Heart } from 'lucide-react';
+import MorphingBackground from '../components/MorphingBackground';
 
 export default function About() {
   const facts = [
@@ -12,7 +13,7 @@ export default function About() {
     {
       num: '02',
       title: 'Relocatable / Remote',
-      description: 'Based in Naguladevunipadu, India. Prepared for remote team workflows, structured collaboration, or relocating to development hubs.',
+      description: 'Based in Eluru, Andhra Pradesh, India. Prepared for remote team workflows, structured collaboration, or relocating to development hubs.',
     },
     {
       num: '03',
@@ -23,6 +24,9 @@ export default function About() {
 
   return (
     <section id="about" className="py-32 relative overflow-hidden px-6 md:px-12 border-t border-zinc-200/40 dark:border-zinc-850 bg-transparent">
+      {/* Morphing Liquid Blobs Background (Ice Blue Theme) */}
+      <MorphingBackground colorTheme="blue" />
+
       <div className="max-w-6xl mx-auto relative z-10">
         
         {/* Section Heading - Swiss Minimal Brandbook */}
@@ -36,7 +40,7 @@ export default function About() {
         </div>
 
         {/* Layout Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start font-sans">
           
           {/* Left Column: Narrative (Spans 7) */}
           <motion.div
@@ -44,7 +48,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-7 space-y-8 text-zinc-650 dark:text-zinc-300 text-base md:text-lg leading-relaxed font-sans"
+            className="lg:col-span-7 space-y-8 text-zinc-650 dark:text-zinc-300 text-base md:text-lg leading-relaxed"
           >
             {/* Bold Lead Statement */}
             <p className="font-display italic text-3xl text-zinc-900 dark:text-white leading-tight font-light">
@@ -64,7 +68,7 @@ export default function About() {
             </p>
             
             <div className="pt-6 flex items-center gap-3 text-xs font-mono tracking-widest text-zinc-400 dark:text-zinc-500 uppercase">
-              <Heart className="h-3.5 w-3.5 text-primary-505 dark:text-primary-300 animate-pulse fill-primary-505/20" />
+              <Heart className="h-3.5 w-3.5 text-primary-505 dark:text-primary-400 animate-pulse fill-primary-505/20" />
               <span>Adaptable · Detail-Oriented · Creative</span>
             </div>
           </motion.div>
@@ -82,7 +86,7 @@ export default function About() {
                   borderRadius: "20px 8px 20px 8px", 
                   scale: 1.025,
                   y: -4,
-                  borderColor: 'rgba(16, 185, 129, 0.4)',
+                  borderColor: 'rgba(56, 189, 248, 0.4)',
                   transition: { type: 'spring', stiffness: 400, damping: 12 }
                 }}
                 className="glass-card p-6 flex flex-col gap-4 border border-zinc-200/40 dark:border-zinc-850 hover:border-zinc-300 dark:hover:border-zinc-800 transition-all duration-300 shadow-sm cursor-pointer select-none origin-center"
@@ -99,7 +103,7 @@ export default function About() {
                   <h4 className="font-display font-bold text-lg text-zinc-909 dark:text-white mb-2 leading-tight">
                     {fact.title}
                   </h4>
-                  <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed font-sans">
+                  <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
                     {fact.description}
                   </p>
                 </div>

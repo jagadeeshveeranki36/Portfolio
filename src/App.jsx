@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import useTheme from './hooks/useTheme';
 import ScrollProgress from './components/ScrollProgress';
+import CustomCursor from './components/CustomCursor';
 import Preloader from './components/Preloader';
 import Navbar from './components/Navbar';
 import SocialSidebar from './components/SocialSidebar';
@@ -36,6 +37,7 @@ function App() {
           transition={{ duration: 0.5 }}
         >
           {/* Core Snappy visual guides */}
+          <CustomCursor />
           <ScrollProgress />
           <SocialSidebar />
           <Navbar theme={theme} toggleTheme={toggleTheme} />

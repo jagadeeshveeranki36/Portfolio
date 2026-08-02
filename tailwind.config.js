@@ -8,60 +8,60 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Emerald green primary accent
+        // Ice-blue primary accent
         primary: {
-          50: '#ecfdf5',
-          100: '#d1fae5',
-          200: '#a7f3d0',
-          300: '#6ee7b7',
-          400: '#34d399',
-          505: '#10b981', // Emerald 500
-          550: '#059669',
-          605: '#047857',
-          650: '#065f46',
-          700: '#064e3b',
-          800: '#064e3b',
-          900: '#022c22',
-          950: '#022c22',
+          50: '#f0f9ff',
+          100: '#e0f2fe',
+          200: '#bae6fd',
+          300: '#7dd3fc',
+          400: '#38bdf8',
+          505: '#0ea5e9', // Ice blue accent base
+          550: '#0284c7',
+          605: '#0369a1',
+          650: '#075985',
+          700: '#0c4a6e',
+          800: '#0c4a6e',
+          905: '#082f49',
+          950: '#082f49',
         },
         zinc: {
-          250: '#e4e4e7',
-          305: '#d4d4d8',
-          350: '#a1a1aa',
-          355: '#71717a',
-          450: '#52525b',
-          650: '#3f3f46',
-          805: '#27272a',
-          850: '#18181b',
-          905: '#09090b',
+          250: '#f4f4f5',
+          305: '#e4e4e7',
+          350: '#cbd5e1',
+          355: '#94a3b8',
+          450: '#64748b',
+          650: '#475569',
+          805: '#1e293b',
+          850: '#0f172a',
+          905: '#0a0a0b', // Pitch OLED Black
         },
         slate: {
           350: '#cbd5e1',
           650: '#475569',
         },
         blue: {
-          450: '#34d399',
-          605: '#10b981',
-          650: '#059669',
+          450: '#38bdf8',
+          605: '#0ea5e9',
+          650: '#0284c7',
         },
         darkbg: {
-          base: '#09090b',      // Pure black canvas
-          card: 'rgba(18, 18, 22, 0.45)', // Tech slate card
+          base: '#0a0a0b',      // Pitch OLED Black canvas
+          card: 'rgba(18, 18, 20, 0.55)', // Liquid glass dark
           border: 'rgba(255, 255, 255, 0.05)',
-          accent: '#121214',
-          glow: 'rgba(16, 185, 129, 0.05)',
+          accent: '#111113',
+          glow: 'rgba(14, 165, 233, 0.06)',
         },
         lightbg: {
-          base: '#ffffff',      // Pure white canvas
+          base: '#fafafa',      // Crisp off-white canvas
           card: 'rgba(255, 255, 255, 0.65)',
           border: 'rgba(0, 0, 0, 0.05)',
           accent: '#f4f4f5',
-          glow: 'rgba(16, 185, 129, 0.02)',
+          glow: 'rgba(14, 165, 233, 0.02)',
         }
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
-        display: ['Plus Jakarta Sans', 'sans-serif'],
+        display: ['Space Grotesk', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
       backgroundImage: {

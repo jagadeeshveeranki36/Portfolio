@@ -2,7 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
 import { Mail, Phone, ArrowRight, Download, Terminal as TerminalIcon } from 'lucide-react';
-import DeveloperTerminal from '../components/DeveloperTerminal';
+import Hero3DAccent from '../components/Hero3DAccent';
+import HangingIDCard from '../components/HangingIDCard';
+import MorphingBackground from '../components/MorphingBackground';
 import LiquidButton from '../components/LiquidButton';
 
 const taglines = [
@@ -24,7 +26,7 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
-    // Stagger character reveal using standard high-performance GSAP context
+    // Kinetic typography line-by-line reveal using high-performance GSAP stagger
     if (headingRef.current) {
       const text = "Veeranki Jagadeesh";
       headingRef.current.innerHTML = '';
@@ -38,13 +40,14 @@ export default function Hero() {
       });
 
       gsap.fromTo(chars, 
-        { opacity: 0, y: 30 },
+        { opacity: 0, y: 35, rotate: 10 },
         { 
           opacity: 1, 
           y: 0, 
+          rotate: 0,
           duration: 0.6, 
           stagger: 0.03, 
-          ease: 'power2.out',
+          ease: 'back.out(1.7)',
           delay: 0.2
         }
       );
@@ -66,37 +69,40 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-[90svh] md:min-h-screen flex items-center justify-center pt-28 md:pt-16 pb-16 overflow-hidden px-6 md:px-12 bg-transparent"
+      className="relative min-h-[95svh] md:min-h-screen flex items-center justify-center pt-28 md:pt-16 pb-16 overflow-hidden px-6 md:px-12 bg-transparent"
     >
-      {/* Sleek, subtle tech dot grid background overlay */}
-      <div className="absolute inset-0 bg-zinc-50 dark:bg-zinc-950/20 z-0">
-        <div className="absolute inset-0 bg-noise opacity-[0.02] pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-500/5 via-transparent to-transparent pointer-events-none" />
-      </div>
+      {/* Morphing Liquid Blobs Background (Ice Blue Theme) */}
+      <MorphingBackground colorTheme="blue" />
+
+      {/* WebGL Chrome Torus Knot & Starfield */}
+      <Hero3DAccent />
+
+      {/* subtle tech overlay */}
+      <div className="absolute inset-0 bg-noise opacity-[0.015] pointer-events-none z-[1]" />
 
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center relative z-10">
         
         {/* Left Column: Heading, intro bio and CTAs */}
-        <div className="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left">
+        <div className="lg:col-span-5 flex flex-col items-center lg:items-start text-center lg:text-left z-10">
           
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.1 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/5 text-emerald-600 dark:text-emerald-450 text-xs font-semibold mb-6 uppercase tracking-widest select-none"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary-505/20 bg-primary-505/5 text-primary-505 dark:text-primary-300 text-xs font-semibold mb-6 uppercase tracking-widest select-none backdrop-blur-sm"
           >
-            <TerminalIcon className="h-3.5 w-3.5" />
+            <TerminalIcon className="h-3.5 w-3.5 animate-pulse" />
             Backend & Systems Portfolio
           </motion.div>
 
-          {/* Staggered Header */}
+          {/* Kinetic Header */}
           <h1
             ref={headingRef}
             className="text-5xl sm:text-6xl md:text-7xl font-display font-extrabold leading-[1.05] mb-6 text-zinc-900 dark:text-white select-none tracking-tight uppercase"
           >
           </h1>
 
-          {/* Fading text tagline */}
+          {/* Fading text swapper */}
           <div className="h-10 md:h-12 flex items-center justify-center lg:justify-start mb-6 select-none font-display">
             <AnimatePresence mode="wait">
               <motion.span
@@ -105,7 +111,7 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.25, ease: 'easeOut' }}
-                className="text-2xl sm:text-3xl md:text-3xl font-bold text-emerald-600 dark:text-emerald-400"
+                className="text-2xl sm:text-3xl md:text-3xl font-bold text-primary-505 dark:text-primary-400"
               >
                 {taglines[index]}
               </motion.span>
@@ -114,7 +120,7 @@ export default function Hero() {
 
           <p
             ref={subHeadingRef}
-            className="text-zinc-600 dark:text-zinc-400 text-sm md:text-base max-w-xl mb-8 leading-relaxed font-sans"
+            className="text-zinc-650 dark:text-zinc-400 text-sm md:text-base max-w-xl mb-8 leading-relaxed font-sans"
           >
             Currently pursuing an MCA at VRIT (JNTUK). I focus on clean backend architecture with Python & Flask, secure database relational sessions, and snappy, responsive web layouts.
           </p>
@@ -128,7 +134,7 @@ export default function Hero() {
           >
             <LiquidButton
               onClick={() => handleScrollTo('projects')}
-              className="btn-primary w-full sm:w-auto px-7 py-3 text-sm"
+              className="btn-primary w-full sm:w-auto px-7 py-3 text-sm font-semibold"
             >
               Explore Projects
               <ArrowRight className="h-4 w-4 ml-2" />
@@ -137,7 +143,7 @@ export default function Hero() {
             <LiquidButton
               href="./resume.pdf"
               download="Veeranki_Jagadeesh_Resume.pdf"
-              className="btn-secondary w-full sm:w-auto px-7 py-3 text-sm"
+              className="btn-secondary w-full sm:w-auto px-7 py-3 text-sm font-semibold"
             >
               <Download className="h-4 w-4 mr-2" />
               Get Resume
@@ -152,47 +158,28 @@ export default function Hero() {
             className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mt-12 text-zinc-500 dark:text-zinc-450 text-xs font-semibold"
           >
             <div className="flex items-center gap-2">
-              <Mail className="h-3.5 w-3.5 text-emerald-500" />
-              <a href="mailto:jagadeeshveeranki30@gmail.com" className="hover:text-emerald-500 transition-colors">
+              <Mail className="h-3.5 w-3.5 text-primary-505" />
+              <a href="mailto:jagadeeshveeranki30@gmail.com" className="hover:text-primary-505 transition-colors">
                 jagadeeshveeranki30@gmail.com
               </a>
             </div>
             <div className="hidden sm:block w-1 h-1 rounded-full bg-zinc-300 dark:bg-zinc-800" />
             <div className="flex items-center gap-2">
-              <Phone className="h-3.5 w-3.5 text-emerald-500" />
-              <a href="tel:+916302471838" className="hover:text-emerald-500 transition-colors">
+              <Phone className="h-3.5 w-3.5 text-primary-505" />
+              <a href="tel:+916302471838" className="hover:text-primary-505 transition-colors">
                 +91 6302471838
               </a>
             </div>
           </motion.div>
         </div>
 
-        {/* Right Column: Framed Headshot + DeveloperTerminal stack */}
-        <div className="lg:col-span-6 w-full flex flex-col sm:flex-row gap-6 items-center justify-center relative">
-          
-          {/* Framed Headshot Card */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="relative w-48 h-64 sm:w-56 sm:h-72 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-2.5 shadow-xl flex-shrink-0"
-          >
-            <div className="w-full h-full rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-850 relative">
-              <img
-                src="./profile.jpg"
-                alt="Veeranki Jagadeesh - Professional Portrait"
-                className="w-full h-full object-cover object-center grayscale hover:grayscale-0 transition-all duration-550 select-none"
-                draggable="false"
-              />
-              <div className="absolute bottom-2.5 left-2.5 bg-zinc-950/90 text-emerald-400 text-[8px] font-mono font-bold tracking-widest uppercase px-2 py-0.5 rounded border border-emerald-500/20">
-                ACTIVE // DEV
-              </div>
-            </div>
-          </motion.div>
+        {/* Right Column: Lanyard hanging photo + DeveloperTerminal code visual */}
+        <div className="lg:col-span-7 w-full flex flex-col sm:flex-row gap-6 items-center justify-center relative z-10">
+          {/* Lanyard Signature Component */}
+          <HangingIDCard />
 
-          {/* DeveloperTerminal Component */}
+          {/* Terminal Widget */}
           <DeveloperTerminal />
-
         </div>
 
       </div>

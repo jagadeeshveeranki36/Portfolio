@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,13 +6,13 @@
 
 @layer base {
   :root {
-    --color-primary: #09090B;
+    --color-primary: #0A0A0B;
     --color-on-primary: #FFFFFF;
-    --color-secondary: #71717A;
-    --color-accent: #10B981; /* Emerald Green */
-    --color-background: #FFFFFF; /* Pure White */
-    --color-foreground: #09090B;
-    --color-muted: #F4F4F5;
+    --color-secondary: #64748B;
+    --color-accent: #0EA5E9; /* Ice Blue */
+    --color-background: #FAFAFA; /* Off-White */
+    --color-foreground: #0A0A0B;
+    --color-muted: #F1F5F9;
     --color-border: rgba(0, 0, 0, 0.05);
     
     --space-xs: 4px;
@@ -26,12 +26,12 @@
 
   .dark {
     --color-primary: #FAFAFA;
-    --color-on-primary: #09090B;
-    --color-secondary: #A1A1AA;
-    --color-accent: #34D399; /* Bright Emerald */
-    --color-background: #09090B; /* OLED Pure Black */
-    --color-foreground: #F4F4F5;
-    --color-muted: #18181B;
+    --color-on-primary: #0A0A0B;
+    --color-secondary: #94A3B8;
+    --color-accent: #38BDF8; /* Glowing Ice Blue */
+    --color-background: #0A0A0B; /* Pitch OLED Black */
+    --color-foreground: #F1F5F9;
+    --color-muted: #111113;
     --color-border: rgba(255, 255, 255, 0.05);
   }
 
@@ -85,7 +85,7 @@
   .btn-primary:hover {
     opacity: 0.92;
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
   }
 
   .btn-secondary {
@@ -139,7 +139,7 @@
 }
 
 .glow-blue {
-  background: radial-gradient(circle, #10b981 0%, rgba(0,0,0,0) 70%);
+  background: radial-gradient(circle, #0ea5e9 0%, rgba(0,0,0,0) 70%);
 }
 
 /* Base structure for layout borders */

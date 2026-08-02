@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useSpring } from 'framer-motion';
 
 const educationData = [
   {
@@ -41,10 +41,36 @@ const educationData = [
 ];
 
 export default function Education() {
+  const containerRef = useRef(null);
+
+  // Track vertical scroll position progress of the education section container
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start center', 'end center']
+  });
+
+  const scrollLineScale = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 25,
+    restDelta: 0.001
+  });
+
   return (
-    <section id="education" className="py-32 relative overflow-hidden px-6 md:px-12 bg-transparent border-t border-zinc-200/40 dark:border-zinc-850">
-      <div className="max-w-5xl mx-auto relative z-10">
+    <section 
+      ref={containerRef}
+      id="education" 
+      className="py-32 relative overflow-hidden px-6 md:px-12 bg-transparent border-t border-zinc-200/40 dark:border-zinc-850"
+    >
+      <div className="max-w-5xl mx-auto relative z-10 pl-6 md:pl-10">
         
+        {/* Scroll-scrubbed vertical timeline path line */}
+        <div className="absolute left-0 top-[220px] bottom-0 w-[1.5px] bg-zinc-200 dark:bg-zinc-800">
+          <motion.div 
+            className="w-full bg-primary-505 dark:bg-primary-400 origin-top h-full"
+            style={{ scaleY: scrollLineScale }}
+          />
+        </div>
+
         {/* Section Heading - Swiss Minimal Brandbook */}
         <div className="w-full flex items-baseline justify-between mb-20 border-b border-zinc-200/40 dark:border-zinc-850 pb-4">
           <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-400 dark:text-zinc-500 font-bold">
@@ -64,7 +90,7 @@ export default function Education() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start border-b border-zinc-205/30 dark:border-zinc-850 pb-12 last:border-0 last:pb-0"
+              className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start border-b border-zinc-205/30 dark:border-zinc-850 pb-12 last:border-0 last:pb-0 relative"
             >
               {/* Left Column: Duration & Institution (cols 4) */}
               <div className="md:col-span-4 flex flex-col gap-1.5 select-none">

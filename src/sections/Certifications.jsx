@@ -66,7 +66,7 @@ export default function Certifications() {
               transition={{ duration: 0.4, delay: index * 0.08 }}
               whileHover={{ 
                 y: -4,
-                borderColor: 'rgba(197, 168, 128, 0.3)',
+                borderColor: 'rgba(56, 189, 248, 0.4)',
                 transition: { type: 'spring', stiffness: 400, damping: 15 }
               }}
               className="glass-card p-6 flex flex-col justify-between cursor-pointer group select-none relative overflow-hidden border border-zinc-200/40 dark:border-zinc-850 hover:shadow-md transition-all duration-300 origin-center"

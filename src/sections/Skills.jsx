@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Terminal, Database, Code, Server, Laptop, Cpu, Heart, Award, GraduationCap, CheckCircle } from 'lucide-react';
+import MorphingBackground from '../components/MorphingBackground';
 
 export default function Skills() {
   const coreLanguages = [
@@ -21,12 +22,12 @@ export default function Skills() {
   ];
 
   const toolsSkills = [
-    { name: 'CustomTkinter', icon: <Laptop className="h-3.5 w-3.5 text-zinc-600 dark:text-zinc-400" /> },
-    { name: 'APScheduler', icon: <Cpu className="h-3.5 w-3.5 text-zinc-600 dark:text-zinc-400" /> },
-    { name: 'Docker', icon: <Cpu className="h-3.5 w-3.5 text-zinc-600 dark:text-zinc-400" /> },
-    { name: 'Git & GitHub', icon: <Cpu className="h-3.5 w-3.5 text-zinc-655 dark:text-zinc-350" /> },
-    { name: 'OpenPyXL (Excel)', icon: <Cpu className="h-3.5 w-3.5 text-zinc-600 dark:text-zinc-400" /> },
-    { name: 'FPDF2 (PDF)', icon: <Cpu className="h-3.5 w-3.5 text-zinc-600 dark:text-zinc-400" /> }
+    { name: 'CustomTkinter', icon: <Laptop className="h-3.5 w-3.5 text-zinc-655 dark:text-zinc-400" /> },
+    { name: 'APScheduler', icon: <Cpu className="h-3.5 w-3.5 text-zinc-655 dark:text-zinc-400" /> },
+    { name: 'Docker', icon: <Cpu className="h-3.5 w-3.5 text-zinc-655 dark:text-zinc-400" /> },
+    { name: 'Git & GitHub', icon: <Cpu className="h-3.5 w-3.5 text-zinc-655 dark:text-zinc-400" /> },
+    { name: 'OpenPyXL (Excel)', icon: <Cpu className="h-3.5 w-3.5 text-zinc-655 dark:text-zinc-400" /> },
+    { name: 'FPDF2 (PDF)', icon: <Cpu className="h-3.5 w-3.5 text-zinc-655 dark:text-zinc-400" /> }
   ];
 
   const softSkills = [
@@ -58,12 +59,15 @@ export default function Skills() {
     borderRadius: "20px 8px 20px 8px",
     scale: 1.015,
     y: -4,
-    borderColor: 'rgba(16, 185, 129, 0.4)',
+    borderColor: 'rgba(56, 189, 248, 0.4)', // Ice Blue
     transition: { type: 'spring', stiffness: 350, damping: 14 }
   };
 
   return (
     <section id="skills" className="py-32 relative overflow-hidden px-6 md:px-12 border-t border-zinc-200/40 dark:border-zinc-850 bg-transparent">
+      {/* Morphing Liquid Blobs Background (Ice Blue Theme) */}
+      <MorphingBackground colorTheme="blue" />
+
       <div className="max-w-6xl mx-auto relative z-10">
         
         {/* Section Heading - Swiss Minimal Brandbook */}
@@ -93,7 +97,7 @@ export default function Skills() {
             <div>
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-lg bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center border border-zinc-200/40 dark:border-zinc-800/40">
-                  <Terminal className="h-5 w-5 text-primary-550 dark:text-primary-300" />
+                  <Terminal className="h-5 w-5 text-primary-505 dark:text-primary-300" />
                 </div>
                 <div>
                   <h3 className="font-display font-bold text-xl text-zinc-900 dark:text-white leading-none">Core Languages</h3>
@@ -109,7 +113,7 @@ export default function Skills() {
                         {lang.icon}
                         {lang.name}
                       </span>
-                      <span className="font-mono text-xs font-bold text-primary-605 dark:text-primary-300">{lang.level} ({lang.percentage}%)</span>
+                      <span className="font-mono text-xs font-bold text-primary-505 dark:text-primary-300">{lang.level} ({lang.percentage}%)</span>
                     </div>
                     <div className="h-1.5 w-full bg-zinc-100 dark:bg-zinc-800/60 rounded-full overflow-hidden">
                       <motion.div
@@ -135,7 +139,7 @@ export default function Skills() {
             <div>
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-lg bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center border border-zinc-200/40 dark:border-zinc-800/40">
-                  <Server className="h-5 w-5 text-primary-550 dark:text-primary-300" />
+                  <Server className="h-5 w-5 text-primary-505 dark:text-primary-300" />
                 </div>
                 <div>
                   <h3 className="font-display font-bold text-xl text-zinc-900 dark:text-white leading-none">Backend Stack</h3>
@@ -146,8 +150,8 @@ export default function Skills() {
               <div className="space-y-3">
                 {backendSkills.map((s) => (
                   <div key={s.name} className="flex items-center justify-between border-b border-zinc-250/20 dark:border-zinc-800/40 pb-2 last:border-0 last:pb-0">
-                    <span className="text-sm font-semibold text-zinc-700 dark:text-zinc-300">{s.name}</span>
-                    <span className="font-mono text-[8.5px] font-bold text-primary-605 dark:text-primary-300 bg-primary-505/5 dark:bg-primary-505/10 px-2 py-0.5 rounded border border-primary-505/10">
+                    <span className="text-sm font-semibold text-zinc-700 dark:text-zinc-305">{s.name}</span>
+                    <span className="font-mono text-[8.5px] font-bold text-primary-550 dark:text-primary-300 bg-primary-505/5 dark:bg-primary-505/10 px-2 py-0.5 rounded border border-primary-505/10">
                       {s.level}
                     </span>
                   </div>
@@ -165,7 +169,7 @@ export default function Skills() {
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-9 h-9 rounded-lg bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center border border-zinc-200/40 dark:border-zinc-800/40">
-                  <Cpu className="h-4.5 w-4.5 text-primary-550 dark:text-primary-300" />
+                  <Cpu className="h-4.5 w-4.5 text-primary-505 dark:text-primary-300" />
                 </div>
                 <h3 className="font-display font-bold text-xl text-zinc-900 dark:text-white">Desktop GUI & DevOps Tools</h3>
               </div>
@@ -176,7 +180,7 @@ export default function Skills() {
                     <div className="w-6 h-6 rounded bg-white dark:bg-zinc-850 flex items-center justify-center border border-zinc-200/30 dark:border-zinc-800/30 shadow-sm">
                       {t.icon}
                     </div>
-                    <span className="font-mono text-xs font-semibold text-zinc-650 dark:text-zinc-305 truncate">{t.name.split(' ')[0]}</span>
+                    <span className="font-mono text-xs font-semibold text-zinc-650 dark:text-zinc-305 truncate">{t.name}</span>
                   </div>
                 ))}
               </div>
@@ -189,8 +193,8 @@ export default function Skills() {
             whileHover={hoverSpring}
             className="glass-card md:col-span-1 md:row-span-1 p-6 flex flex-col justify-between relative overflow-hidden border border-zinc-200/40 dark:border-zinc-850 hover:border-zinc-300 dark:hover:border-zinc-800 transition-all duration-300 shadow-sm cursor-pointer select-none origin-center"
           >
-            <div className="flex items-center gap-2 text-zinc-600 dark:text-zinc-400 mb-3">
-              <Award className="h-5 w-5 text-primary-555 dark:text-primary-300" />
+            <div className="flex items-center gap-2 text-zinc-600 dark:text-zinc-450 mb-3">
+              <Award className="h-5 w-5 text-primary-505 dark:text-primary-300" />
               <span className="font-mono text-[9px] uppercase tracking-widest font-bold">Achievements</span>
             </div>
             
@@ -212,14 +216,14 @@ export default function Skills() {
             whileHover={hoverSpring}
             className="glass-card md:col-span-1 md:row-span-1 p-6 flex flex-col justify-between border border-zinc-200/40 dark:border-zinc-850 hover:border-zinc-300 dark:hover:border-zinc-800 transition-all duration-300 cursor-pointer select-none origin-center"
           >
-            <div className="flex items-center gap-2 text-zinc-600 dark:text-zinc-400 mb-3">
-              <GraduationCap className="h-5 w-5 text-primary-555 dark:text-primary-300" />
+            <div className="flex items-center gap-2 text-zinc-600 dark:text-zinc-455 mb-3">
+              <GraduationCap className="h-5 w-5 text-primary-505 dark:text-primary-300" />
               <span className="font-mono text-[9px] uppercase tracking-widest font-bold">Academic Focus</span>
             </div>
 
             <div>
               <h4 className="font-display font-bold text-lg text-zinc-900 dark:text-white">MCA Candidate</h4>
-              <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1 leading-relaxed">Varaprasad Reddy Institute of Technology (2024 - 2026)</p>
+              <p className="text-xs text-zinc-500 dark:text-zinc-450 mt-1 leading-relaxed">Varaprasad Reddy Institute of Technology (2024 - 2026)</p>
             </div>
           </motion.div>
 
@@ -232,7 +236,7 @@ export default function Skills() {
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-8 h-8 rounded-lg bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center border border-zinc-200/40 dark:border-zinc-800/40">
-                  <Heart className="h-4 w-4 text-primary-550 dark:text-primary-300" />
+                  <Heart className="h-4 w-4 text-primary-505 dark:text-primary-300" />
                 </div>
                 <h3 className="font-display font-bold text-lg text-zinc-900 dark:text-white">Professional Strengths</h3>
               </div>
@@ -241,7 +245,7 @@ export default function Skills() {
                 {softSkills.map((s) => (
                   <span
                     key={s}
-                    className="font-mono text-[10px] font-semibold px-3 py-1 rounded-full border border-zinc-200/40 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30 text-zinc-650 dark:text-zinc-350 hover:border-primary-505/20 hover:text-primary-605 dark:hover:text-primary-300 transition-all duration-300"
+                    className="font-mono text-[10px] font-semibold px-3 py-1 rounded-full border border-zinc-200/40 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30 text-zinc-650 dark:text-zinc-350 hover:border-primary-505/20 hover:text-primary-505 transition-all duration-300"
                   >
                     {s}
                   </span>
@@ -253,7 +257,7 @@ export default function Skills() {
         </motion.div>
 
         {/* Highlight Banner */}
-        <div className="mt-16 text-center">
+        <div className="mt-16 text-center font-sans">
           <p className="font-mono text-[10px] text-zinc-405 dark:text-zinc-500 flex items-center justify-center gap-1.5 uppercase tracking-wider">
             <CheckCircle className="h-4 w-4 text-emerald-500" />
             Certified in Python, Graphic Designing, AI, and Data Science.
