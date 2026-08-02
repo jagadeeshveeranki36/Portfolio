@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ExternalLink, Github, X, Check, Server, Monitor, Layers } from 'lucide-react';
-import MorphingBackground from '../components/MorphingBackground';
 import LiquidButton from '../components/LiquidButton';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -157,9 +156,6 @@ export default function Projects() {
           isMobileMode ? 'py-32 bg-transparent' : 'h-screen flex items-center justify-center bg-transparent'
         }`}
       >
-        {/* Morphing Liquid Blobs Background (Champagne theme) */}
-        <MorphingBackground colorTheme="blue" />
-
         <div className="max-w-6xl mx-auto w-full relative z-10 flex flex-col justify-center h-full">
           
           {/* Section Heading - Swiss Minimal Brandbook */}
