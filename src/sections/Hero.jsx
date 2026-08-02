@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
-import { Mail, Phone, ArrowRight, Download, Github, Linkedin } from 'lucide-react';
+import { Mail, Phone, ArrowRight, Download } from 'lucide-react';
 import Hero3DAccent from '../components/Hero3DAccent';
 import HangingIDCard from '../components/HangingIDCard';
+import MorphingBackground from '../components/MorphingBackground';
+import LiquidButton from '../components/LiquidButton';
 
 const taglines = [
   'Python Developer',
@@ -52,7 +54,6 @@ export default function Hero() {
       );
     }
 
-    // GSAP fade up subtext
     if (subHeadingRef.current) {
       gsap.fromTo(subHeadingRef.current,
         { opacity: 0, y: 20 },
@@ -69,14 +70,13 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-[95svh] md:min-h-screen flex items-center justify-center pt-24 md:pt-16 pb-16 overflow-hidden px-6 md:px-12"
+      className="relative min-h-[95svh] md:min-h-screen flex items-center justify-center pt-24 md:pt-16 pb-16 overflow-hidden px-6 md:px-12 bg-transparent"
     >
+      {/* Morphing Liquid Blobs Background */}
+      <MorphingBackground colorTheme="violet" />
+
       {/* 3D WebGL Mesh/Particles (Desktop) or CSS Glow Fallback (Mobile) */}
       <Hero3DAccent />
-
-      {/* Ambient backgrounds */}
-      <div className="absolute top-1/4 left-1/4 w-[30vw] h-[30vw] rounded-full bg-violet-600/10 dark:bg-violet-600/5 blur-[120px] pointer-events-none z-0" />
-      <div className="absolute bottom-1/4 right-1/4 w-[25vw] h-[25vw] rounded-full bg-indigo-600/10 dark:bg-indigo-600/5 blur-[100px] pointer-events-none z-0" />
 
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
         
@@ -87,7 +87,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 text-zinc-600 dark:text-zinc-400 text-xs font-semibold mb-6 uppercase tracking-widest select-none"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-zinc-200 dark:border-zinc-800 bg-zinc-50/80 dark:bg-zinc-900/50 text-zinc-650 dark:text-zinc-400 text-xs font-semibold mb-6 uppercase tracking-widest select-none backdrop-blur-sm z-10"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
             Open for Developer Roles
@@ -96,7 +96,7 @@ export default function Hero() {
           {/* GSAP Staggered Header */}
           <h1
             ref={headingRef}
-            className="text-4xl sm:text-5xl md:text-6xl font-display font-extrabold leading-[1.1] mb-4 text-slate-900 dark:text-white select-none"
+            className="text-4xl sm:text-5xl md:text-6xl font-display font-extrabold leading-[1.1] mb-4 text-slate-905 dark:text-white select-none"
           >
           </h1>
 
@@ -109,7 +109,7 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.35, ease: 'easeInOut' }}
-                className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-slate-800 dark:text-slate-200"
+                className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-zinc-805 dark:text-zinc-200"
               >
                 {taglines[index]}
               </motion.span>
@@ -118,34 +118,34 @@ export default function Hero() {
 
           <p
             ref={subHeadingRef}
-            className="text-slate-650 dark:text-slate-300 text-base md:text-lg max-w-xl mb-8 leading-relaxed font-normal"
+            className="text-zinc-600 dark:text-zinc-300 text-base md:text-lg max-w-xl mb-8 leading-relaxed font-normal"
           >
             Pursuing MCA at VRIT (JNTUK). I build robust backends with Python & Flask, relational schemas, and design visual graphic layouts and animated modern frontends.
           </p>
 
-          {/* CTAs with magnetic hover logic */}
+          {/* Liquid elastic CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.3 }}
             className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
           >
-            <button
+            <LiquidButton
               onClick={() => handleScrollTo('projects')}
               className="btn-primary w-full sm:w-auto"
             >
               View Projects
-              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </button>
+              <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
+            </LiquidButton>
             
-            <a
+            <LiquidButton
               href="./resume.pdf"
-              download
+              download="Veeranki_Jagadeesh_Resume.pdf"
               className="btn-secondary w-full sm:w-auto"
             >
-              <Download className="h-4 w-4" />
+              <Download className="h-4 w-4 mr-2" />
               Download Resume
-            </a>
+            </LiquidButton>
 
             <button
               onClick={() => handleScrollTo('contact')}
@@ -160,18 +160,18 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.6, duration: 0.8 }}
-            className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mt-12 text-slate-550 dark:text-slate-400 text-sm font-medium"
+            className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mt-12 text-zinc-500 dark:text-zinc-400 text-sm font-medium"
           >
             <div className="flex items-center gap-2">
-              <Mail className="h-4 w-4 text-primary-500" />
-              <a href="mailto:jagadeeshveeranki30@gmail.com" className="hover:text-primary-500 transition-colors magnetic">
+              <Mail className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+              <a href="mailto:jagadeeshveeranki30@gmail.com" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors magnetic">
                 jagadeeshveeranki30@gmail.com
               </a>
             </div>
-            <div className="hidden sm:block w-1.5 h-1.5 rounded-full bg-slate-350 dark:bg-slate-700" />
+            <div className="hidden sm:block w-1.5 h-1.5 rounded-full bg-zinc-200 dark:bg-zinc-800" />
             <div className="flex items-center gap-2">
-              <Phone className="h-4 w-4 text-primary-500" />
-              <a href="tel:+916302471838" className="hover:text-primary-500 transition-colors magnetic">
+              <Phone className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+              <a href="tel:+916302471838" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors magnetic">
                 +91 6302471838
               </a>
             </div>
