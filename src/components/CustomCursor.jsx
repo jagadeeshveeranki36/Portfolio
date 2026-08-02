@@ -143,7 +143,7 @@ export default function CustomCursor() {
         }}
         animate={{
           scale: hovered ? 1.4 : 1,
-          backgroundColor: cursorType === 'project' ? '#93c5fd' : '#ffffff',
+          backgroundColor: cursorType === 'project' ? '#c5a880' : '#ffffff',
         }}
         transition={{ type: 'spring', stiffness: 550, damping: 28 }}
       />
@@ -164,14 +164,14 @@ export default function CustomCursor() {
         animate={{
           width: cursorType === 'project' ? 84 : cursorType === 'magnetic' ? 52 : hovered ? 46 : 28,
           height: cursorType === 'project' ? 84 : cursorType === 'magnetic' ? 52 : hovered ? 46 : 28,
-          borderColor: cursorType === 'project' ? 'rgba(96, 165, 250, 0.55)' : cursorType === 'magnetic' ? 'rgba(37, 99, 235, 0.85)' : 'rgba(255, 255, 255, 0.28)',
-          backgroundColor: cursorType === 'project' ? 'rgba(96, 165, 250, 0.08)' : cursorType === 'magnetic' ? 'rgba(37, 99, 235, 0.12)' : 'rgba(255, 255, 255, 0)',
+          borderColor: cursorType === 'project' ? 'rgba(197, 168, 128, 0.6)' : cursorType === 'magnetic' ? 'rgba(197, 168, 128, 0.85)' : 'rgba(255, 255, 255, 0.28)',
+          backgroundColor: cursorType === 'project' ? 'rgba(197, 168, 128, 0.08)' : cursorType === 'magnetic' ? 'rgba(197, 168, 128, 0.12)' : 'rgba(255, 255, 255, 0)',
           borderWidth: cursorType === 'magnetic' ? 2 : 1,
         }}
         transition={{ type: 'spring', stiffness: 220, damping: 24 }}
       >
         {cursorType === 'project' && (
-          <span className="text-[9px] font-bold text-blue-300 absolute inset-0 flex items-center justify-center tracking-widest uppercase font-mono select-none">
+          <span className="text-[9px] font-bold text-amber-250 absolute inset-0 flex items-center justify-center tracking-widest uppercase font-mono select-none">
             View
           </span>
         )}
