@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, useMotionValue, useSpring, useTransform, useVelocity } from 'framer-motion';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 export default function CustomCursor() {
   const [hovered, setHovered] = useState(false);
@@ -11,30 +11,8 @@ export default function CustomCursor() {
   const mouseY = useMotionValue(-100);
 
   // Spring animations for the trailing outer ring
-  const trailX = useSpring(mouseX, { stiffness: 240, damping: 25 });
-  const trailY = useSpring(mouseY, { stiffness: 240, damping: 25 });
-
-  // Calculate mouse velocity vector
-  const xVelocity = useVelocity(mouseX);
-  const yVelocity = useVelocity(mouseY);
-
-  // Determine pointer travel speed (magnitude of velocity vector)
-  const speed = useTransform([xVelocity, yVelocity], ([vx, vy]) => {
-    return Math.min(Math.sqrt(vx * vx + vy * vy) / 900, 0.45);
-  });
-
-  // Stretch scale along path of motion, squash orthogonally to preserve area
-  const scaleX = useSpring(useTransform(speed, [0, 0.45], [1, 1.45]), { stiffness: 350, damping: 24 });
-  const scaleY = useSpring(useTransform(speed, [0, 0.45], [1, 0.65]), { stiffness: 350, damping: 24 });
-
-  // Rotate the stretched trailing oval to align with path of travel
-  const rotate = useSpring(
-    useTransform([xVelocity, yVelocity], ([vx, vy]) => {
-      if (Math.abs(vx) < 8 && Math.abs(vy) < 8) return 0;
-      return Math.atan2(vy, vx) * (180 / Math.PI);
-    }),
-    { stiffness: 350, damping: 22 }
-  );
+  const trailX = useSpring(mouseX, { stiffness: 250, damping: 26 });
+  const trailY = useSpring(mouseY, { stiffness: 250, damping: 26 });
 
   useEffect(() => {
     const checkDevice = () => {
@@ -134,7 +112,7 @@ export default function CustomCursor() {
     <>
       {/* Snappy Inner Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-2.5 h-2.5 rounded-full pointer-events-none z-[99999] mix-blend-difference"
+        className="fixed top-0 left-0 w-2 h-2 rounded-full pointer-events-none z-[99999] mix-blend-difference"
         style={{
           x: mouseX,
           y: mouseY,
@@ -148,23 +126,19 @@ export default function CustomCursor() {
         transition={{ type: 'spring', stiffness: 550, damping: 28 }}
       />
 
-      {/* Velocity-Reactive Staggered Outer Ring */}
+      {/* Trailing Outer Ring */}
       <motion.div
         className="fixed top-0 left-0 rounded-full pointer-events-none z-[99998] flex items-center justify-center border"
         style={{
           x: trailX,
           y: trailY,
-          scaleX: scaleX,
-          scaleY: scaleY,
-          rotate: rotate,
           translateX: '-50%',
           translateY: '-50%',
-          transformOrigin: 'center center',
         }}
         animate={{
-          width: cursorType === 'project' ? 84 : cursorType === 'magnetic' ? 52 : hovered ? 46 : 28,
-          height: cursorType === 'project' ? 84 : cursorType === 'magnetic' ? 52 : hovered ? 46 : 28,
-          borderColor: cursorType === 'project' ? 'rgba(197, 168, 128, 0.6)' : cursorType === 'magnetic' ? 'rgba(197, 168, 128, 0.85)' : 'rgba(255, 255, 255, 0.28)',
+          width: cursorType === 'project' ? 80 : cursorType === 'magnetic' ? 52 : hovered ? 46 : 28,
+          height: cursorType === 'project' ? 80 : cursorType === 'magnetic' ? 52 : hovered ? 46 : 28,
+          borderColor: cursorType === 'project' ? 'rgba(197, 168, 128, 0.55)' : cursorType === 'magnetic' ? 'rgba(197, 168, 128, 0.85)' : 'rgba(255, 255, 255, 0.28)',
           backgroundColor: cursorType === 'project' ? 'rgba(197, 168, 128, 0.08)' : cursorType === 'magnetic' ? 'rgba(197, 168, 128, 0.12)' : 'rgba(255, 255, 255, 0)',
           borderWidth: cursorType === 'magnetic' ? 2 : 1,
         }}
