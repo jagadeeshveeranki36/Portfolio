@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,14 +6,14 @@
 
 @layer base {
   :root {
-    --color-primary: #18181B;
+    --color-primary: #121214;
     --color-on-primary: #FFFFFF;
-    --color-secondary: #3F3F46;
-    --color-accent: #2563EB; /* Royal Ink-Blue */
-    --color-background: #FAFAFA;
-    --color-foreground: #09090B;
-    --color-muted: #E8ECF0;
-    --color-border: #E4E4E7;
+    --color-secondary: #52525B;
+    --color-accent: #0EA5E9; /* Technical Ice-Blue */
+    --color-background: #FAFAFC;
+    --color-foreground: #080809;
+    --color-muted: #F4F4F6;
+    --color-border: rgba(0, 0, 0, 0.04);
     
     --space-xs: 4px;
     --space-sm: 8px;
@@ -26,23 +26,23 @@
 
   .dark {
     --color-primary: #FAFAFA;
-    --color-on-primary: #09090B;
+    --color-on-primary: #080809;
     --color-secondary: #A1A1AA;
-    --color-accent: #3B82F6;
-    --color-background: #09090B;
-    --color-foreground: #F4F4F5;
-    --color-muted: #1F1F23;
-    --color-border: #27272A;
+    --color-accent: #38BDF8; /* Glowing Ice-Blue */
+    --color-background: #080809; /* Pitch OLED Canvas */
+    --color-foreground: #E4E4E7;
+    --color-muted: #141416;
+    --color-border: rgba(255, 255, 255, 0.05);
   }
 
   body {
-    @apply font-sans bg-lightbg-base text-slate-800 dark:bg-darkbg-base dark:text-slate-100 antialiased transition-colors duration-500 overflow-x-hidden;
+    @apply font-sans bg-lightbg-base text-zinc-900 dark:bg-darkbg-base dark:text-zinc-100 antialiased transition-colors duration-500 overflow-x-hidden;
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display tracking-tight text-slate-900 dark:text-white font-normal;
+    @apply font-display tracking-tight text-zinc-900 dark:text-white font-bold;
     color: var(--color-foreground);
   }
 }
@@ -50,26 +50,26 @@
 @layer components {
   /* Refined Liquid Glass Cards */
   .glass-card {
-    background: rgba(250, 250, 250, 0.65);
-    border: 1px solid rgba(228, 228, 231, 0.45);
-    backdrop-filter: blur(20px) saturate(140%);
+    background: rgba(250, 250, 255, 0.45);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    backdrop-filter: blur(20px) saturate(120%);
     @apply rounded-xl shadow-sm transition-all duration-300;
   }
   
   .dark .glass-card {
-    background: rgba(18, 18, 24, 0.65);
-    border: 1px solid rgba(39, 39, 42, 0.45);
-    backdrop-filter: blur(20px) saturate(140%);
+    background: rgba(10, 10, 12, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px) saturate(120%);
   }
   
   .glass-card-hover {
-    @apply hover:shadow-md hover:border-zinc-350 dark:hover:border-zinc-700 hover:-translate-y-[2px];
+    @apply hover:shadow-md hover:border-zinc-300 dark:hover:border-zinc-800 hover:-translate-y-[2px];
     transition: all 300ms cubic-bezier(0.22, 1, 0.36, 1);
   }
   
   /* High contrast typography accent */
   .gradient-text {
-    @apply text-slate-900 dark:text-white font-display;
+    @apply text-zinc-900 dark:text-white font-display;
     background: none;
     -webkit-text-fill-color: initial;
     background-clip: initial;
@@ -79,13 +79,13 @@
   .btn-primary {
     @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 text-sm cursor-pointer;
     background-color: var(--color-accent);
-    color: white;
+    color: var(--color-background);
   }
   
   .btn-primary:hover {
     opacity: 0.92;
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
   }
 
   .btn-secondary {
@@ -114,7 +114,7 @@
   }
   
   ::-webkit-scrollbar-thumb {
-    @apply bg-zinc-250 dark:bg-zinc-800 rounded-full hover:bg-zinc-400 dark:hover:bg-zinc-700 transition-colors duration-300;
+    @apply bg-zinc-250 dark:bg-zinc-850 rounded-full hover:bg-zinc-450 dark:hover:bg-zinc-800 transition-colors duration-300;
   }
 }
 
@@ -125,13 +125,13 @@
   height: 35vw;
   border-radius: 50%;
   filter: blur(140px);
-  opacity: 0.04;
+  opacity: 0.03;
   z-index: 0;
   pointer-events: none;
 }
 
 .dark .glow-blur {
-  opacity: 0.06;
+  opacity: 0.05;
 }
 
 .glow-purple {
@@ -139,10 +139,10 @@
 }
 
 .glow-blue {
-  background: radial-gradient(circle, #3B82F6 0%, rgba(0,0,0,0) 70%);
+  background: radial-gradient(circle, #0ea5e9 0%, rgba(0,0,0,0) 70%);
 }
 
 /* Base structure for layout borders */
 .layout-grid-line {
-  @apply border-zinc-200/40 dark:border-zinc-800/40;
+  @apply border-zinc-200/40 dark:border-zinc-850;
 }

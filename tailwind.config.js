@@ -8,20 +8,21 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Deep Indigo/Slate primary accent
+        // Ice-blue primary accent
         primary: {
-          50: '#f5f3ff',
-          100: '#ede9fe',
-          200: '#ddd6fe',
-          300: '#c4b5fd',
-          400: '#a78bfa',
-          500: '#8b5cf6', // electric violet/indigo accent
-          605: '#7c3aed',
-          650: '#6d28d9',
-          700: '#6d28d9',
-          800: '#5b21b6',
-          900: '#4c1d95',
-          950: '#2e1065',
+          50: '#f0f9ff',
+          100: '#e0f2fe',
+          200: '#bae6fd',
+          300: '#7dd3fc',
+          400: '#38bdf8',
+          505: '#0ea5e9', // main accent
+          550: '#0ea5e9',
+          605: '#0284c7',
+          650: '#0369a1',
+          700: '#0369a1',
+          800: '#075985',
+          900: '#0c4a6e',
+          950: '#082f49',
         },
         zinc: {
           250: '#e2e2e5',
@@ -31,8 +32,8 @@ export default {
           450: '#8e8e93',
           650: '#4b5563',
           805: '#202024',
-          850: '#1c1c1f',
-          905: '#0f0f11',
+          850: '#1a1a1c',
+          905: '#080809',
         },
         slate: {
           350: '#cbd5e1',
@@ -44,23 +45,23 @@ export default {
           650: '#1d4ed8',
         },
         darkbg: {
-          base: '#090d16',      // Premium dark background (sleek deep blue-black)
-          card: 'rgba(20, 27, 45, 0.6)', // Glassmorphic card base
-          border: 'rgba(255, 255, 255, 0.08)',
-          accent: '#111827',
-          glow: 'rgba(139, 92, 246, 0.15)',
+          base: '#080809',      // Pitch-black premium OLED canvas
+          card: 'rgba(14, 14, 16, 0.45)', // Glassmorphic brand dark card base
+          border: 'rgba(255, 255, 255, 0.05)',
+          accent: '#0d0d0f',
+          glow: 'rgba(14, 165, 233, 0.06)',
         },
         lightbg: {
-          base: '#f8fafc',      // Soft off-white
-          card: 'rgba(255, 255, 255, 0.7)', // Glassmorphic light card
-          border: 'rgba(0, 0, 0, 0.06)',
-          accent: '#f1f5f9',
-          glow: 'rgba(139, 92, 246, 0.08)',
+          base: '#fafafc',      // Warm-white premium brandbook base
+          card: 'rgba(255, 255, 255, 0.55)', // Light glass card base
+          border: 'rgba(0, 0, 0, 0.04)',
+          accent: '#f4f4f6',
+          glow: 'rgba(14, 165, 233, 0.03)',
         }
       },
       fontFamily: {
-        sans: ['Source Serif 4', 'serif'],
-        display: ['Playfair Display', 'serif'],
+        sans: ['Inter', 'sans-serif'],
+        display: ['Space Grotesk', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
       backgroundImage: {
