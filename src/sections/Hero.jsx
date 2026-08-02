@@ -132,7 +132,7 @@ export default function Hero() {
             </LiquidButton>
             
             <LiquidButton
-              href="./resume.pdf"
+              href={`${import.meta.env.BASE_URL}resume.pdf`}
               download="Jagadeesh_Veeranki_Resume.pdf"
               className="btn-secondary w-full sm:w-auto px-7 py-3 text-sm font-semibold"
             >
