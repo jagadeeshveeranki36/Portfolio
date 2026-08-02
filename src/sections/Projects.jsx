@@ -23,7 +23,7 @@ const projects = [
     demoLink: 'https://jagadeeshveeranki36.github.io/Expense-Tracker/#/landing',
     githubLink: 'https://github.com/jagadeeshveeranki36/Expense-Tracker',
     icon: <Server className="h-5 w-5 text-primary-505 dark:text-primary-300" />,
-    color: 'from-sky-500/10 to-transparent'
+    color: 'from-sky-500/15 dark:from-sky-500/30 to-transparent'
   },
   {
     id: 2,
@@ -43,11 +43,11 @@ const projects = [
     demoLink: 'https://jagadeeshveeranki36.github.io/Task-Manager/',
     githubLink: 'https://github.com/jagadeeshveeranki36/Task-Manager',
     icon: <Monitor className="h-5 w-5 text-primary-505 dark:text-primary-300" />,
-    color: 'from-emerald-500/10 to-transparent'
+    color: 'from-emerald-500/15 dark:from-emerald-500/30 to-transparent'
   },
   {
     id: 3,
-    title: 'Interactive Motion Portfolio',
+    title: 'Portfolio',
     tagline: 'An award-winning caliber interactive portfolio',
     summary: 'Designed and developed this personal portfolio showcasing advanced motion design principles, a custom WebGL 3D canvas sphere, magnetic elements, and fluid layout storyboards.',
     tech: ['React 18', 'Vite', 'Tailwind CSS', 'Framer Motion', 'GSAP', 'Three.js'],
@@ -62,7 +62,7 @@ const projects = [
     demoLink: 'https://jagadeeshveeranki36.github.io/Portfolio/',
     githubLink: 'https://github.com/jagadeeshveeranki36/Portfolio',
     icon: <Layers className="h-5 w-5 text-primary-505 dark:text-primary-300" />,
-    color: 'from-purple-500/10 to-transparent'
+    color: 'from-purple-500/15 dark:from-purple-500/30 to-transparent'
   }
 ];
 

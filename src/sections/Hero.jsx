@@ -28,7 +28,7 @@ export default function Hero() {
   useEffect(() => {
     // Kinetic typography line-by-line reveal using high-performance GSAP stagger
     if (headingRef.current) {
-      const text = "Veeranki Jagadeesh";
+      const text = "Jagadeesh Veeranki";
       headingRef.current.innerHTML = '';
       
       const chars = text.split('').map(char => {
@@ -141,7 +141,7 @@ export default function Hero() {
             
             <LiquidButton
               href="./resume.pdf"
-              download="Veeranki_Jagadeesh_Resume.pdf"
+              download="Jagadeesh_Veeranki_Resume.pdf"
               className="btn-secondary w-full sm:w-auto px-7 py-3 text-sm font-semibold"
             >
               <Download className="h-4 w-4 mr-2" />

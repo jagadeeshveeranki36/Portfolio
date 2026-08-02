@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Logo from './Logo';
 
 export default function Preloader({ onComplete }) {
   const [count, setCount] = useState(0);
@@ -75,8 +76,9 @@ export default function Preloader({ onComplete }) {
         JV Portfolio // 2026
       </div>
 
-      {/* Center scrambling word */}
-      <div className="text-center z-10">
+      {/* Center scrambling word with custom logo */}
+      <div className="text-center z-10 flex flex-col items-center gap-4">
+        <Logo className="w-16 h-16 animate-pulse" />
         <motion.h1 
           className="text-4xl sm:text-5xl md:text-7xl font-display font-extrabold text-white tracking-tight"
           key={text}

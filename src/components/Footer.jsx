@@ -1,6 +1,7 @@
 import React from 'react';
 import { Github, Linkedin, Mail, Phone, ArrowUp } from 'lucide-react';
 import { motion } from 'framer-motion';
+import Logo from './Logo';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -21,9 +22,7 @@ export default function Footer() {
           {/* Logo & Tagline */}
           <div>
             <div className="flex items-center justify-center md:justify-start gap-2 mb-3">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-sky-500 to-cyan-400 flex items-center justify-center font-display font-bold text-white shadow-md">
-                VJ
-              </div>
+              <Logo className="w-8 h-8 hover:rotate-12 transition-transform duration-300" />
               <span className="font-display font-bold text-lg text-slate-900 dark:text-white">
                 Jagadeesh Veeranki
               </span>
@@ -115,7 +114,7 @@ export default function Footer() {
               textShadow: '3px 3px 0px rgba(14, 165, 233, 0.45), 6px 6px 0px rgba(14, 165, 233, 0.15)'
             }}
           >
-            Veeranki Jagadeesh
+            JAGADEESH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VEERANKI
           </motion.h2>
         </div>
 

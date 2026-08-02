@@ -110,7 +110,7 @@ export default function HangingIDCard() {
           <div className="relative w-40 h-[208px] mt-3 border border-zinc-200 dark:border-zinc-800 p-1 rounded-lg bg-zinc-50 dark:bg-zinc-950/60 shadow-inner overflow-hidden">
             <img 
               src="./profile.jpg" 
-              alt="Veeranki Jagadeesh, Python Developer" 
+              alt="Jagadeesh Veeranki, Python Developer" 
               className="w-full h-full object-cover rounded-md"
               draggable="false"
             />
@@ -119,7 +119,7 @@ export default function HangingIDCard() {
           {/* Name & Title */}
           <div className="mt-3 w-full">
             <h3 className="font-display font-extrabold text-base text-zinc-900 dark:text-white leading-tight uppercase tracking-tight">
-              Veeranki Jagadeesh
+              Jagadeesh Veeranki
             </h3>
             <p className="font-mono text-[8.5px] font-bold text-emerald-500 dark:text-emerald-450 uppercase tracking-widest mt-0.5">
               Python Developer
