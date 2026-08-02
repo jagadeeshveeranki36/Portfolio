@@ -1,18 +1,40 @@
 import React, { useState, useEffect } from 'react';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform, useVelocity } from 'framer-motion';
 
 export default function CustomCursor() {
   const [hovered, setHovered] = useState(false);
   const [cursorType, setCursorType] = useState('default'); // 'default', 'link', 'project', 'magnetic'
   const [isMobile, setIsMobile] = useState(true);
 
-  // Coordinate motion values to avoid re-rendering core React component on mousemove
+  // Coordinate motion values
   const mouseX = useMotionValue(-100);
   const mouseY = useMotionValue(-100);
 
   // Spring animations for the trailing outer ring
-  const trailX = useSpring(mouseX, { stiffness: 250, damping: 26 });
-  const trailY = useSpring(mouseY, { stiffness: 250, damping: 26 });
+  const trailX = useSpring(mouseX, { stiffness: 240, damping: 25 });
+  const trailY = useSpring(mouseY, { stiffness: 240, damping: 25 });
+
+  // Calculate mouse velocity vector
+  const xVelocity = useVelocity(mouseX);
+  const yVelocity = useVelocity(mouseY);
+
+  // Determine pointer travel speed (magnitude of velocity vector)
+  const speed = useTransform([xVelocity, yVelocity], ([vx, vy]) => {
+    return Math.min(Math.sqrt(vx * vx + vy * vy) / 900, 0.45);
+  });
+
+  // Stretch scale along path of motion, squash orthogonally to preserve area
+  const scaleX = useSpring(useTransform(speed, [0, 0.45], [1, 1.45]), { stiffness: 350, damping: 24 });
+  const scaleY = useSpring(useTransform(speed, [0, 0.45], [1, 0.65]), { stiffness: 350, damping: 24 });
+
+  // Rotate the stretched trailing oval to align with path of travel
+  const rotate = useSpring(
+    useTransform([xVelocity, yVelocity], ([vx, vy]) => {
+      if (Math.abs(vx) < 8 && Math.abs(vy) < 8) return 0;
+      return Math.atan2(vy, vx) * (180 / Math.PI);
+    }),
+    { stiffness: 350, damping: 22 }
+  );
 
   useEffect(() => {
     const checkDevice = () => {
@@ -53,7 +75,7 @@ export default function CustomCursor() {
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseover', handleMouseOver);
 
-    // Magnetic logic for any HTML elements marked with the '.magnetic' class
+    // Magnetic pull logic
     const updateMagneticHandlers = () => {
       const magneticElements = document.querySelectorAll('.magnetic');
       
@@ -61,18 +83,15 @@ export default function CustomCursor() {
         const el = e.currentTarget;
         const rect = el.getBoundingClientRect();
         
-        // Element center coordinates relative to viewport
         const elX = rect.left + rect.width / 2;
         const elY = rect.top + rect.height / 2;
 
         const distanceX = e.clientX - elX;
         const distanceY = e.clientY - elY;
 
-        // Apply visual displacement to the button itself (the pull)
         const force = 0.28;
         el.style.transform = `translate(${distanceX * force}px, ${distanceY * force}px)`;
         
-        // Pull outer circle bounds to align with center
         setCursorType('magnetic');
       };
 
@@ -97,7 +116,6 @@ export default function CustomCursor() {
 
     const cleanMagnetic = updateMagneticHandlers();
 
-    // Re-verify magnetic elements when DOM content changes (e.g. tab switches)
     const observer = new MutationObserver(updateMagneticHandlers);
     observer.observe(document.body, { childList: true, subtree: true });
 
@@ -114,9 +132,9 @@ export default function CustomCursor() {
 
   return (
     <>
-      {/* Inner Dot: Snappy, mix-blend-difference allows reading over black and white text */}
+      {/* Snappy Inner Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 rounded-full pointer-events-none z-[99999] mix-blend-difference"
+        className="fixed top-0 left-0 w-2.5 h-2.5 rounded-full pointer-events-none z-[99999] mix-blend-difference"
         style={{
           x: mouseX,
           y: mouseY,
@@ -124,32 +142,36 @@ export default function CustomCursor() {
           translateY: '-50%',
         }}
         animate={{
-          scale: hovered ? 1.5 : 1,
-          backgroundColor: cursorType === 'project' ? '#c4b5fd' : '#ffffff',
+          scale: hovered ? 1.4 : 1,
+          backgroundColor: cursorType === 'project' ? '#93c5fd' : '#ffffff',
         }}
         transition={{ type: 'spring', stiffness: 550, damping: 28 }}
       />
 
-      {/* Outer Ring: Spring-delayed trailing circle */}
+      {/* Velocity-Reactive Staggered Outer Ring */}
       <motion.div
-        className="fixed top-0 left-0 rounded-full pointer-events-none z-[99998] flex items-center justify-center"
+        className="fixed top-0 left-0 rounded-full pointer-events-none z-[99998] flex items-center justify-center border"
         style={{
           x: trailX,
           y: trailY,
+          scaleX: scaleX,
+          scaleY: scaleY,
+          rotate: rotate,
           translateX: '-50%',
           translateY: '-50%',
+          transformOrigin: 'center center',
         }}
         animate={{
           width: cursorType === 'project' ? 84 : cursorType === 'magnetic' ? 52 : hovered ? 46 : 28,
           height: cursorType === 'project' ? 84 : cursorType === 'magnetic' ? 52 : hovered ? 46 : 28,
-          borderColor: cursorType === 'project' ? 'rgba(167, 139, 250, 0.45)' : cursorType === 'magnetic' ? 'rgba(139, 92, 246, 0.85)' : 'rgba(255, 255, 255, 0.28)',
-          backgroundColor: cursorType === 'project' ? 'rgba(167, 139, 250, 0.08)' : cursorType === 'magnetic' ? 'rgba(139, 92, 246, 0.12)' : 'rgba(255, 255, 255, 0)',
+          borderColor: cursorType === 'project' ? 'rgba(96, 165, 250, 0.55)' : cursorType === 'magnetic' ? 'rgba(37, 99, 235, 0.85)' : 'rgba(255, 255, 255, 0.28)',
+          backgroundColor: cursorType === 'project' ? 'rgba(96, 165, 250, 0.08)' : cursorType === 'magnetic' ? 'rgba(37, 99, 235, 0.12)' : 'rgba(255, 255, 255, 0)',
           borderWidth: cursorType === 'magnetic' ? 2 : 1,
         }}
         transition={{ type: 'spring', stiffness: 220, damping: 24 }}
       >
         {cursorType === 'project' && (
-          <span className="text-[9px] font-bold text-violet-300 absolute inset-0 flex items-center justify-center tracking-widest uppercase font-display select-none">
+          <span className="text-[9px] font-bold text-blue-300 absolute inset-0 flex items-center justify-center tracking-widest uppercase font-mono select-none">
             View
           </span>
         )}
