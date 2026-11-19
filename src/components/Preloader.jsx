@@ -23,11 +23,12 @@ export default function Preloader({ onComplete }) {
 
     const textStates = [
       'JV',
-      'Python',
-      'Flask',
+      'Java',
+      'Spring Boot',
+      'React',
       'Full-Stack',
-      'SQLite',
-      'Design',
+      'PostgreSQL',
+      'Microservices',
       'Jagadeesh Veeranki'
     ];
 

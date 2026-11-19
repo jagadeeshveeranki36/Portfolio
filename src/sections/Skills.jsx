@@ -6,29 +6,29 @@ import MorphingBackground from '../components/MorphingBackground';
 export default function Skills() {
   const coreLanguages = [
     { name: 'Java', icon: <Code className="h-4 w-4 text-primary-505 dark:text-primary-300" /> },
-    { name: 'Python', icon: <Terminal className="h-4 w-4 text-primary-505 dark:text-primary-300" /> },
+    { name: 'JavaScript', icon: <Code className="h-4 w-4 text-primary-505 dark:text-primary-300" /> },
     { name: 'SQL', icon: <Database className="h-4 w-4 text-primary-505 dark:text-primary-300" /> },
     { name: 'HTML5', icon: <Code className="h-4 w-4 text-primary-505 dark:text-primary-300" /> },
     { name: 'CSS3', icon: <Code className="h-4 w-4 text-primary-505 dark:text-primary-300" /> },
-    { name: 'JavaScript', icon: <Code className="h-4 w-4 text-primary-505 dark:text-primary-300" /> }
+    { name: 'Python', icon: <Terminal className="h-4 w-4 text-primary-505 dark:text-primary-300" /> }
   ];
 
   const backendSkills = [
-    { name: 'Flask Framework' },
-    { name: 'Flask-SQLAlchemy' },
-    { name: 'Flask-Login (Auth)' },
-    { name: 'Flask-Bcrypt (Security)' },
-    { name: 'REST API Design' },
-    { name: 'SQLite Database' }
+    { name: 'Spring Boot' },
+    { name: 'Spring Data JPA' },
+    { name: 'Spring Security (JWT)' },
+    { name: 'Hibernate ORM' },
+    { name: 'RESTful API Design' },
+    { name: 'MySQL / PostgreSQL' }
   ];
 
   const toolsSkills = [
-    { name: 'CustomTkinter', icon: <Laptop className="h-3.5 w-3.5 text-primary-505 dark:text-primary-300" /> },
-    { name: 'APScheduler', icon: <Cpu className="h-3.5 w-3.5 text-primary-505 dark:text-primary-300" /> },
+    { name: 'React.js', icon: <Laptop className="h-3.5 w-3.5 text-primary-505 dark:text-primary-300" /> },
+    { name: 'Tailwind CSS', icon: <Code className="h-3.5 w-3.5 text-primary-505 dark:text-primary-300" /> },
+    { name: 'Maven', icon: <Cpu className="h-3.5 w-3.5 text-primary-505 dark:text-primary-300" /> },
     { name: 'Docker', icon: <Cpu className="h-3.5 w-3.5 text-primary-505 dark:text-primary-300" /> },
     { name: 'Git & GitHub', icon: <Cpu className="h-3.5 w-3.5 text-primary-505 dark:text-primary-300" /> },
-    { name: 'OpenPyXL (Excel)', icon: <Cpu className="h-3.5 w-3.5 text-primary-505 dark:text-primary-300" /> },
-    { name: 'FPDF2 (PDF)', icon: <Cpu className="h-3.5 w-3.5 text-primary-505 dark:text-primary-300" /> }
+    { name: 'Postman', icon: <Cpu className="h-3.5 w-3.5 text-primary-505 dark:text-primary-300" /> }
   ];
 
   const softSkills = [
@@ -130,7 +130,7 @@ export default function Skills() {
                 </div>
                 <div>
                   <h3 className="font-display font-bold text-xl text-zinc-900 dark:text-white leading-none">Backend Stack</h3>
-                  <span className="font-mono text-[9px] uppercase font-bold tracking-widest text-zinc-550 dark:text-zinc-400">Frameworks & SQLite</span>
+                  <span className="font-mono text-[9px] uppercase font-bold tracking-widest text-zinc-550 dark:text-zinc-400">Spring Boot & Databases</span>
                 </div>
               </div>
 
@@ -160,8 +160,8 @@ export default function Skills() {
                   <Cpu className="h-4.5 w-4.5 text-primary-505 dark:text-primary-300" />
                 </div>
                 <div>
-                  <h3 className="font-display font-bold text-lg text-zinc-900 dark:text-white">Desktop GUI & DevOps Tools</h3>
-                  <span className="font-mono text-[9px] uppercase font-bold tracking-widest text-zinc-550 dark:text-zinc-400">Utilities & Environment</span>
+                  <h3 className="font-display font-bold text-lg text-zinc-900 dark:text-white">Frontend & DevOps Tools</h3>
+                  <span className="font-mono text-[9px] uppercase font-bold tracking-widest text-zinc-550 dark:text-zinc-400">React, Build & Cloud</span>
                 </div>
               </div>
 
@@ -252,7 +252,7 @@ export default function Skills() {
         <div className="mt-16 text-center font-sans">
           <p className="font-mono text-[10px] text-zinc-405 dark:text-zinc-500 flex items-center justify-center gap-1.5 uppercase tracking-wider">
             <CheckCircle className="h-4 w-4 text-emerald-500" />
-            Certified in Python, Graphic Designing, AI, and Data Science.
+            Certified in Java Full Stack Development, Spring Boot, React, and Database Systems.
           </p>
         </div>
 

@@ -1,6 +1,6 @@
 # Jagadeesh Veeranki - Developer Portfolio
 
-A unique, professional, and animated personal portfolio website built for **Jagadeesh Veeranki**, pursuing Master of Computer Applications (MCA) and specializing in Python & Full-Stack Web Development. 
+A unique, professional, and animated personal portfolio website built for **Jagadeesh Veeranki**, pursuing Master of Computer Applications (MCA) and specializing in Java Full Stack Web Development. 
 
 Designed with modern typography, glassmorphism cards, fluid animated transitions, and interactive features including a mouse-reactive particle background and celebration confetti.
 

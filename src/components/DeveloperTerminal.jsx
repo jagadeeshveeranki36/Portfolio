@@ -3,26 +3,24 @@ import { motion } from 'framer-motion';
 
 export default function DeveloperTerminal() {
   const codeLines = [
-    { text: 'from flask import Blueprint, request, jsonify', type: 'import' },
-    { text: 'from models import User, db', type: 'import' },
-    { text: 'import bcrypt', type: 'import' },
+    { text: 'package com.jagadeesh.portfolio.controller;', type: 'import' },
+    { text: 'import org.springframework.web.bind.annotation.*;', type: 'import' },
+    { text: 'import org.springframework.security.crypto.password.PasswordEncoder;', type: 'import' },
     { text: '', type: 'empty' },
-    { text: "auth_bp = Blueprint('auth', __name__)", type: 'def' },
+    { text: '@RestController', type: 'decorator' },
+    { text: '@RequestMapping("/api/v1/auth")', type: 'decorator' },
+    { text: 'public class AuthController {', type: 'def' },
+    { text: '    private final AuthService authService;', type: 'body' },
+    { text: '    private final JwtTokenProvider tokenProvider;', type: 'body' },
     { text: '', type: 'empty' },
-    { text: "@auth_bp.route('/api/login', methods=['POST'])", type: 'decorator' },
-    { text: 'def authenticate_session():', type: 'func' },
-    { text: '    payload = request.get_json()', type: 'body' },
-    { text: "    email = payload.get('email')", type: 'body' },
-    { text: "    pwd = payload.get('password')", type: 'body' },
-    { text: '    ', type: 'empty' },
-    { text: '    # Airtight server hashing & validation', type: 'comment' },
-    { text: '    user = User.query.filter_by(email=email).first()', type: 'body' },
-    { text: '    if user and bcrypt.check_password(user.hash, pwd):', type: 'body' },
-    { text: '        return jsonify({', type: 'body' },
-    { text: '            "status": "success",', type: 'string' },
-    { text: '            "session_token": user.gen_token()', type: 'string' },
-    { text: '        }), 200', type: 'body' },
-    { text: '    return jsonify({"error": "Invalid credentials"}), 401', type: 'body' }
+    { text: '    @PostMapping("/login")', type: 'decorator' },
+    { text: '    public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginDTO dto) {', type: 'func' },
+    { text: '        // Authenticate & generate stateless JWT session', type: 'comment' },
+    { text: '        User user = authService.verifyCredentials(dto.getEmail(), dto.getPassword());', type: 'body' },
+    { text: '        String token = tokenProvider.generateAccessToken(user);', type: 'body' },
+    { text: '        return ResponseEntity.ok(new AuthResponse(token, "Authenticated", true));', type: 'string' },
+    { text: '    }', type: 'func' },
+    { text: '}', type: 'def' }
   ];
 
   const getLineColor = (type) => {
@@ -58,7 +56,7 @@ export default function DeveloperTerminal() {
           <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
           <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
         </div>
-        <span className="text-[10px] text-zinc-500 uppercase tracking-widest font-bold">auth_routes.py // Flask Blueprint</span>
+        <span className="text-[10px] text-zinc-500 uppercase tracking-widest font-bold">AuthController.java // Spring Boot REST Controller</span>
         <div className="w-8" />
       </div>
 

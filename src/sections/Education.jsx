@@ -25,7 +25,7 @@ const educationData = [
     institution: 'NRI Junior College, Eluru',
     affiliation: 'Board of Intermediate Education, AP',
     duration: '2019 - 2021',
-    grade: '8.2% (82%)',
+    grade: 'CGPA 8.2',
     details: 'Completed foundational coursework in Mathematics, Physics, and Chemistry (MPC) to establish strong mathematical capabilities.',
     current: false
   },
@@ -34,7 +34,7 @@ const educationData = [
     institution: 'Sri Vidyanilayam High School, Vidyanagar',
     affiliation: 'Board of Secondary Education, AP',
     duration: '2018 - 2019',
-    grade: '8.8% (88%)',
+    grade: 'CGPA 8.8',
     details: 'Completed general education with high distinction in Mathematics and Science disciplines.',
     current: false
   }

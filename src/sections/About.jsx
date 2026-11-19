@@ -18,7 +18,7 @@ export default function About() {
     {
       num: '03',
       title: 'Design-Code Union',
-      description: 'Certified in graphic design. I bridge backend system logic (Python/Flask) with visually cohesive layouts and fluid interactive transitions.',
+      description: 'Certified in graphic design. I bridge enterprise backend logic (Java/Spring Boot) with visually cohesive layouts and fluid interactive transitions.',
     },
   ];
 
@@ -53,11 +53,11 @@ export default function About() {
             </p>
             
             <p>
-              I am Jagadeesh Veeranki, a Master of Computer Applications (MCA) student at Varaprasad Reddy Institute of Technology (VRIT), Guntur. I specialize in building backend web structures with Python and Flask, planning structured relational databases, and designing intuitive frontends.
+              I am Jagadeesh Veeranki, a Master of Computer Applications (MCA) student at Varaprasad Reddy Institute of Technology (VRIT), Guntur. I specialize in building robust enterprise full-stack applications with Java, Spring Boot, and React, planning structured relational databases, and crafting modern user interfaces.
             </p>
 
             <p>
-              My coding journey focuses on building applications that solve real-world problems. Whether designing multi-blueprint Flask web dashboards with airtight security controls (bcrypt, custom CAPTCHA, rate-limiting) or coding desktop task managers with active background reminder daemons, I prioritize clean, secure code and premium usability.
+              My coding journey focuses on building applications that solve real-world problems with scalable architecture. Whether designing microservices with Spring Boot and Spring Security (JWT, role-based access control, secure REST endpoints) or crafting reactive frontends with state management and dynamic visual dashboards, I prioritize clean architecture, rock-solid security, and seamless usability.
             </p>
 
             <p>

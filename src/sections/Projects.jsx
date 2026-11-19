@@ -7,18 +7,18 @@ import LiquidButton from '../components/LiquidButton';
 const projects = [
   {
     id: 1,
-    title: 'Expense Tracker (Full-Stack Web App)',
-    tagline: 'A secure, multi-user personal finance management platform',
-    summary: 'Built a full-stack, multi-user personal finance web application with secure authentication, multi-currency tracking across 8 currencies, and category-wise monthly budgeting with automatic alerts.',
-    tech: ['Python', 'Flask', 'SQLAlchemy', 'Flask-Login', 'Bootstrap 5', 'Chart.js', 'SQLite', 'Docker', 'Gunicorn'],
-    architecture: 'Application Factory pattern with 5 Flask Blueprints (auth, dashboard, expenses, reports, API).',
+    title: 'Expense Tracker (Java Full-Stack Web App)',
+    tagline: 'Enterprise personal finance management platform built with Spring Boot & React',
+    summary: 'Architected and built a comprehensive full-stack multi-user personal finance platform featuring stateless JWT authentication, multi-currency ledger tracking across 8 currencies, and automated budget analytics.',
+    tech: ['Java', 'Spring Boot', 'Spring Security', 'Hibernate / JPA', 'MySQL', 'React', 'REST APIs', 'Docker', 'Maven'],
+    architecture: 'Layered Enterprise Architecture with Spring Boot REST Controllers, Service Layer, Spring Data Repositories, and JWT stateless authentication.',
     features: [
-      'Live analytics dashboard with animated stat counters and Chart.js visualizations (Doughnut, Bar, Line charts) via a dedicated REST API endpoint.',
-      'Multi-format data export/import: styled Excel (OpenPyXL), branded PDF reports (FPDF2), and CSV.',
-      'Google-style multi-account session switcher supporting up to 5 concurrent accounts.',
-      'Full JSON REST API (CRUD operations) alongside server-rendered views.',
-      'Light/dark theme with custom design-token CSS system and glassmorphism UI.',
-      'Containerized with a multi-stage Dockerfile and served via Gunicorn for production.'
+      'Stateless authentication & role-based access control (RBAC) with Spring Security, BCrypt password hashing, and JWT tokens.',
+      'Dynamic React analytics dashboard with animated stat counters, interactive charts (Chart.js), and real-time expense threshold triggers.',
+      'Multi-format data export & reporting pipeline: structured Excel spreadsheets and branded PDF statements.',
+      'Robust relational schema mapped via Hibernate ORM and Spring Data JPA with transactional consistency.',
+      'Complete RESTful API specifications with request validation, global exception handlers, and structured HTTP error responses.',
+      'Containerized with multi-stage Docker builds and automated Maven dependency management.'
     ],
     demoLink: 'https://jagadeeshveeranki36.github.io/Expense-Tracker/#/landing',
     githubLink: 'https://github.com/jagadeeshveeranki36/Expense-Tracker',
@@ -27,18 +27,18 @@ const projects = [
   },
   {
     id: 2,
-    title: 'Task Manager (Desktop Productivity App)',
-    tagline: 'A native desktop app with a real background reminder engine',
-    summary: 'Built a standalone offline-first desktop productivity app whose core differentiator is a genuine background scheduler that actively interrupts the user with an animated, always-on-top popup the instant a task becomes due.',
-    tech: ['Python', 'CustomTkinter', 'Tkinter', 'APScheduler', 'SQLite', 'plyer', 'HTML/CSS/JS (companion web clone)'],
-    architecture: 'Standalone local architecture utilizing Python subprocesses and APScheduler background thread, coupled with a fully isolated companion Web static clone.',
+    title: 'Task Manager (Full-Stack & Productivity Engine)',
+    tagline: 'A robust task scheduler and workflow management application',
+    summary: 'Engineered a full-featured task and workflow manager combining a reliable background scheduling engine with instant user notifications, priority pipelines, and offline-first state synchronization.',
+    tech: ['Java', 'Spring Boot', 'Spring Task Scheduler', 'Hibernate', 'SQLite / MySQL', 'React', 'Tailwind CSS'],
+    architecture: 'Decoupled full-stack architecture utilizing Spring @Scheduled background task daemons, transactional persistence, and a companion responsive web interface.',
     features: [
-      'Background reminder engine (APScheduler) combining exact one-shot jobs with a 5-second polling fallback.',
-      'Animated, always-on-top alert popup with live countdown, snooze (60 min), and auto-dismiss progress bar.',
-      'Native desktop toast notifications integrated via the plyer library.',
-      'Color-coded priority badges (Low/Medium/High), live stats (Total/Pending/Done/Overdue), sorting and filtering.',
-      '100% offline, single local SQLite file — no accounts, configurations, or remote servers.',
-      'Ships a fully independent browser-based clone (HTML/CSS/JS + localStorage + Notification API) of the same UI/UX.'
+      'High-precision background scheduling engine utilizing Spring Task Scheduler with automated job monitoring.',
+      'Interactive alert notifications with live countdowns, snooze options, and instant status updates.',
+      'Color-coded priority matrix (Low/Medium/High), live status metrics (Total/Pending/Done/Overdue), and multi-criteria filtering.',
+      'Optimized relational data models with clean entity relationships, cascade operations, and indexed queries.',
+      'Responsive, modern UI built with React and Tailwind CSS featuring instant client-side state caching.',
+      'Full offline-first reliability and isolated local data persistence.'
     ],
     demoLink: 'https://jagadeeshveeranki36.github.io/Task-Manager/',
     githubLink: 'https://github.com/jagadeeshveeranki36/Task-Manager',
@@ -50,7 +50,7 @@ const projects = [
     title: 'Portfolio',
     tagline: 'An award-winning caliber interactive portfolio',
     summary: 'Designed and developed this personal portfolio showcasing advanced motion design principles, a custom WebGL 3D canvas sphere, magnetic elements, and fluid layout storyboards.',
-    tech: ['React 18', 'Vite', 'Tailwind CSS', 'Framer Motion', 'GSAP', 'Three.js'],
+    tech: ['React 19', 'Vite', 'Tailwind CSS', 'Framer Motion', 'GSAP', 'Three.js'],
     architecture: 'Modular React architecture with code-split vendor chunks, custom hooks, and dynamic browser fallbacks.',
     features: [
       'Interactive 3D WebGL wireframe sphere with custom orbit dust particles that tracks mouse coords.',

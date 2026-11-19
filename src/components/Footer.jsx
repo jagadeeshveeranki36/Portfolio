@@ -28,7 +28,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-sm text-slate-500 dark:text-slate-455 max-w-xs mx-auto md:mx-0">
-              Pursuing MCA | Passionate Full-Stack & Python Developer creating secure and productive applications.
+              Pursuing MCA | Passionate Java Full Stack Developer building robust enterprise applications and sleek web experiences.
             </p>
           </div>
 

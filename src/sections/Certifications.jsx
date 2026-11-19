@@ -4,9 +4,9 @@ import { Award, Terminal, Palette, BrainCircuit, Database, Check } from 'lucide-
 
 const certifications = [
   {
-    title: 'Certification in Python',
+    title: 'Java Full Stack Development',
     provider: 'OTP Technologies & Pvt Ltd',
-    description: 'Comprehensive certification covering procedural programming, object-oriented concepts, and API integration in Python.',
+    description: 'Comprehensive certification covering Core Java, OOPs paradigms, Spring Boot microservices, Hibernate/JPA, and full-stack integration.',
     icon: <Terminal className="h-5 w-5 text-primary-505 dark:text-primary-300" />,
     badgeColor: 'bg-primary-505/10 text-primary-605 dark:text-primary-300'
   },
@@ -25,16 +25,16 @@ const certifications = [
     badgeColor: 'bg-primary-505/10 text-primary-605 dark:text-primary-300'
   },
   {
-    title: 'Python for Data Science',
+    title: 'Database & SQL for Backend Engineers',
     provider: 'IBM',
-    description: 'Introduction to data analysis, cleaning, visualization libraries (Pandas, NumPy, Matplotlib) using Jupyter notebooks.',
+    description: 'Relational database schema design, normalization, complex SQL joins, indexing, and transactional integrity.',
     icon: <Database className="h-5 w-5 text-primary-505 dark:text-primary-300" />,
     badgeColor: 'bg-primary-505/10 text-primary-605 dark:text-primary-300'
   },
   {
-    title: 'Workshop on Python & its Applications',
+    title: 'Workshop on Enterprise Web Applications',
     provider: 'APSDC',
-    description: 'Hands-on practical workshop exploring local script scripting, background engines, automation, and real-world deployment cases.',
+    description: 'Hands-on practical workshop exploring enterprise backend architecture, REST APIs, and modern deployment pipelines.',
     icon: <Award className="h-5 w-5 text-primary-505 dark:text-primary-300" />,
     badgeColor: 'bg-primary-505/10 text-primary-605 dark:text-primary-300'
   }

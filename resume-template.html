@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Jagadeesh Veeranki - Resume</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 10mm 14mm 10mm 14mm;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #1e293b;
+      background: #ffffff;
+      line-height: 1.35;
+      font-size: 9.5pt;
+    }
+    .header {
+      text-align: center;
+      border-bottom: 2px solid #0284c7;
+      padding-bottom: 6px;
+      margin-bottom: 8px;
+    }
+    .name {
+      font-size: 20pt;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: #0f172a;
+      text-transform: uppercase;
+    }
+    .role {
+      font-size: 11pt;
+      font-weight: 600;
+      color: #0284c7;
+      margin-top: 1px;
+      margin-bottom: 4px;
+      letter-spacing: 0.3px;
+    }
+    .contact-bar {
+      font-size: 8.5pt;
+      color: #475569;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .contact-bar a {
+      color: #0284c7;
+      text-decoration: none;
+    }
+    .section {
+      margin-bottom: 7px;
+    }
+    .section-title {
+      font-size: 10pt;
+      font-weight: 700;
+      color: #0f172a;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid #cbd5e1;
+      padding-bottom: 2px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .section-title::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 12px;
+      background-color: #0284c7;
+      border-radius: 2px;
+    }
+    .summary-text {
+      font-size: 9pt;
+      color: #334155;
+      text-align: justify;
+      line-height: 1.35;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      row-gap: 2.5px;
+      font-size: 8.8pt;
+    }
+    .skill-category {
+      font-weight: 600;
+      color: #0f172a;
+    }
+    .skill-items {
+      color: #334155;
+    }
+    .item {
+      margin-bottom: 5px;
+    }
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1px;
+    }
+    .item-title {
+      font-size: 9.5pt;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .item-meta {
+      font-size: 8.5pt;
+      color: #64748b;
+      font-weight: 500;
+    }
+    .item-sub {
+      font-size: 8.8pt;
+      font-weight: 600;
+      color: #0284c7;
+      margin-bottom: 2px;
+    }
+    .item-tech {
+      font-size: 8.2pt;
+      color: #475569;
+      font-style: italic;
+      margin-bottom: 2px;
+    }
+    ul.bullet-list {
+      list-style-type: disc;
+      margin-left: 14px;
+      color: #334155;
+      font-size: 8.7pt;
+      line-height: 1.3;
+    }
+    ul.bullet-list li {
+      margin-bottom: 1.5px;
+    }
+    .education-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 8.7pt;
+      margin-top: 2px;
+    }
+    .education-table th {
+      text-align: left;
+      background-color: #f8fafc;
+      padding: 3px 6px;
+      font-weight: 600;
+      color: #1e293b;
+      border-bottom: 1px solid #cbd5e1;
+      font-size: 8.2pt;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .education-table td {
+      padding: 3px 6px;
+      border-bottom: 1px solid #f1f5f9;
+      color: #334155;
+    }
+    .education-table tr:last-child td {
+      border-bottom: none;
+    }
+    .badge {
+      display: inline-block;
+      background-color: #e0f2fe;
+      color: #0369a1;
+      font-weight: 700;
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-size: 8pt;
+    }
+    .cert-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 14px;
+      row-gap: 2.5px;
+      font-size: 8.6pt;
+    }
+    .cert-item {
+      display: flex;
+      align-items: baseline;
+      gap: 5px;
+    }
+    .cert-bullet {
+      color: #0284c7;
+      font-weight: bold;
+    }
+    .cert-name {
+      font-weight: 600;
+      color: #0f172a;
+    }
+    .cert-org {
+      color: #64748b;
+      font-size: 8pt;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <h1 class="name">Jagadeesh Veeranki</h1>
+    <div class="role">Java Full Stack Developer</div>
+    <div class="contact-bar">
+      <span>📍 Eluru, Andhra Pradesh, India</span>
+      <span>📞 +91 6302471838</span>
+      <span>✉️ <a href="mailto:jagadeeshveeranki30@gmail.com">jagadeeshveeranki30@gmail.com</a></span>
+      <span>🔗 <a href="https://linkedin.com/in/jagadeesh-veeranki-94a5b2300/">linkedin.com/in/jagadeesh-veeranki</a></span>
+      <span>💻 <a href="https://github.com/jagadeeshveeranki36">github.com/jagadeeshveeranki36</a></span>
+    </div>
+  </header>
+
+  <!-- Professional Summary -->
+  <section class="section">
+    <div class="section-title">Professional Summary</div>
+    <p class="summary-text">
+      Passionate and result-oriented <strong>Java Full Stack Developer</strong> currently pursuing Master of Computer Applications (MCA) at VRIT (JNTUK). Proven expertise in building enterprise web applications, RESTful microservices, and secure session management using <strong>Java, Spring Boot, Spring Security, Hibernate/JPA, and MySQL</strong>. Proficient in engineering dynamic and interactive frontends with <strong>React.js, JavaScript, and Tailwind CSS</strong>. Experienced with containerization (Docker), build automation (Maven), and version control (Git). Strong problem-solving aptitude with a 9.2 CGPA in undergraduate computer science.
+    </p>
+  </section>
+
+  <!-- Technical Skills -->
+  <section class="section">
+    <div class="section-title">Technical Skills</div>
+    <div class="skills-grid">
+      <div class="skill-category">Programming Languages:</div>
+      <div class="skill-items">Java (Core & Advanced, Collections, Multithreading, OOPs), SQL, JavaScript (ES6+), HTML5, CSS3, Python</div>
+
+      <div class="skill-category">Backend & Frameworks:</div>
+      <div class="skill-items">Spring Boot, Spring MVC, Spring Data JPA, Spring Security (JWT, RBAC), Hibernate ORM, RESTful Web Services, Microservices</div>
+
+      <div class="skill-category">Frontend & UI:</div>
+      <div class="skill-items">React.js, Tailwind CSS, Bootstrap 5, Vite, Chart.js, Responsive Design</div>
+
+      <div class="skill-category">Databases:</div>
+      <div class="skill-items">MySQL, PostgreSQL, SQLite, Relational Database Modeling, Schema Normalization, Complex Queries & Indexing</div>
+
+      <div class="skill-category">DevOps & Tools:</div>
+      <div class="skill-items">Git, GitHub, Maven, Docker, Postman, Linux / Bash, Apache POI, iText, VS Code, IntelliJ IDEA</div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="section">
+    <div class="section-title">Key Projects</div>
+
+    <!-- Project 1 -->
+    <div class="item">
+      <div class="item-header">
+        <span class="item-title">Enterprise Expense & Personal Finance Tracker (Full-Stack Web App)</span>
+        <span class="item-meta">Spring Boot | React | MySQL</span>
+      </div>
+      <div class="item-tech">Technologies: Java, Spring Boot, Spring Security (JWT), Hibernate/JPA, MySQL, React.js, Tailwind CSS, Docker, Maven</div>
+      <ul class="bullet-list">
+        <li>Architected and deployed a multi-user financial management web platform featuring stateless JWT authentication and role-based access control (RBAC).</li>
+        <li>Implemented layered service architecture with Spring Boot REST Controllers, validation constraints, and Spring Data JPA repositories with transactional integrity.</li>
+        <li>Built an interactive React dashboard with Chart.js visualizations (Doughnut, Bar, Line charts) and automated threshold-based monthly budget alerts.</li>
+        <li>Engineered multi-format data export/import pipelines for styled Excel spreadsheets (Apache POI) and branded PDF reports (iText).</li>
+        <li>Containerized the backend service with multi-stage Docker builds and automated Maven dependency management.</li>
+      </ul>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="item">
+      <div class="item-header">
+        <span class="item-title">Task & Workflow Management Engine (Full-Stack Productivity Platform)</span>
+        <span class="item-meta">Spring Boot | React | SQLite</span>
+      </div>
+      <div class="item-tech">Technologies: Java, Spring Boot, Spring Task Scheduler, Hibernate ORM, SQLite / MySQL, React, Tailwind CSS</div>
+      <ul class="bullet-list">
+        <li>Engineered a task scheduling and workflow engine featuring Spring @Scheduled background daemons for high-precision task execution and alerts.</li>
+        <li>Developed clean RESTful CRUD endpoints with custom exception handling, Hibernate entity cascade operations, and indexed queries.</li>
+        <li>Designed a responsive, intuitive interface in React with color-coded priority categorizations (High/Medium/Low) and instant status monitoring pipelines.</li>
+        <li>Implemented offline-first reliability and local client-side state persistence.</li>
+      </ul>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="item">
+      <div class="item-header">
+        <span class="item-title">Interactive Modern Developer Portfolio</span>
+        <span class="item-meta">React 19 | Three.js | Tailwind CSS</span>
+      </div>
+      <div class="item-tech">Technologies: React 19, Vite, Three.js, GSAP, Framer Motion, Tailwind CSS, GitHub Actions</div>
+      <ul class="bullet-list">
+        <li>Designed and developed high-performance interactive portfolio featuring 3D WebGL particle sphere, kinetic typography, and fluid spring physics transitions.</li>
+        <li>Configured automated CI/CD deployment pipelines via GitHub Actions and GitHub Pages with zero-downtime routing.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="section">
+    <div class="section-title">Education</div>
+    <table class="education-table">
+      <thead>
+        <tr>
+          <th>Degree / Qualification</th>
+          <th>Institution & University</th>
+          <th>Year</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Master of Computer Applications (MCA)</strong></td>
+          <td>Varaprasad Reddy Institute of Technology (VRIT), Guntur — JNTUK</td>
+          <td>2024 – 2026</td>
+          <td><span class="badge">Pursuing</span></td>
+        </tr>
+        <tr>
+          <td><strong>Bachelor of Science (B.Sc. - MPCS)</strong></td>
+          <td>Sir C.R. Reddy College (Autonomous), Eluru — Adikavi Nannaya University</td>
+          <td>2021 – 2024</td>
+          <td><span class="badge">CGPA 9.2</span></td>
+        </tr>
+        <tr>
+          <td><strong>Intermediate Education (MPC)</strong></td>
+          <td>NRI Junior College, Eluru — Board of Intermediate Education, AP</td>
+          <td>2019 – 2021</td>
+          <td><span class="badge">CGPA 8.2</span></td>
+        </tr>
+        <tr>
+          <td><strong>Secondary School Certificate (SSC)</strong></td>
+          <td>Sri Vidyanilayam High School, Vidyanagar — Board of Secondary Education, AP</td>
+          <td>2018 – 2019</td>
+          <td><span class="badge">CGPA 8.8</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Certifications -->
+  <section class="section">
+    <div class="section-title">Certifications & Training</div>
+    <div class="cert-list">
+      <div class="cert-item">
+        <span class="cert-bullet">▪</span>
+        <div>
+          <span class="cert-name">Java Full Stack Development</span>
+          <span class="cert-org">— OTP Technologies & Pvt Ltd</span>
+        </div>
+      </div>
+      <div class="cert-item">
+        <span class="cert-bullet">▪</span>
+        <div>
+          <span class="cert-name">Database & SQL for Backend Engineers</span>
+          <span class="cert-org">— IBM</span>
+        </div>
+      </div>
+      <div class="cert-item">
+        <span class="cert-bullet">▪</span>
+        <div>
+          <span class="cert-name">Enterprise Web Applications Workshop</span>
+          <span class="cert-org">— APSDC</span>
+        </div>
+      </div>
+      <div class="cert-item">
+        <span class="cert-bullet">▪</span>
+        <div>
+          <span class="cert-name">Graphic Designing Course</span>
+          <span class="cert-org">— Co Skills</span>
+        </div>
+      </div>
+      <div class="cert-item">
+        <span class="cert-bullet">▪</span>
+        <div>
+          <span class="cert-name">Artificial Intelligence Introduction</span>
+          <span class="cert-org">— Great Learning</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

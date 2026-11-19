@@ -8,8 +8,8 @@ import MorphingBackground from '../components/MorphingBackground';
 import LiquidButton from '../components/LiquidButton';
 
 const taglines = [
-  'Python Developer',
-  'Full-Stack Web Developer',
+  'Java Full Stack Developer',
+  'Spring Boot & React Developer',
   'MCA Student'
 ];
 
@@ -113,7 +113,7 @@ export default function Hero() {
             ref={subHeadingRef}
             className="text-zinc-650 dark:text-zinc-400 text-sm md:text-base max-w-xl mb-8 leading-relaxed font-sans"
           >
-            Currently pursuing an MCA at VRIT (JNTUK). I focus on clean backend architecture with Python & Flask, secure database relational sessions, and snappy, responsive web layouts.
+            Currently pursuing an MCA at VRIT (JNTUK). I focus on clean enterprise architecture with Java & Spring Boot, robust database design with Hibernate/JPA, and responsive, interactive frontends with React.
           </p>
 
           {/* CTA actions */}

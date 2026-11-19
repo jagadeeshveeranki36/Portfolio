@@ -110,7 +110,7 @@ export default function HangingIDCard() {
           <div className="relative w-40 h-[208px] mt-3 border border-zinc-200 dark:border-zinc-800 p-1 rounded-lg bg-zinc-50 dark:bg-zinc-950/60 shadow-inner overflow-hidden">
             <img 
               src="./profile.jpg" 
-              alt="Jagadeesh Veeranki, Python Developer" 
+              alt="Jagadeesh Veeranki, Java Full Stack Developer" 
               className="w-full h-full object-cover rounded-md"
               draggable="false"
             />
@@ -122,7 +122,7 @@ export default function HangingIDCard() {
               Jagadeesh Veeranki
             </h3>
             <p className="font-mono text-[8.5px] font-bold text-emerald-500 dark:text-emerald-450 uppercase tracking-widest mt-0.5">
-              Python Developer
+              Java Full Stack Developer
             </p>
           </div>
 
